@@ -1,0 +1,34 @@
+
+\section{Introduction}
+
+For effective computations involving topological spaces, discrete models are indispensable.
+The category of simplicial complexes models not only spaces but, through the simplicial approximation theorem, also continuous maps between them.
+This combinatorial model leads to an algebraic one using the functor of simplicial chains, on which invariants such as the cohomology of spaces can be readily computed through linear algebra.
+
+In this note we focused on further structure on cohomology of spaces arising from the broken symmetry of any chain approximation to the diagonal map of spaces $X \to X \times X$, the so called Steenrod squares $Sq^k \colon H^\bullet(X; \F_2) \to H^\bullet(X; \F_2)$.
+The deeper reason for the existence of these invariants is the close connection between the objects representing mod-2 cohomology and the group $\S_2$, which acts by transposition on the codomain of the diagonal and leaves its image invariant.
+
+Effective constructions of Steenrod squares have been known since the introduction of this cohomology operations in 1947 \cite{steenrod47}.
+They all rely on the construction of so called cup-$i$ coproducts.
+These are natural linear maps
+\begin{equation*}
+\Delta_i \colon \chains(X; \F_2)  \to \chains(X; \F_2)^{\otimes 2}
+\end{equation*}
+satisfying $\Delta_i = 0$ for $i < 0$ and
+\begin{equation*}
+(1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial.
+\end{equation*}
+The cup-$i$ coproducts can be interpreted as defining a coherent homotopical correction to the broken symmetry of the diagonal chain approximation $\Delta_0$.
+
+The formulas for these coproducts introduced by Steenrod manifestly appeared in the more general context of $E_\infty$-operads and props in the work of McClure-Smith \cite{mcclure03cochain}, Berger-Fresse \cite{berger04combinatorial}, and the author \cite{medina2020prop1,medina2018prop2}.
+A different construction of cup-$i$ coproducts was given earlier by Real and Gonz\'alez-D\'iaz--Real, based on the EZ-AW chain contraction and is implemented in SAGE.
+
+In this article we introduce a new description of cup-$i$ coproducts which is in a sense dual to that given by Steenrod.
+It allows us to present an algorithm for the computation of a cocycle representative of $\Sq^k([\alpha])$ that is quadratic on the number of basis elements defining the cocycle $\alpha$.
+
+The fact these different constructions of cup-$i$ products give rise to the same cohomology operations follows from $\Delta_0$ being a chain approximation to the diagonal.
+It is surprising though that they are all isomorphic at the chain level \cite{medina2018axiomatic}, which points to the combinatorial universality of Steenrod cup-$i$ products.
+See \cite{medina2020globular} for a derivation of the $n$-categorical nerve from it and, through this result, a connection with polyhedral geometry as explained in \cite{bibid}.
+
+Our new description of the cup-$i$ coproducts has bearing not only on applied topology.
+It can also serve as a template for the definition of mod-2 cohomology operations on other homology theories, see for example \cite{bibid} where they are the basis for the definition of mod-2 operations on Khovanov homology.

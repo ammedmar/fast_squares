@@ -1,0 +1,96 @@
+\documentclass{amsart}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{tikz-cd}
+\usepackage{bm}
+\usepackage[boxruled, noend]{algorithm2e}
+
+% hyperref
+\usepackage[bookmarks=true,
+bookmarksnumbered=true, breaklinks=true,
+pdfstartview=FitH, hyperfigures=true,
+plainpages=false, naturalnames=true,
+colorlinks=true, pagebackref=true,
+pdfpagelabels]{hyperref}
+\hypersetup{
+	linktocpage,
+	colorlinks,
+	citecolor=blue,
+	linkcolor=blue,
+	urlcolor=blue}
+
+% layout
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-1.85in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\calclayout
+
+% Updating to MSC2020
+\makeatletter
+\@namedef{subjclassname@2020}{%
+	\textup{2020} Mathematics Subject Classification}
+\makeatother
+
+\newcommand{\W}{\mathsf{W}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathrm{S}}
+\renewcommand{\k}{\Bbbk}
+\renewcommand{\th}{\mathrm{th}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\P}{\mathrm{P}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\chains}{C_\bullet}
+\newcommand{\cochains}{C^\bullet}
+\newcommand{\tensor}{\otimes}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Mod}{\mathbf{Mod}_{\F}}
+\newcommand{\cMod}{\mathbf{Mod}_{\F}^{\simplex}}
+\newcommand{\Ch}{\mathbf{Ch}_{\F}}
+\newcommand{\cCh}{\mathbf{Ch}_{\F}^{\simplex}}
+\newcommand{\sSet}{\mathbf{sSet}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\ind}{\mathrm{ind}}
+\newcommand{\p}{\mathrm{p}}
+\newcommand{\q}{\mathrm{q}}
+\newcommand{\Sq}{\mathrm{Sq}}
+\newcommand{\simplex}{\bm{\Delta}}
+
+\DeclareMathOperator*{\displaytensor}{\otimes}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+%Tabbing Environment
+\newenvironment{tab}{\list{}{\rightmargin 0pt}\item\relax}{\endlist}
+
+
+\begin{document}	
+	\title{Fast computations of simplicial Steenrod squares}
+	\author{Anibal M. Medina-Mardones}
+	\address{Department of Mathematics, University of Notre Dame}
+	\email{amedinam@nd.edu}
+	
+	\begin{abstract}
+		We present new formulas for cup-$i$ products on the simplicial cochains of a space and use them to introduce a fast algorithm for the computation of Steenrod squares on simplicial cohomology.
+	\end{abstract}
+	
+	\maketitle
+	\tableofcontents	
+	\input{introduction}
+	\input{acknowledgments}
+	\input{preliminaries}
+	\input{squares}
+	\input{formulas}
+	\input{proof}
+	\input{outlook}
+	\bibliographystyle{abbrv}
+	\bibliography{bibliography}
+\end{document}

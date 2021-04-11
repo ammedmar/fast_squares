@@ -1,0 +1,45 @@
+
+\section{New formulas and algorithm} \label{s:new stuff}
+
+Let $X$ be a simplicial complex and $x \in X_n$. For a set
+\begin{equation*}
+U = \{u_1 < \dots < u_r\} \subseteq \{0, \dots, n\}
+\end{equation*}
+we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$.
+
+\begin{definition} \label{d:cup-i coproducts}	
+	For a non-negative integer $i$, the \textit{cup-$i$ coproduct}
+	\begin{equation*}
+	\Delta_i : C_\bullet(X; \F) \to C(X; \F)^{\otimes 2}_\bullet
+	\end{equation*}
+	is the linear map defined on a basis element $x \in X_n$ by
+	\begin{equation} \label{equation: simplicial cup-i coproducts}
+	\Delta_i(x) = \sum_U d_{U^+}(x) \tensor d_{U^-}(x),
+	\end{equation}
+	where the sum is taken over all sets $U = \{u_1, \dots, u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$ and
+	\begin{equation*}
+	U^+ = \{u_j\ |\ u_j \equiv j \text{ mod } 2\}, \qquad
+	U^- = \{u_j\ |\ u_j \not\equiv j \text{ mod } 2\}.
+	\end{equation*}
+\end{definition}
+
+\begin{theorem} \label{t:main theorem}
+	For any integer $i$,
+	\begin{equation} \label{eq: cup-i coproducts boundary relation}
+	\partial \circ \Delta_{i} + \Delta_{i+1} \circ \partial = (1 +T ) \Delta_{i-1}.
+	\end{equation}
+\end{theorem}
+
+We devote the next section to the proof of this theorem.
+Assuming it for the moment, we now describe an algorithm for the determination of a cocycle representative of $Sq^k([\alpha])$ given a representative cocycle $\alpha$.
+
+Let us represent the cocycle $\alpha$ as a set of $n$-simplices $A = \{a_1, \dots, a_m\} = \{a \in X_n \mid \alpha(a) = 1\}$.
+
+
+... as presented in Figure~\ref{f:algorithm}.
+
+\begin{figure}
+	\input{stsq}
+	\caption{TBW}
+	\label{f:algorithm}
+\end{figure}

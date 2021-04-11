@@ -1,0 +1,313 @@
+
+\section{Correctness} 
+
+In this section we prove Theorem \ref{t:main} using the following two standard simplifications based respectively on naturality and the hom-tensor adjunction:
+\begin{lemma}
+	A cup-$i$ construction is completely determined by the cup-$i$ structures it assigns to the standard simplicial sets $\simplex^d$.
+\end{lemma} 
+
+\begin{proof}
+	Let $x \in X_{n}$ with characteristic map $\phi : \simplex^{n} \to X$. For any pair of cochains $\alpha, \beta \in N^*(X; \F)$ we have
+	\begin{equation*}
+	(\alpha \smallsmile_{i} \beta)(x) = (\alpha \smallsmile_{i} \beta)(N_*(\phi)(\id_{[n]})) = \big( N^*(\phi)(\alpha) \smallsmile_{i} N^*(\phi)(\beta) \big) \,(\id_{[n]})
+	\end{equation*}
+	implying the claim.
+\end{proof}
+
+\begin{proposition} \label{proposition1: existence}
+	The $\F[\Sigma_2]$-linear map from $W$ to $\Hom(N_*[d], N_*[d]^{\tensor 2})$ defined by
+	\begin{equation*}
+	e_i \mapsto \nabla_i
+	\end{equation*}
+	is a chain map natural with respect to simplicial maps.
+\end{proposition}
+
+\begin{proof}
+	There are two things to show; that each $\nabla_i$ is natural with respects to simplicial maps, that the $\F[\Sigma_2]$-linear map	defined by $e_i \mapsto \nabla_i$ is a chain map.
+	
+	\textit{Naturality.} For any $f: [n] \to [d]$ and $\tau : [d'] \to [d]$ we need to show that for any integer $q$
+	\begin{equation} \label{proposition1: existence: eq1}
+	\nabla^{n \choose q} N_*(\tau)(f) = N_*(\tau)  \nabla^{n \choose q} (f).
+	\end{equation}
+	Let us assume $q \geq 0$ and $f$ injective since otherwise both sides are equal to 0. Since $N_*(\tau)(f) = \tau f$ the identity above is equivalent to
+	\begin{equation} \label{proposition1: existence: eq2}
+	\sum_{U \in \P_{q}}\, d_{U^-}(\tau f) \tensor \, d_{U^+}(\tau f) =
+	(\tau \tensor \tau) \, \sum_{U \in \P_{q}}\, d_{U^-}(f) \tensor \, d_{U^+}(f) .
+	\end{equation}
+	This is immediate if $\tau f$ is injective. If not, the left hand side of (\ref{proposition1: existence: eq2}) equals $0$. Let us assume without loss of generality that $\tau = \sigma_i$ for some $i$, so there must exist a non-negative integer $j < n$ such that $f(j) = i$ and $f(j+1) = i+1$. We will prove the right hand side is also $0$ by showing that for any $U \in \P_q$ either $\sigma_i d_{U^-}(f) = 0$ or $\sigma_i d_{U^+}(f) = 0$. This is equivalent to showing that $j, j+1 \not \in U^-$ or $j, j+1 \not \in U^+$ which follows from the definition of index.
+	
+	\textit{Chain map property.} To aid readability of the relatively long proof of this property we organize it as a proposition supported by four lemmas.
+	
+	\begin{proposition} \label{proposition: chain map}
+		The $\F[\Sigma_2]$-linear map $e_i \mapsto \nabla_i$ is a chain map, i.e., for integers $q$ and $n$
+		\begin{equation} \label{proposition2: existence: eq1}
+		\partial_{2n-q}\,\nabla^{n \choose q} + \nabla^{n-1 \choose q-1}\,\partial_n = (1+T)\nabla^{n \choose q+1}.
+		\end{equation}
+	\end{proposition}
+	
+	\textbf{Notation.} Let $\P_q(0) \subset \P_q(1) \subset \cdots \subset \P_q $ with \mbox{$\P_q(n) = \{(u_1, \dots, u_q)\ |\ u_q \leq n\}$}. For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $x \in \overline{U}$, define $x.U \in \P_{q+1}(n)$ to contain $x$ and the elements in $U$. For $x \in U$, define $U \setminus x \in \P_{q-1}(n)$ to contain the elements in $U$ different from $x$. 
+	
+	\begin{lemma} \label{lemma1: existence}
+		In $\chains[d]$ we have for any $U \in \P_{q}(n)$
+		\begin{equation} \label{lemma1: existence: eq1}
+		\partial_{n-q} d_U = \sum_{x \in \overline{U}} d_{x.U.}
+		\end{equation}
+	\end{lemma}
+	
+	\textit{Proof.}
+	Let $U = (u_1, \dots, u_q)$, then
+	\begin{equation*}
+	\partial_{n-q}\, d_U (f : [n] \to [d]) = 
+	\sum_{i=0}^{n-q} f\, \delta_{u_q} \dots \,\delta_{u_1}\, \delta_i = 
+	\sum_{x \in \overline{U}} f\, \delta_{u_q} \dots \delta_x \dots \delta_{u_1} = 
+	\sum_{x \in \overline{U}} d_{x.U} (f).
+	\end{equation*}
+	
+	\begin{lemma} \label{lemma2: existence}
+		In $\chains[d]$ we have for $0 \leq q \leq n$
+		\begin{equation} \label{lemma2: existence: eq1}
+		\nabla^{ n-1 \choose q-1}\, \partial_n\ =\! \sum_{U \in \P_q(n)} \big( 
+		\sum_{x \in U^+} d_{x.U^-} \tensor d_{U^+} + 
+		\sum_{x \in U^-} d_{U^-} \tensor d_{x.U^+} \big) \D_n.
+		\end{equation}
+	\end{lemma}
+	
+	\textit{Proof.}
+	Let
+	\begin{align*}
+	& S_1 = \big\{(x, V)\ |\ V\in\P_{q-1}(n-1) \text{ and } x\in\{0,\dots,n\}\big\}, \\
+	& S_2 = \big\{(x, W)\ |\ W\in\P_{q}(n) \text{ and } x\in W\big\}
+	\end{align*}
+	and notice that identity (\ref{lemma2: existence: eq1}) equals the following identity:
+	\begin{equation} \label{lemma2: existence: eq2}
+	\sum_{(x,V) \in S_1} (d_{V^-}d_x\ \tensor d_{V^+}d_x) \D_n \ \, = 
+	\sum_{(x,W) \in S_2} 
+	\begin{cases}
+	(d_{x.W^-} \tensor d_{W^+}) \D_n & \text{ if } x\in W^+\\
+	(d_{W^-} \tensor d_{x.W^+}) \D_n & \text{ if } x\in W^-.
+	\end{cases}
+	\end{equation}	
+	Define $S_1 \to S_2$ by sending $\big(x,\, (v_1, \dots, v_{q-1}) \big)$ to $\big(x,\, (w_1, \dots, w_{q}) \big)$ with
+	\begin{equation*}
+	w_i = 
+	\begin{cases}
+	v_i & \text{ if } v_i < x \\
+	x & \text{ if } v_i < x \leq v_{i+1} \\
+	v_{i-1}+1 & \text{ if } v_i < x.
+	\end{cases}
+	\end{equation*} 
+	This function is a bijection since it is injective and both sets have cardinality 
+	\begin{equation*}
+	\frac{(n+1)!}{(n+1-q)!(q-1)!}.
+	\end{equation*}
+	
+	To establishes (\ref{lemma2: existence: eq2}) and the lemma we use the cosimplicial identities to notice that if $(V,x) \mapsto (W,x)$ then
+	\begin{equation*}
+	d_{V^-}d_x\ \tensor d_{V^+}d_x =
+	\begin{cases}
+	d_{x.W^-} \tensor d_{W^+} & \text{ if } x\in W^+\\
+	d_{W^-} \tensor d_{x.W^+} & \text{ if } x\in W^-.
+	\end{cases}
+	\end{equation*}
+	
+	\begin{lemma} \label{lemma3: existence}
+		In $\chains[d]$ we have for $0 \leq q \leq n$
+		\begin{equation} \label{lemma3: existence: eq1}
+		\partial_{2n-q}\,\nabla^{n \choose q} + \nabla^{n-1 \choose q-1}\,\partial_n = 
+		\sum_{\substack{U\in\P_{q}(n) \\ x\in\overline{U}}} (d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{x.U^+})\D_n.
+		\end{equation}
+	\end{lemma}
+	
+	\textit{Proof.}
+	Using Lemma \ref{lemma1: existence} and Lemma \ref{lemma2: existence} we have
+	\begin{equation*}
+	\begin{split}
+	\partial_{2n-q}\, \nabla^{ n \choose q}\ =& 
+	\sum_{U \in \P_q(n)} (\partial\, d_{U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor \partial\, d_{U^+}) \D_n\ =\!\!\!\! 
+	\sum_{\substack{U \in \P_q(n) \\ x \in \overline{U^-},\ y \in \overline{U^+} } }\!\! (d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{y.U^+}) \D_n \\ =&
+	\quad \nabla^{n-1 \choose q-1}\,\partial_n\ + 
+	\sum_{\substack{U\in\P_{q}(n) \\ x \in \overline{U}}} (d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{x.U^+}) \D_n.
+	\end{split}				 
+	\end{equation*}
+	
+	\begin{lemma} \label{lemma4: existence}  
+		In $\chains[d]$ we have for $0 \leq q \leq n$
+		\begin{equation} \label{lemma4: existence: eq1}
+		\sum_{\substack{U \in \P_{q}(n) \\ x \in \overline{U}}} d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{x.U^+}\ = \
+		(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^-} \tensor d_{U^+.}
+		\end{equation}
+	\end{lemma}
+	
+	\textit{Proof.}
+	For $U = (u_1, \dots, u_q) \in \P_{q}(n)$ define when possible:\\
+	\begin{minipage}{.5\textwidth}
+		\begin{align*}
+		& l_{U,x} = \max\{u\in U\ |\ x>u\} \\
+		& V_{U,x} = (v_1, \dots v_q) \text{ with }
+		v_i = 
+		\begin{cases}
+		u_i & \text{ if } u_i \neq l_{U,x} \\
+		x	& \text{ if } u_i = l_{U,x}
+		\end{cases}
+		\end{align*} 
+	\end{minipage}
+	\begin{minipage}{.5\textwidth}
+		\begin{align*}
+		& r_{U,x} = \min\{u\in U\ |\ x<u\} \\
+		& W_{U,x} = (w_1, \dots w_q) \text{ with }
+		w_i = 
+		\begin{cases}
+		u_i & \text{ if } u_i \neq r_{U,x} \\
+		x	& \text{ if } u_i = r_{U,x}.
+		\end{cases}
+		\end{align*}
+	\end{minipage}\\ \\
+	Notice that $(l_{U,x}).V_{U,x} = x.U = (r_{U,x}).W_{U,x}$ and that for any $u \in x.U$ with $u \neq l_{U,x},\, x,\, r_{U,x}$ we have $\ind_{V_{U,x}}(u) = \ind_{U}(u) = \ind_{W_{U,x}}(u)$.
+	
+	We introduce the following sets using tabbing and a schematic to aid readability: \\
+	
+	\begin{minipage}{.3\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale = .26]
+			\node (L) at (0,0) [scale = 1.5]{$L$};
+			\draw [semithick] (-6,0) -- (L) -- (6,0);
+			\draw [semithick] (-6,-12) -- (6,-12) -- (6,12) -- (-6,12) -- (-6,-12);
+			Statement
+			\node (Le) at (0,6) [scale = 1.3] {$L^e$};
+			\node (Lemax) at (-3,6) {$ {L}^e_{min}$};
+			\node (-Lemax) at (3,6) {$\; \overline{L}^e_{min}$\!\!};
+			\node at (3,3) [scale = .7] {$\overline{L}^{e,o}_{min}$};
+			\node at (3,9) [scale = .7] {$\overline{L}^{e,e}_{min}$};
+			
+			\draw [semithick] (L) -- (Le) -- (0,12);
+			\draw [semithick] (6,6) -- (-Lemax) -- (Le);
+			
+			\node (Lo) at (0,-6) [scale = 1.3] {$L^o$};
+			\node (Lomin) at (-3,-6) {$ {L}^o_{max}$};
+			\node (-Lomin) at (3,-6) {$\, \overline{L}^o_{max}$\!\!};
+			\node at (3,-3) [scale = .7] {$\overline{L}^{o,e}_{max}$};
+			\node at (3,-9) [scale = .7] {$\overline{L}^{o,o}_{max}$};
+			
+			\draw [semithick] (L) -- (Lo) -- (0,-12);
+			\draw [semithick] (6,-6) -- (-Lomin) -- (Lo);
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{.8\textwidth}
+		$L = \{x.U^- \tensor U^+\ | \ U \in \P_q(n),\ x \in \overline{U}\}$. \\
+		\begin{tab}
+			$L^{e} = \{x.U^- \tensor U^+ \in L\ | \ \ind_{x.U}(x) \text{ even}\}$. 
+			\begin{tab}
+				$L_{min}^{e} = \{x.U^- \tensor U^+ \in L^e\ | \ x < u_1 \}$.\par
+				$\overline{L}_{min}^{e} = L^{e} \setminus L_{min}^{e}$.
+				\begin{tab}
+					$\overline{L}_{min}^{e,e} = \{ x.U^- \tensor U^+ \in \overline{L}_{min}^{e}\ | \ \ind_{x.U}(l_{U,x}) \text{ even} \}$.\par
+					$\overline{L}_{min}^{e,o} = \{ x.U^- \tensor U^+ \in \overline{L}_{min}^{e}\ | \ \ind_{x.U}(l_{U,x}) \text{ odd} \}.$ \\
+				\end{tab}
+			\end{tab}
+			$L^{o} = \{x.U^- \tensor U^+\ | \ \ind_{x.U}(x) \text{ odd}\}$.\par 
+			\begin{tab}
+				$L_{max}^{o} = \{x.U^- \tensor U^+ \in L^o\ | \ u_q < x \}$.\par
+				$\overline{L}_{max}^{o} = L^{o}\setminus L_{max}^{o}$.
+				\begin{tab}
+					$\overline{L}_{max}^{o,e} = \{ x.U^- \tensor U^+ \in \overline{L}_{max}^{o}\ | \ \ind_{x.U}(r_{U,x}) \text{ even} \}$.\par 
+					$\overline{L}_{max}^{o,o} = \{ x.U^- \tensor U^+ \in \overline{L}_{max}^{o}\ | \ \ind_{x.U}(r_{U,x}) \text{ odd} \}$.
+				\end{tab}
+			\end{tab}
+		\end{tab}
+	\end{minipage}
+
+	\begin{minipage}{.3\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale = .26]
+			\node (L) at (0,0) [scale = 1.5]{$L$};
+			\draw [semithick] (-6,0) -- (L) -- (6,0);
+			\draw [semithick] (-6,-12) -- (6,-12) -- (6,12) -- (-6,12) -- (-6,-12);
+			
+			\node (Le) at (0,6) [scale = 1.3] {$R^e$};
+			\node (Lemax) at (-3,6) {$ {R}^e_{max}$};
+			\node (-Lemax) at (3,6) {$\overline{R}^e_{max}$\!\!};
+			\node at (3,3) [scale = .7] {$\overline{R}^{e,o}_{max}$};
+			\node at (3,9) [scale = .7] {$\overline{R}^{e,e}_{max}$};
+			
+			\draw [semithick] (L) -- (Le) -- (0,12);
+			\draw [semithick] (6,6) -- (-Lemax) -- (Le);
+			
+			\node (Lo) at (0,-6) [scale = 1.3] {$L^o$};
+			\node (Lomin) at (-3,-6) {$ {R}^o_{min}$};
+			\node (-Lomin) at (3,-6) {\,$\overline{R}^o_{min}$\!\!};
+			\node at (3,-3) [scale = .7] {$\overline{R}^{o,e}_{min}$};
+			\node at (3,-9) [scale = .7] {$\overline{R}^{o,o}_{min}$};
+			
+			\draw [semithick] (L) -- (Lo) -- (0,-12);
+			\draw [semithick] (6,-6) -- (-Lomin) -- (Lo);
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{.8\textwidth}
+		$R = \{U^-\tensor x.U^+\ | \ U \in \P_q(n),\ x \in \overline{U}\}$.\\
+		\begin{tab}
+			$R^{e} = \{U^-\tensor x.U^+ \in R\ | \ \ind_{x.U}(x) \text{ even}\}$.\par
+			\begin{tab}
+				$R_{max}^{e} = \{U^- \tensor x.U^+ \in R^e\ | \ u_q < x \}$.\par 
+				$\overline{R}_{max}^{e} = R^{e} \setminus R_{max}^{e}$.
+				\begin{tab}
+					$\overline{R}_{max}^{e,e} = \{ U^- \tensor x.U^+ \in \overline{R}_{max}^{e}\ | \ \ind_{x.U}(r_{U,x}) \text{ even} \}$.\par 
+					$\overline{R}_{max}^{e,o} = \{ U^- \tensor x.U^+ \in \overline{R}_{max}^{e}\ | \ \ind_{x.U}(r_{U,x}) \text{ odd} \}$.\\
+				\end{tab}
+			\end{tab}
+			$R^{o} = \{U^- \tensor x.U^+ \in R\ | \ \ind_{x.U}(x) \text{ odd}\}$.\par 
+			\begin{tab}
+				$R_{min}^{o} = \{U^- \tensor x.U^+ \in R^o \ | \  x < u_1 \}$.\par 
+				$\overline{R}_{min}^{o} = R^{o} \setminus R_{min}^{o}$.
+				\begin{tab}
+					$\overline{R}_{min}^{o,e} = \{ U^- \tensor x.U^+ \in \overline{R}_{min}^{o}\ | \ \ind_{x.U}(l_{U,x}) \text{ even} \}$.\par 
+					$\overline{R}_{min}^{o,o} = \{ U^- \tensor x.U^+ \in \overline{R}_{min}^{o}\ | \ \ind_{x.U}(l_{U,x}) \text{ odd} \}$.
+				\end{tab}
+			\end{tab}
+		\end{tab}
+	\end{minipage} \\ \\
+	We claim the following four identities: 
+	\begin{equation}\label{lemma4: existence: eq2}
+	\overline{R}_{min}^{o,o} = \overline{L}_{max}^{o,o}\ , \qquad \overline{R}_{min}^{o,e} = \overline{R}_{max}^{e,o}\ , \qquad 
+	\overline{L}_{min}^{e,o} = \overline{L}_{max}^{o,e}\ , \qquad \overline{L}_{min}^{e,e} = \overline{R}_{max}^{e,e}.
+	\end{equation}
+	We show only the proof of the first one. The other three are proven analogously.
+	\begin{alignat*}{2}
+	&\boxed{U^-\tensor x.U^+ \in \overline{R}_{min}^{o,o}}\ &\Longrightarrow\ &\boxed{U^-\tensor x.U^+ =\, l_{U,x}.V_U(x)^-\tensor V_{U,x}^+ \in \overline{L}_{max}^{o,o} \ \ } \\ 
+	&\boxed{x.U^-\tensor U^+ \in \overline{L}_{max}^{o,o}}\ &\Longrightarrow\ &\boxed{x.U^-\tensor U^+ =\, W_U(x)^-\tensor r_{U,x}.W_{U,x}^+ \in \overline{R}_{min}^{o,o} \! }
+	\end{alignat*}
+	The identities in (\ref{lemma4: existence: eq2}) imply 
+	\begin{equation} \label{lemma4: existence: eq3} 
+	\sum_{\overline{L}_{max}^{o}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
+	\sum_{\overline{R}_{max}^{e}} d_{U^-} \tensor d_{x.U^+}\ \ +\ \ 
+	\sum_{\overline{L}_{min}^{e}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
+	\sum_{\overline{R}_{min}^{o}} d_{U^-} \tensor d_{x.U^+} = 0.
+	\end{equation}
+	Let us now consider the right hand side of (\ref{lemma4: existence: eq1})
+	\begin{equation*}
+	\sum_{U\in\P_{q+1}(n)} d_{U^-} \tensor d_{U^+} +\, d_{U^+} \tensor d_{U^-.}
+	\end{equation*}
+	Notice it is equal to
+	\begin{align*}
+	&\, \sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ odd}}} d_{u_{q+1}.(U \smallsetminus u_{q+1})^-} \tensor d_{(U \smallsetminus u_{q+1})^+}\ \ + 
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ even}}} d_{(U\smallsetminus u_{q+1})^-} \tensor d_{u_{q+1}.(U \smallsetminus u_{q+1})^+}\ \ + \\
+	&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{u_1.(U\smallsetminus u_1)^-} \tensor d_{(U\smallsetminus u_1)^+}\ \ +
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{(U \smallsetminus u_1)^-} \tensor d_{u_1.(U\smallsetminus u_1)^+.}
+	\end{align*}
+	This expression, in turn, equals
+	\begin{equation*} 
+	\sum_{{L}_{max}^{o}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
+	\sum_{{R}_{max}^{e}} d_{U^-} \tensor d_{x.U^+}\ \ +\ \ 
+	\sum_{{L}_{min}^{e}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
+	\sum_{{R}_{min}^{0}} d_{U^-} \tensor d_{x.U^+.}
+	\end{equation*}
+	Thanks to (\ref{lemma4: existence: eq3}), the above expression equals
+	\begin{equation*}
+	\sum_{L} d_{x.U^-} \tensor d_{U^+}\ +\ \ 
+	\sum_{R} d_{U^-} \tensor d_{x.U^+,}
+	\end{equation*}
+	the left hand side of (\ref{lemma4: existence: eq1}).
+	
+	The proof of Proposition \ref{proposition: chain map}, the chain map property, now follows directly from Lemma \ref{lemma3: existence} and Lemma \ref{lemma4: existence}.
+\end{proof}
