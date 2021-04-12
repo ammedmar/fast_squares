@@ -1,25 +1,25 @@
 \begin{algorithm} [H]
-	\KwIn{$A = \{a_1, \dots, a_m\} \subseteq X_d$}
+	\KwIn{$A = \{a_1, \dots, a_m\} \subseteq X_n$}
 	$B = \emptyset$\\
 	\ForAll{$a_i\ \mathrm{and}\ a_j\ \mathrm{with}\ i < j$}
 	{	
 		$a_{ij} = a_i \cup a_j$\\
-		\If{$a_{ij} \in X_{d+k}$}
+		\If{$a_{ij} \in X_{n+k}$}
 		{
 			$\overline{a}_i = a_i \setminus a_j$\ ;\ \ 
 			$\overline{a}_j = a_j \setminus a_i$\ ;\ \
 			$\overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j$ \\
-			$index =$ empty dictionary\\
+			$index \colon \overline{a}_{ij} \to \{0,1\}$ \\
 			\ForAll {$v \in \overline{a}_{ij}$}
 			{
 				$p = \mathrm{position\ of\ } v \mathrm{\ in\ } a_{ij}$\ ;\ \
 				$\overline{p} = \mathrm{position\ of\ } v \mathrm{\ in\ } \overline{a}_{ij}$\\
-				$index[v] = {p}\, +\, \overline{p}\ \ \mathrm{residue\ mod}\ 2$
+				$index(v) = {p}\, +\, \overline{p}\ \ \mathrm{residue\ mod}\ 2$
 			}
-			\If{\hspace*{3pt}\{$index[v] \mid \mathrm{in}$ $\overline{a}_i$\} $\mathrm{xor}$ \{$index[v] \mid v$ $\mathrm{in}$ $\overline{a}_j$\} = $\{0,1\}$}
-				{$B = B$ xor $\{a_{ij}\}$}
+			\If{\hspace*{3pt}$index(\overline{a}_i) \xor index(\overline{a}_j)$ = $\{0,1\}$}
+				{$B = B \xor \{a_{ij}\}$}
 		}		
 	}
 	\KwOut{$B$}
-	\caption{$SQ^k$}
+	\caption{$SQ^k_n$}
 \end{algorithm}

@@ -58,9 +58,7 @@ The chain complex $\Hom(C, C^\prime)$ has a $G$-action induced from $(g \cdot f)
 \subsection{Simplicial topology}
 
 Simplicial complexes are used to combinatorially encode the topology of spaces.
-The extension of this section to simplicial sets is straightforward and left to the interested reader.
-
-An \textit{abstract and ordered simplicial complex}, or a \textit{simplicial complex} for short, is a pair of sets $(V, X)$ with $V$ a poset and the elements of $X$ being subsets of $V$ such that: 
+An \textit{abstract and ordered simplicial complex}, or a \textit{simplicial complex} for short, is a pair $(V, X)$ with $V$ a poset and $X$ a set of subsets of $V$ such that: 
 \begin{enumerate}
 	\item The restriction of the partial order of $V$ to any element in $X$ defines a total order on it.
 	\item For every $v$ in $V$, the singleton $\{v\}$ is in $X$.
@@ -69,12 +67,12 @@ An \textit{abstract and ordered simplicial complex}, or a \textit{simplicial com
 We abuse notation and denote the pair $(V, X)$ simply by $X$ referring to $V$ as its set of vertices.
 
 The elements of $X$ are called \textit{simplices} and the \textit{dimension} of a simplex $x$ is defined by subtracting $1$ from the number of vertices it contains.
-Simplices of dimension $n$ are called $n$-simplices, and are denoted by their order set of vertices $[v_0, \dots, v_n]$.
+Simplices of dimension $n$ are called $n$-simplices and are denoted by their order set of vertices $[v_0, \dots, v_n]$.
 The collection of $n$-simplices of $X$ is denoted $X_n$. There are natural maps $d_i \colon X_n \to X_{n-1}$ for $i \in \{0, \dots, n\}$ defined by
 \begin{equation*}
 d_i([v_0, \dots, v_n]) = [v_0, \dots, \widehat{v}_i, \dots, v_n]
 \end{equation*}
-and referred to as the $i^{\th}$ face map.
+and referred to as the $i^{\th}$ face map in dimension $n$.
 
 A \textit{simplicial map} $X \to X^\prime$ is a map of posets between their sets of vertices $V \to V^\prime$ sending simplices to simplices.
 
@@ -94,7 +92,18 @@ C_n(X; \k) \arrow[r, "\partial_n"] & C_{n-1}(X; \k) \\
 x\ \arrow[r, |->] & \sum_{i=0}^{n} (-1)^i d_i (x).
 \end{tikzcd}
 \end{equation*}
-The linear dual of $\chains(X; \k)$ is referred to as the \textit{cochains} of $X$ and is denoted $\cochains(X; \k)$.
-We remark that the degree-$n$ part of chains is $0$ for negative values of $n$, and the degree-$n$ part of cochains is $0$ if $n$ is positive. We also notice that $C^{-n}(X, Y; \k)$ is isomorphic to the subspace of $C^{-n}(X; \k)$ that vanish on $C_n(Y; \k)$.
-	
-The \textit{homology} and \textit{cohomology} of a simplicial complex $X$, denoted $H_\bullet(X; \k)$ and $H^\bullet(X; \k)$, are defined as the of homology $\chains(X; \k)$ and $\cochains(X; \k)$ respectively.
+
+Given a simplicial map $f \colon X \to X^\prime$, the \textit{induced map} $f_\bullet \colon \chains(X; \k) \to \chains(X^\prime; \k)$ is the chain map defined on basis elements by
+\begin{equation*}
+f_\bullet([v_0, \dots, v_n]) =
+\begin{cases}
+[f(v_0), \dots, f(v_n)] & \text{ if } i \neq j \text{ implies } f(v_i) \neq f(v_j), \\
+0 & \text{ otherwise}.
+\end{cases}
+\end{equation*}
+
+We referred to $\cochains(X; \k) = \Hom(\chains(X; \k), \k)$ as the \textit{cochains} of $X$, and denote the linear dual of the map $f_\bullet$ induced on chains by a simplicial map $f$ by $f^\bullet$.
+
+We remark that the degree-$n$ part of chains of $X$ is $0$ for negative values of $n$, whereas the degree-$n$ part of the cochains of $X$ is $0$ if $n$ is positive.
+
+The \textit{homology} and \textit{cohomology} of a simplicial complex $X$, denoted $H_\bullet(X; \k)$ and $H^\bullet(X; \k)$, are defined as the homology of $\chains(X; \k)$ and $\cochains(X; \k)$ respectively.
