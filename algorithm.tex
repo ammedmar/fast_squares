@@ -1,0 +1,88 @@
+
+\section{New algorithm}
+
+Given a finite simplicial complex $X$ we now present an algorithm for the determination of a cocycle representative of $Sq^k([\alpha])$ given a representative cocycle $\alpha$ in degree $-n$.
+
+If $k$ is a negative integer or greater than $n$ we $Sq^k([\alpha]) = 0$, and if $k = 0$ we we have $Sq^k([\alpha]) = [\alpha]$ which are uninteresting cases, so we assume $k$ is between $1$ and $n$.
+
+Consider $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ such that
+\begin{equation*}
+\alpha_i(a_j) = \begin{cases}
+1 & i=j, \\ 0 & i\neq j,
+\end{cases}
+\end{equation*}
+and let $B \subseteq X_{n+k}$ be the output of algorithm $SQ_n^k$ applied to $A$, please consult Figure~\ref{f:algorithm}.
+\begin{figure}[h]
+	\input{stsq}
+	\caption{Algorithm producing for a simplicial complex $X$, non-negative integer $n$, integer $k$ between $1$ and $n$, and cocycle $\alpha$, presented as a set $A \subseteq X_n$, a cocycle representing $Sq^k([\alpha])$ identified with a set $B \subseteq X_{n+k}$.
+		We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$.}
+	\label{f:algorithm}
+\end{figure}
+We will prove the correctness of this algorithm by showing that if $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, then
+\begin{equation*}
+\beta(x) =
+\begin{cases}
+1 & x \in B, \\
+0 & x \not\in B.
+\end{cases}
+\end{equation*}
+
+\begin{lemma} \label{l:freeness}
+	For any $x \in X_{n+k}$ and $i,j \in \{1,\dots,m\}$ we have:
+	\begin{itemize}
+		\item if $i=j$, then $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) = 0$,
+		\item if $i \neq j$ and $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$, then $(\alpha_j \otimes \alpha_i)\Delta_{n-k}(x) = 0$.
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	Let $U, V \subseteq \{0, \dots, n\}$ be any pair of subsets. If at least one of them is not empty, then $U^+ \neq V^-$.
+\end{proof}
+
+For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented by $x$ is given by 
+\begin{align*}
+\beta(x) & =
+(\alpha \otimes \alpha) \Delta_{n-k}(x) \\ & =
+(\alpha_1 + \cdots + \alpha_m)^{\otimes 2} \Delta_{n-k}(x) \\ & =
+\Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j + \sum_{i} \alpha_i \otimes \alpha_i \Big)
+\Delta_{n-k}(x) \\ & =
+\Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j\Big)
+\Delta_{n-k}(x).
+\end{align*}
+By Lemma~\ref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ and $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod-2 the number of two element subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^+}(x), d_{U^-}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
+This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^+}(x) \cup d_{U^-}(x) = x$.
+
+Let us formalize these observations.
+Let $\widetilde{A}$ be the set of all two element subsets $\{a_i, a_j\} \subseteq A$ with $a_i \cup a_j \in X_{n+k}$.
+There is a natural map $\pi \colon \widetilde{A} \to X_{n+k}$ sending $\{a_i, a_j\}$ to $a_i \cup a_j$.
+Let $\eval \colon A \to \F_2$ be the map sending $\{a_i, a_j\}$ to $1$ if there exist $U \subseteq \{0,\dots,n\}$ of cardinality $k$ such that $\{a_i, a_j\} = \{d_{U^+}(x), d_{U^-}(x)\}$ and let $\eval(\{a_i, a_j\}) = 0$ otherwise.
+Notice that if such $U$ exists then it is unique.
+With this notation we have
+\begin{equation*}
+\beta(x) = \sum_{\pi^{-1}(x)} \eval(\{a_i, a_j\}).
+\end{equation*}
+We will give a computational characterization of $\eval(\{a_i, a_j\}) = 1$ after introducing some more notation.
+
+Given a finite totally ordered set $S$, the \textit{position function} $\pos_S \colon S \to \Z$ sends an element $s \in S$ to the cardinality of $\{s^\prime \in S \mid s^\prime \leq s\}$.
+Denote
+\begin{equation*}
+\overline{a}_{i} = a_i \setminus a_j, \qquad
+\overline{a}_{i} = a_i \setminus a_j, \qquad
+\overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j.
+\end{equation*}
+Given $\{a_i, a_j\} \in \pi^{-1}(x)$, there exists $U$ with $\{a_i, a_j\} = \{d_{U^+}(x),\, d_{U^-}(x)\}$
+if and only if $U = \pos_{x}(\overline{a}_{ij})$ and
+\begin{equation} \label{e:pos's equal U's}
+\big\{\pos_{x}(\overline{a}_i),\, \pos_{x}(\overline{a}_j)\big\} = \{U^+, U^-\}.
+\end{equation}
+Recall that $U^+$ (resp. $U^-$) is the subset of $U \subseteq \{0, \dots, n+k\}$ with elements satisfying that their position in $U$ plus its position in $\{0, \dots, n+k\}$ is $0$ mod-2 (resp. $1$ mod-2).
+Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \pos_x(\overline{a}_{ij}) \to \F_2$ defined by
+\begin{equation*}
+\ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
+\end{equation*}
+being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e., 
+\begin{equation*}
+\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}.
+\end{equation*}
+
+Therefore, for any $x \in X_{n+k}$ we have $\beta(x) = 1$ if and only if the set of pairs $\{a_i, a_j\}$ in $\pi^{-1}(x)$ with $\eval(\{a_i, a_j\}) = 1$ is even; which is equivalent to the condition $x \in B$.

@@ -25,7 +25,7 @@ pdfpagelabels]{hyperref}
 \addtolength{\textheight}{-2in}
 \calclayout
 
-% Updating to MSC2020
+% update to MSC2020
 \makeatletter
 \@namedef{subjclassname@2020}{%
 	\textup{2020} Mathematics Subject Classification}
@@ -37,7 +37,8 @@ pdfpagelabels]{hyperref}
 \renewcommand{\k}{\Bbbk}
 \renewcommand{\th}{\mathrm{th}}
 \DeclareMathOperator{\xor}{\triangle}
-\DeclareMathOperator{\eval}{\mathrm{eval}}
+\DeclareMathOperator{\eval}{eval}
+\DeclareMathOperator{\pos}{pos}
 
 \newcommand{\Z}{\mathbb{Z}}
 \renewcommand{\P}{\mathrm{P}}
@@ -60,6 +61,7 @@ pdfpagelabels]{hyperref}
 
 \DeclareMathOperator*{\displaytensor}{\otimes}
 
+% environment
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -69,8 +71,6 @@ pdfpagelabels]{hyperref}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
-
-%Tabbing Environment
 \newenvironment{tab}{\list{}{\rightmargin 0pt}\item\relax}{\endlist}
 
 
@@ -91,6 +91,7 @@ pdfpagelabels]{hyperref}
 	\input{preliminaries}
 	\input{squares}
 	\input{formulas}
+	\input{algorithm}
 	\input{proof}
 	\input{outlook}
 	\bibliographystyle{ieeetr}

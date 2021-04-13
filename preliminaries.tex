@@ -68,11 +68,17 @@ We abuse notation and denote the pair $(V, X)$ simply by $X$ referring to $V$ as
 
 The elements of $X$ are called \textit{simplices} and the \textit{dimension} of a simplex $x$ is defined by subtracting $1$ from the number of vertices it contains.
 Simplices of dimension $n$ are called $n$-simplices and are denoted by their order set of vertices $[v_0, \dots, v_n]$.
-The collection of $n$-simplices of $X$ is denoted $X_n$. There are natural maps $d_i \colon X_n \to X_{n-1}$ for $i \in \{0, \dots, n\}$ defined by
+The collection of $n$-simplices of $X$ is denoted $X_n$.
+There are natural maps $d_i^n \colon X_n \to X_{n-1}$ for $i \in \{0, \dots, n\}$ defined by
 \begin{equation*}
-d_i([v_0, \dots, v_n]) = [v_0, \dots, \widehat{v}_i, \dots, v_n]
+d_i^n([v_0, \dots, v_n]) = [v_0, \dots, \widehat{v}_i, \dots, v_n]
 \end{equation*}
 and referred to as the $i^{\th}$ face map in dimension $n$.
+These satisfy the \textit{simplicial relation}:
+\begin{equation} \label{e:simplicial relation}
+d_i^{n-1} d^n_j = d_{j-1}^{n-1} d_i^n
+\end{equation}
+for any $0 \leq i < j \leq n$.
 
 A \textit{simplicial map} $X \to X^\prime$ is a map of posets between their sets of vertices $V \to V^\prime$ sending simplices to simplices.
 
@@ -89,7 +95,7 @@ The boundary map is defined on basis elements by
 ,/tikz/column 2/.append style={anchor=base west}
 ]
 C_n(X; \k) \arrow[r, "\partial_n"] & C_{n-1}(X; \k) \\
-x\ \arrow[r, |->] & \sum_{i=0}^{n} (-1)^i d_i (x).
+x\ \arrow[r, |->] & \sum_{i=0}^{n} (-1)^i d_i^n (x).
 \end{tikzcd}
 \end{equation*}
 
