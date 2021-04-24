@@ -1,80 +1,86 @@
 
 \section{Proof of Theorem~\ref{t:main}} \label{s:proof}
 
-In this section we prove Theorem \ref{t:main}.
-To aid readability of the relatively long proof of this property we organize it as a proposition supported by four lemmas.
-	
-\begin{proposition} \label{proposition: chain map}
-	The $\F[\Sigma_2]$-linear map $e_i \mapsto \nabla_i$ is a chain map, i.e., for integers $q$ and $n$
-	\begin{equation} \label{proposition2: existence: eq1}
-	\partial_{2n-q}\,\nabla^{n \choose q} + \nabla^{n-1 \choose q-1}\,\partial_n = (1+T)\nabla^{n \choose q+1}.
-	\end{equation}
-\end{proposition}
+To aid readability of the relatively long proof of this theorem we split it into four lemmas.
+We start with some notation.
 
-\textbf{Notation.} Let $\P_q(0) \subset \P_q(1) \subset \cdots \subset \P_q $ with \mbox{$\P_q(n) = \{(u_1, \dots, u_q)\ |\ u_q \leq n\}$}. For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $x \in \overline{U}$, define $x.U \in \P_{q+1}(n)$ to contain $x$ and the elements in $U$. For $x \in U$, define $U \setminus x \in \P_{q-1}(n)$ to contain the elements in $U$ different from $x$. 
+\begin{definition}
+	Let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$.
+	For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $x \in \overline{U}$, define $x.U \in \P_{q+1}(n)$ to contain $x$ and the elements in $U$.
+	For $x \in U$, define $U \setminus x \in \P_{q-1}(n)$ to contain the elements in $U$ different from $x$.
+\end{definition}
 
-\begin{lemma} \label{lemma1: existence}
-	In $\chains[d]$ we have for any $U \in \P_{q}(n)$
+Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1}^{n-q+1} \cdots \,d_{u_q}^n$ and avoid writing the superscripts when they do not contribute to expositional clarity.
+
+\begin{lemma} \label{l:partial dU = dxU}
+	For any $x \in X_n$ and $U \in \P_{q}(n)$
 	\begin{equation} \label{lemma1: existence: eq1}
-	\partial_{n-q} d_U = \sum_{x \in \overline{U}} d_{x.U.}
+	\partial \circ d_U(x) = \sum_{\bar{u} \in \overline{U}} d_{\bar{u}.U}(x).
 	\end{equation}
 \end{lemma}
 
-\textit{Proof.}
-Let $U = (u_1, \dots, u_q)$, then
-\begin{equation*}
-\partial_{n-q}\, d_U (f : [n] \to [d]) = 
-\sum_{i=0}^{n-q} f\, \delta_{u_q} \dots \,\delta_{u_1}\, \delta_i = 
-\sum_{x \in \overline{U}} f\, \delta_{u_q} \dots \delta_x \dots \delta_{u_1} = 
-\sum_{x \in \overline{U}} d_{x.U} (f).
-\end{equation*}
+\begin{proof}
+	Let $U = \{u_1 < \cdots < u_q\}$. Using the simplicial relation \eqref{e:simplicial relation} we have
+	\begin{equation*}
+	\partial \circ d_U(x) = 
+	\sum_{i=0}^{n-q} d_i\, d_{u_1} \cdots\, d_{u_q}(x) = 
+	\sum_{\bar{u} \in \overline{U}} d_{u_1} \cdots\, d_{\bar{u}} \cdots\, d_{u_q}(x) =
+	\sum_{\bar{u} \in \overline{U}} d_{\bar{u}.U}(x)
+	\end{equation*}
+	as claimed.
+\end{proof}
 
-\begin{lemma} \label{lemma2: existence}
-	In $\chains[d]$ we have for $0 \leq q \leq n$
-	\begin{equation} \label{lemma2: existence: eq1}
-	\nabla^{ n-1 \choose q-1}\, \partial_n\ =\! \sum_{U \in \P_q(n)} \big( 
-	\sum_{x \in U^+} d_{x.U^-} \tensor d_{U^+} + 
-	\sum_{x \in U^-} d_{U^-} \tensor d_{x.U^+} \big) \D_n.
+\anibal{Check the $q=0$ case below.}
+
+\begin{lemma} \label{l:}
+	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
+	\begin{equation} \label{e:pigeon hole 1}
+	\Delta_{q-1} \circ \partial (x)\ =\! 
+	\sum_{U \in \P_q(n)} \left( 
+	\sum_{x \in U^+} d_{x.U^-} \tensor d_{U^+}(x) + 
+	\sum_{x \in U^-} d_{U^-} \tensor d_{x.U^+}(x) \right).
 	\end{equation}
 \end{lemma}
 
-\textit{Proof.}
-Let
-\begin{align*}
-& S_1 = \big\{(x, V)\ |\ V\in\P_{q-1}(n-1) \text{ and } x\in\{0,\dots,n\}\big\}, \\
-& S_2 = \big\{(x, W)\ |\ W\in\P_{q}(n) \text{ and } x\in W\big\}
-\end{align*}
-and notice that identity (\ref{lemma2: existence: eq1}) equals the following identity:
-\begin{equation} \label{lemma2: existence: eq2}
-\sum_{(x,V) \in S_1} (d_{V^-}d_x\ \tensor d_{V^+}d_x) \D_n \ \, = 
-\sum_{(x,W) \in S_2} 
-\begin{cases}
-(d_{x.W^-} \tensor d_{W^+}) \D_n & \text{ if } x\in W^+\\
-(d_{W^-} \tensor d_{x.W^+}) \D_n & \text{ if } x\in W^-.
-\end{cases}
-\end{equation}	
-Define $S_1 \to S_2$ by sending $\big(x,\, (v_1, \dots, v_{q-1}) \big)$ to $\big(x,\, (w_1, \dots, w_{q}) \big)$ with
-\begin{equation*}
-w_i = 
-\begin{cases}
-v_i & \text{ if } v_i < x \\
-x & \text{ if } v_i < x \leq v_{i+1} \\
-v_{i-1}+1 & \text{ if } v_i < x.
-\end{cases}
-\end{equation*} 
-This function is a bijection since it is injective and both sets have cardinality 
-\begin{equation*}
-\frac{(n+1)!}{(n+1-q)!(q-1)!}.
-\end{equation*}
+\begin{proof}
+	Let
+	\begin{align*}
+	& S_1 = \big\{ (u, V)\ |\ V \in \P_{q-1}(n-1) \text{ and } u \in \{0,\dots,n\} \big\}, \\
+	& S_2 = \big\{ (w, W)\ |\ W \in \P_{q}(n) \text{ and } w \in W \big\}
+	\end{align*}
+	and notice that identity \eqref{e:pigeon hole 1} is equivalent to the following identity:
+	\begin{equation} \label{e:pigeon hole 2}
+	\sum_{(u, V) \in S_1} d_{V^-}d_u \tensor d_{V^+}d_u \ \, = \!
+	\sum_{(w, W) \in S_2} 
+	\begin{cases}
+	d_{w.W^-} \tensor d_{W^+} & \text{ if } w \in W^+ \\
+	d_{W^-} \tensor d_{w.W^+} & \text{ if } w \in W^-.
+	\end{cases}
+	\end{equation}	
+	Define $S_1 \to S_2$ by sending $\big(u,\, \{v_1 < \cdots < v_{q-1}\} \big)$ to $\big(u,\, \{w_1 < \cdots < w_{q}\} \big)$ with
+	\begin{equation*}
+	w_i = 
+	\begin{cases}
+	v_i & \text{ if } v_i < u, \\
+	u & \text{ if } v_i < u \leq v_{i+1}, \\
+	v_{i-1}+1 & \text{ if } v_i < u.
+	\end{cases}
+	\end{equation*} 
+	This function is a bijection since it is injective and both sets have cardinality 
+	\begin{equation*}
+	\frac{(n+1)!}{(n+1-q)!(q-1)!}.
+	\end{equation*}
+	
+	To establishes \eqref{e:pigeon hole 2} and the lemma we use the cosimplicial identities to notice that if $(u, V) \mapsto (u, W)$ then
+	\begin{equation*}
+	d_{V^-}d_u \tensor d_{V^+}d_u =
+	\begin{cases}
+	d_{u.W^-} \tensor d_{W^+} & \text{ if } u \in W^+, \\
+	d_{W^-} \tensor d_{u.W^+} & \text{ if } u \in W^-.
+	\end{cases}
+	\end{equation*}
+\end{proof}
 
-To establishes (\ref{lemma2: existence: eq2}) and the lemma we use the cosimplicial identities to notice that if $(V,x) \mapsto (W,x)$ then
-\begin{equation*}
-d_{V^-}d_x\ \tensor d_{V^+}d_x =
-\begin{cases}
-d_{x.W^-} \tensor d_{W^+} & \text{ if } x\in W^+\\
-d_{W^-} \tensor d_{x.W^+} & \text{ if } x\in W^-.
-\end{cases}
-\end{equation*}
 
 \begin{lemma} \label{lemma3: existence}
 	In $\chains[d]$ we have for $0 \leq q \leq n$
