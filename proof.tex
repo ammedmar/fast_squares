@@ -11,6 +11,10 @@ We start with some notation.
 \end{definition}
 
 Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1}^{n-q+1} \cdots \,d_{u_q}^n$ and avoid writing the superscripts when they do not contribute to expositional clarity.
+With this notation we have for any $x \in X_n$
+\begin{equation*}
+\Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^+}(x) \otimes d_{U^-}(x).
+\end{equation*}
 
 \begin{lemma} \label{l:partial dU = dxU}
 	For any $x \in X_n$ and $U \in \P_{q}(n)$
@@ -32,13 +36,13 @@ Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for 
 
 \anibal{Check the $q=0$ case below.}
 
-\begin{lemma} \label{l:}
+\begin{lemma} \label{l:pigeon hole}
 	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
 	\begin{equation} \label{e:pigeon hole 1}
-	\Delta_{q-1} \circ \partial (x)\ =\! 
+	\Delta_{n-q-1} \circ \partial (x)\ =\! 
 	\sum_{U \in \P_q(n)} \left( 
-	\sum_{x \in U^+} d_{x.U^-} \tensor d_{U^+}(x) + 
-	\sum_{x \in U^-} d_{U^-} \tensor d_{x.U^+}(x) \right).
+	\sum_{u \in U^-} d_{u.U^+}(x) \tensor d_{U^-}(x) + 
+	\sum_{u \in U^+} d_{U^+}(x) \tensor d_{u.U^-}(x) \right).
 	\end{equation}
 \end{lemma}
 
@@ -50,11 +54,11 @@ Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for 
 	\end{align*}
 	and notice that identity \eqref{e:pigeon hole 1} is equivalent to the following identity:
 	\begin{equation} \label{e:pigeon hole 2}
-	\sum_{(u, V) \in S_1} d_{V^-}d_u \tensor d_{V^+}d_u \ \, = \!
+	\sum_{(u, V) \in S_1} d_{V^+}d_u \tensor d_{V^-}d_u \ \, = \!
 	\sum_{(w, W) \in S_2} 
 	\begin{cases}
-	d_{w.W^-} \tensor d_{W^+} & \text{ if } w \in W^+ \\
-	d_{W^-} \tensor d_{w.W^+} & \text{ if } w \in W^-.
+	d_{w.W^+} \tensor d_{W^-} & \text{ if } w \in W^-, \\
+	d_{W^+} \tensor d_{w.W^-} & \text{ if } w \in W^+.
 	\end{cases}
 	\end{equation}	
 	Define $S_1 \to S_2$ by sending $\big(u,\, \{v_1 < \cdots < v_{q-1}\} \big)$ to $\big(u,\, \{w_1 < \cdots < w_{q}\} \big)$ with
@@ -70,37 +74,39 @@ Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for 
 	\begin{equation*}
 	\frac{(n+1)!}{(n+1-q)!(q-1)!}.
 	\end{equation*}
-	
-	To establishes \eqref{e:pigeon hole 2} and the lemma we use the cosimplicial identities to notice that if $(u, V) \mapsto (u, W)$ then
+	To establishes \eqref{e:pigeon hole 2} we use the simplicial identity to notice that if $(u, V) \mapsto (u, W)$ then
 	\begin{equation*}
-	d_{V^-}d_u \tensor d_{V^+}d_u =
+	d_{V^+}d_u \tensor d_{V^-}d_u =
 	\begin{cases}
-	d_{u.W^-} \tensor d_{W^+} & \text{ if } u \in W^+, \\
-	d_{W^-} \tensor d_{u.W^+} & \text{ if } u \in W^-.
+	d_{u.W^+} \tensor d_{W^-} & \text{ if } u \in W^-, \\
+	d_{W^+} \tensor d_{u.W^-} & \text{ if } u \in W^+,
 	\end{cases}
 	\end{equation*}
+	which concludes the proof.
 \end{proof}
 
 
-\begin{lemma} \label{lemma3: existence}
-	In $\chains[d]$ we have for $0 \leq q \leq n$
-	\begin{equation} \label{lemma3: existence: eq1}
-	\partial_{2n-q}\,\nabla^{n \choose q} + \nabla^{n-1 \choose q-1}\,\partial_n = 
-	\sum_{\substack{U\in\P_{q}(n) \\ x\in\overline{U}}} (d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{x.U^+})\D_n.
+\begin{lemma} \label{l:boundary of Delta}
+	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
+	\begin{equation} \label{e:boundary of Delta}
+	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
+	\sum_{\substack{U \in \P_{q}(n) \\ \bar u \in \overline{U}}} \Big( d_{\bar u.U^+} \tensor d_{U^-} \, + \, d_{U^+} \tensor d_{\bar u.U^-} \Big) (x \otimes x).
 	\end{equation}
 \end{lemma}
 
-\textit{Proof.}
-Using Lemma \ref{lemma1: existence} and Lemma \ref{lemma2: existence} we have
-\begin{equation*}
-\begin{split}
-\partial_{2n-q}\, \nabla^{ n \choose q}\ =& 
-\sum_{U \in \P_q(n)} (\partial\, d_{U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor \partial\, d_{U^+}) \D_n\ =\!\!\!\! 
-\sum_{\substack{U \in \P_q(n) \\ x \in \overline{U^-},\ y \in \overline{U^+} } }\!\! (d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{y.U^+}) \D_n \\ =&
-\quad \nabla^{n-1 \choose q-1}\,\partial_n\ + 
-\sum_{\substack{U\in\P_{q}(n) \\ x \in \overline{U}}} (d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{x.U^+}) \D_n.
-\end{split}				 
-\end{equation*}
+\begin{proof}
+	Using Lemma~\ref{l:partial dU = dxU} and Lemma~\ref{l:pigeon hole} we have
+	\begin{equation*}
+	\begin{split}
+	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = & \
+	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^+} \tensor d_{U^-}\ +\ d_{U^-} \tensor \partial \circ d_{U^-} \Big) (x \otimes x) \\ = & \!\!
+	\sum_{\substack{U \in \P_q(n) \\ v \in \overline{U^+},\ w \in \overline{U^-} } }\!\! \Big( d_{v.U^+} \tensor d_{U^-}\ +\ d_{U^+} \tensor d_{w.U^-}\Big) (x \otimes x) \\ = &
+	\quad \Delta_{n-q-2} \circ \partial_n (x) \ + 
+	\sum_{\substack{U\in\P_{q}(n) \\ \bar u \in \overline{U}}} \Big( d_{\bar u.U^+} \tensor d_{U^-}\ +\ d_{U^+} \tensor d_{\bar u.U^-}\Big) (x \otimes x)
+	\end{split}
+	\end{equation*}
+	as claimed.
+\end{proof}
 
 \begin{lemma} \label{lemma4: existence}  
 	In $\chains[d]$ we have for $0 \leq q \leq n$
