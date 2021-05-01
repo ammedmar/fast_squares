@@ -8,3 +8,5 @@
 *.synctex.gz
 *.toc
 *.txss
+/__pycache__
+/.ipynb_checkpoints
