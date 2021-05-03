@@ -1,20 +1,22 @@
 
-\section{Proof of Theorem~\ref{t:main}} \label{s:proof}
+\section{Proof of our main theorem} \label{s:proof}
 
-To aid readability of the relatively long proof of this theorem we split it into four lemmas.
+To aid readability of the relatively long proof of Theorem~\ref{t:main} we split it into four lemmas.
 We start with some notation.
 
 \begin{definition}
 	Let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$.
 	For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $x \in \overline{U}$, define $x.U \in \P_{q+1}(n)$ to contain $x$ and the elements in $U$.
-	For $x \in U$, define $U \setminus x \in \P_{q-1}(n)$ to contain the elements in $U$ different from $x$.
+	For $x \in U$, define $U \sm x \in \P_{q-1}(n)$ to contain the elements in $U$ different from $x$.
 \end{definition}
 
 Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1}^{n-q+1} \cdots \,d_{u_q}^n$ and avoid writing the superscripts when they do not contribute to expositional clarity.
+For any $U \in \P_q(n)$, let $\ind_U \colon U \to \F_2$ sending $u_i \in U$ to $u_i + i$.
 With this notation we have for any $x \in X_n$
 \begin{equation*}
-\Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^+}(x) \otimes d_{U^-}(x).
+\Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^+}(x) \otimes d_{U^-}(x)
 \end{equation*}
+where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u) = 1\}$
 
 \begin{lemma} \label{l:partial dU = dxU}
 	For any $x \in X_n$ and $U \in \P_{q}(n)$
@@ -41,8 +43,8 @@ With this notation we have for any $x \in X_n$
 	\begin{equation} \label{e:pigeon hole 1}
 	\Delta_{n-q-1} \circ \partial (x)\ =\! 
 	\sum_{U \in \P_q(n)} \left( 
-	\sum_{u \in U^-} d_{u.U^+}(x) \tensor d_{U^-}(x) + 
-	\sum_{u \in U^+} d_{U^+}(x) \tensor d_{u.U^-}(x) \right).
+	\sum_{u \in U^-} d_{u.U^+}(x) \otimes d_{U^-}(x) + 
+	\sum_{u \in U^+} d_{U^+}(x) \otimes d_{u.U^-}(x) \right).
 	\end{equation}
 \end{lemma}
 
@@ -54,11 +56,11 @@ With this notation we have for any $x \in X_n$
 	\end{align*}
 	and notice that identity \eqref{e:pigeon hole 1} is equivalent to the following identity:
 	\begin{equation} \label{e:pigeon hole 2}
-	\sum_{(u, V) \in S_1} d_{V^+}d_u \tensor d_{V^-}d_u \ \, = \!
+	\sum_{(u, V) \in S_1} d_{V^+}d_u \otimes d_{V^-}d_u \ \, = \!
 	\sum_{(w, W) \in S_2} 
 	\begin{cases}
-	d_{w.W^+} \tensor d_{W^-} & \text{ if } w \in W^-, \\
-	d_{W^+} \tensor d_{w.W^-} & \text{ if } w \in W^+.
+	d_{w.W^+} \otimes d_{W^-} & \text{ if } w \in W^-, \\
+	d_{W^+} \otimes d_{w.W^-} & \text{ if } w \in W^+.
 	\end{cases}
 	\end{equation}	
 	Define $S_1 \to S_2$ by sending $\big(u,\, \{v_1 < \cdots < v_{q-1}\} \big)$ to $\big(u,\, \{w_1 < \cdots < w_{q}\} \big)$ with
@@ -76,10 +78,10 @@ With this notation we have for any $x \in X_n$
 	\end{equation*}
 	To establishes \eqref{e:pigeon hole 2} we use the simplicial identity to notice that if $(u, V) \mapsto (u, W)$ then
 	\begin{equation*}
-	d_{V^+}d_u \tensor d_{V^-}d_u =
+	d_{V^+}d_u \otimes d_{V^-}d_u =
 	\begin{cases}
-	d_{u.W^+} \tensor d_{W^-} & \text{ if } u \in W^-, \\
-	d_{W^+} \tensor d_{u.W^-} & \text{ if } u \in W^+,
+	d_{u.W^+} \otimes d_{W^-} & \text{ if } u \in W^-, \\
+	d_{W^+} \otimes d_{u.W^-} & \text{ if } u \in W^+,
 	\end{cases}
 	\end{equation*}
 	which concludes the proof.
@@ -90,7 +92,7 @@ With this notation we have for any $x \in X_n$
 	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
 	\begin{equation} \label{e:boundary of Delta}
 	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
-	\sum_{\substack{U \in \P_{q}(n) \\ \bar u \in \overline{U}}} \Big( d_{\bar u.U^+} \tensor d_{U^-} \, + \, d_{U^+} \tensor d_{\bar u.U^-} \Big) (x \otimes x).
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^+} \otimes d_{U^-} \, + \, d_{U^+} \otimes d_{\bu.U^-} \Big) (x \otimes x).
 	\end{equation}
 \end{lemma}
 
@@ -99,192 +101,137 @@ With this notation we have for any $x \in X_n$
 	\begin{equation*}
 	\begin{split}
 	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = & \
-	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^+} \tensor d_{U^-}\ +\ d_{U^-} \tensor \partial \circ d_{U^-} \Big) (x \otimes x) \\ = & \!\!
-	\sum_{\substack{U \in \P_q(n) \\ v \in \overline{U^+},\ w \in \overline{U^-} } }\!\! \Big( d_{v.U^+} \tensor d_{U^-}\ +\ d_{U^+} \tensor d_{w.U^-}\Big) (x \otimes x) \\ = &
+	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^+} \otimes d_{U^-}\ +\ d_{U^-} \otimes \partial \circ d_{U^-} \Big) (x \otimes x) \\ = & \!\!
+	\sum_{\substack{U \in \P_q(n) \\ v \in \overline{U^+},\ w \in \overline{U^-} } }\!\! \Big( d_{v.U^+} \otimes d_{U^-}\ +\ d_{U^+} \otimes d_{w.U^-}\Big) (x \otimes x) \\ = &
 	\quad \Delta_{n-q-2} \circ \partial_n (x) \ + 
-	\sum_{\substack{U\in\P_{q}(n) \\ \bar u \in \overline{U}}} \Big( d_{\bar u.U^+} \tensor d_{U^-}\ +\ d_{U^+} \tensor d_{\bar u.U^-}\Big) (x \otimes x)
+	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^+} \otimes d_{U^-}\ +\ d_{U^+} \otimes d_{\bu.U^-}\Big) (x \otimes x)
 	\end{split}
 	\end{equation*}
 	as claimed.
 \end{proof}
 
-\begin{lemma} \label{l:large lemma}  
-	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
-	\begin{equation} \label{lemma4: existence: eq1}
-	\sum_{\substack{U \in \P_{q}(n) \\ x \in \overline{U}}} d_{x.U^-} \tensor d_{U^+}\ +\ d_{U^-} \tensor d_{x.U^+}\ = \
-	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^-} \tensor d_{U^+.}
+\begin{lemma} \label{l:big lemma}  
+	For any $q \in \{0, \dots, n\}$
+	\begin{equation} \label{e:big lemma}
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} d_{\bu.U^+} \otimes d_{U^-}\, +\ d_{U^+} \otimes d_{\bu.U^-}\, = \
+	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^+} \otimes d_{U^-.}
 	\end{equation}
 \end{lemma}
 
-\textit{Proof.}
-For $U = (u_1, \dots, u_q) \in \P_{q}(n)$ define when possible:\\
-\begin{minipage}{.5\textwidth}
+\begin{proof}
+	Let us consider the right hand side of (\ref{e:big lemma})
+	\begin{equation} \label{e:big lemma rhs}
+	\sum_{U \in \P_{q+1}(n)} d_{U^+} \otimes d_{U^-}\, +\ d_{U^-} \otimes d_{U^+.}
+	\end{equation}
+	Notice that for any $U = \{u_1 < \cdots < u_{q+1}\} \in \P_{q+1}(n)$ we have
 	\begin{align*}
-	& l_{U,x} = \max\{u\in U\ |\ x>u\} \\
-	& V_{U,x} = (v_1, \dots v_q) \text{ with }
+	& \forall u \in (U \sm u_1), \qquad \ind_{U}(u) \neq \ind_{U \sm u_1}(u), \\
+	& \forall u \in (U \sm u_{q+1}), \quad \ind_{U}(u) = \ind_{U \sm u_{q+1}}(u).
+	\end{align*}
+	Therefore, \eqref{e:big lemma rhs} is equal to
+	\begin{equation} \label{e:big lemma rhs w/o endpoints}
+	\begin{split}
+	&\, \sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ even}}}
+	d_{u_{q+1}.(U \sm u_{q+1})^+} \otimes d_{(U \sm u_{q+1})^-}\ \ + 
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ odd}}}
+	d_{(U \sm u_{q+1})^+} \otimes d_{u_{q+1}.(U \sm u_{q+1})^-} \\ +
+	&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{u_1.(U \sm u_1)^+} \otimes d_{(U\sm u_1)^-} \quad +
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^+} \otimes d_{u_1.(U\sm u_1)^-.}
+	\end{split}
+	\end{equation}
+	With notation that we introduce below we will have by definition that \eqref{e:big lemma rhs w/o endpoints} is equal to
+	\begin{equation} \label{e:big lemma rhs promising} 
+	\sum_{{L}_{max}^{e}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \ 
+	\sum_{{R}_{max}^{o}} d_{U^+} \otimes d_{\bu.U^-}\ \ +\ \ 
+	\sum_{{L}_{min}^{o}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \ 
+	\sum_{{R}_{min}^{e}} d_{U^+} \otimes d_{\bu.U^-.}
+	\end{equation}
+	and that the left hand side of \eqref{e:big lemma} is equal to
+	\begin{equation} \label{e:big lemma lhs}
+	\sum_{L} d_{\bu.U^+} \otimes d_{U^-}\ +\ \ 
+	\sum_{R} d_{U^+} \otimes d_{\bu.U^-.}
+	\end{equation}
+	
+	For any $U = \{u_1 < \cdots < u_q\} \in \P_{q}(n)$ and $\bu \in \overline{U}$ define when possible
+	\begin{equation*}
+	l_U^\bu = \max \{u \in U \mid u < \bu\}, \qquad
+	r_U^\bu = \min\{u \in U \mid \bu < u\},
+	\end{equation*}
+	and the following sets, where we use tabbing to represent inclusion and a schematic to aid readability:
+	
+	\input{diagramatic}
+
+	With this notation it is a direct observation that \eqref{e:big lemma rhs w/o endpoints}, the right hand side of \eqref{e:big lemma}, is equal to \eqref{e:big lemma rhs promising}; and that the left hand side of \eqref{e:big lemma} is equal to \eqref{e:big lemma lhs}.
+	
+	To show that \eqref{e:big lemma rhs promising} and \eqref{e:big lemma lhs} are equal we need the following identities:
+	\begin{equation} \label{e:big lemma four identities}
+	\overline{R}_{min}^{e,e} = \overline{L}_{max}^{e,e}\ , \qquad
+	\overline{R}_{min}^{e,o} = \overline{R}_{max}^{o,e}\ , \qquad 
+	\overline{L}_{min}^{o,e} = \overline{L}_{max}^{e,o}\ , \qquad
+	\overline{L}_{min}^{o,o} = \overline{R}_{max}^{o,o}.
+	\end{equation}
+	For a pair $U \in \P_q(n)$ and $\bu \in \overline{U}$ define when possible the sets $V^\bu_U = \{v_1 < \cdots < v_q\}$ and $W_U^\bu = \{w_1 < \cdots < w_q\}$ by
+	\begin{align*}
 	v_i = 
 	\begin{cases}
-	u_i & \text{ if } u_i \neq l_{U,x} \\
-	x	& \text{ if } u_i = l_{U,x}
+	u_i & \text{ if } u_i \neq l_U^\bu, \\
+	\bu	& \text{ if } u_i = l_U^\bu,
 	\end{cases}
-	\end{align*} 
-\end{minipage}
-\begin{minipage}{.5\textwidth}
-	\begin{align*}
-	& r_{U,x} = \min\{u\in U\ |\ x<u\} \\
-	& W_{U,x} = (w_1, \dots w_q) \text{ with }
+	\qquad \quad
 	w_i = 
 	\begin{cases}
-	u_i & \text{ if } u_i \neq r_{U,x} \\
-	x	& \text{ if } u_i = r_{U,x}.
+	u_i & \text{ if } u_i \neq r_U^\bu, \\
+	\bu	& \text{ if } u_i = r_U^\bu.
 	\end{cases}
 	\end{align*}
-\end{minipage}\\ \\
-Notice that $(l_{U,x}).V_{U,x} = x.U = (r_{U,x}).W_{U,x}$ and that for any $u \in x.U$ with $u \neq l_{U,x},\, x,\, r_{U,x}$ we have $\ind_{V_{U,x}}(u) = \ind_{U}(u) = \ind_{W_{U,x}}(u)$.
+	Intuitively, $V_U^\bu$ is obtained from $U$ by replacing with $\bu$ the largest element in $U$ that is less than $\bu$.
+	A similar description applies to $W_U^\bu$.
+	When $U$ and $\bu$ are clear from the context we simplify notation of $V^\bu_U$ and $W^\bu_U$ to $V$ and $W$ respectively.
+	Notice that
+	\begin{equation*}
+	l.V = \bu.U = r.W
+	\end{equation*}
+	and that for any $u \in \bu.U$ with $u \not \in \{l,\, \bu,\, r\}$ we have
+	\begin{equation*}
+	\ind_{V}(u) = \ind_{U}(u) = \ind_{W}(u).
+	\end{equation*}
+	We show the proof of the first identity in \eqref{e:big lemma four identities}.
+	Let us consider $U^+ \otimes \bu.U^- \in \overline{R}_{min}^{e, e}$ which by definition implies $\ind_{\bu.U}(\bu) = \ind_{\bu.U}(l_{U}^\bu) = 0$.
+	This is equivalent to $\bu \in V^-$ and $l \in U^+$.
+	Therefore, 
+	\begin{equation*}
+	U^+ \otimes \bu.U^- =  l_{U}^\bu.V^+ \otimes V^-,
+	\end{equation*}
+	and since $l_{U}^\bu.V^+ \otimes V^-$ is an element in $\overline{L}_{max}^{e,e}$ we have the inclusion $\overline{R}_{max}^{e,e} \subseteq \overline{L}_{max}^{e,e}$\,.
+	Similarly, the element $\bu.U^+ \otimes U^- \in \overline{L}_{max}^{e,e}$ is equal to $W^+ \otimes r.W^- \in \overline{R}_{min}^{e,e}$ which gives the other inclusion and proves the first identity in \eqref{e:big lemma four identities}.
+	The others are proven analogously.
+	
+	The identities in \eqref{e:big lemma four identities} imply that
+	\begin{equation} \label{e:big lemma zero sum}
+	\sum_{\overline{L}_{min}^{e}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \
+	\sum_{\overline{L}_{max}^{o}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \
+	\sum_{\overline{R}_{max}^{e}} d_{U^+} \otimes d_{\bu.U^-}\ \ +\ \ 
+	\sum_{\overline{R}_{min}^{o}} d_{U^+} \otimes d_{\bu.U^-}\ =\ 0,
+	\end{equation}
+	and, therefore, that $\eqref{e:big lemma lhs}$ is equal to \eqref{e:big lemma rhs promising} as claimed.
+\end{proof}
 
-We introduce the following sets using tabbing and a schematic to aid readability: \\
+We can now provide the proof of our main theorem.
 
-\begin{minipage}{.3\textwidth}
-	\begin{center}
-		\begin{tikzpicture}[scale = .26]
-		\node (L) at (0,0) [scale = 1.5]{$L$};
-		\draw [semithick] (-6,0) -- (L) -- (6,0);
-		\draw [semithick] (-6,-12) -- (6,-12) -- (6,12) -- (-6,12) -- (-6,-12);
-		Statement
-		\node (Le) at (0,6) [scale = 1.3] {$L^e$};
-		\node (Lemax) at (-3,6) {$ {L}^e_{min}$};
-		\node (-Lemax) at (3,6) {$\; \overline{L}^e_{min}$\!\!};
-		\node at (3,3) [scale = .7] {$\overline{L}^{e,o}_{min}$};
-		\node at (3,9) [scale = .7] {$\overline{L}^{e,e}_{min}$};
-		
-		\draw [semithick] (L) -- (Le) -- (0,12);
-		\draw [semithick] (6,6) -- (-Lemax) -- (Le);
-		
-		\node (Lo) at (0,-6) [scale = 1.3] {$L^o$};
-		\node (Lomin) at (-3,-6) {$ {L}^o_{max}$};
-		\node (-Lomin) at (3,-6) {$\, \overline{L}^o_{max}$\!\!};
-		\node at (3,-3) [scale = .7] {$\overline{L}^{o,e}_{max}$};
-		\node at (3,-9) [scale = .7] {$\overline{L}^{o,o}_{max}$};
-		
-		\draw [semithick] (L) -- (Lo) -- (0,-12);
-		\draw [semithick] (6,-6) -- (-Lomin) -- (Lo);
-		\end{tikzpicture}
-	\end{center}
-\end{minipage}
-\begin{minipage}{.8\textwidth}
-	$L = \{x.U^- \tensor U^+\ | \ U \in \P_q(n),\ x \in \overline{U}\}$. \\
-	\begin{tab}
-		$L^{e} = \{x.U^- \tensor U^+ \in L\ | \ \ind_{x.U}(x) \text{ even}\}$. 
-		\begin{tab}
-			$L_{min}^{e} = \{x.U^- \tensor U^+ \in L^e\ | \ x < u_1 \}$.\par
-			$\overline{L}_{min}^{e} = L^{e} \setminus L_{min}^{e}$.
-			\begin{tab}
-				$\overline{L}_{min}^{e,e} = \{ x.U^- \tensor U^+ \in \overline{L}_{min}^{e}\ | \ \ind_{x.U}(l_{U,x}) \text{ even} \}$.\par
-				$\overline{L}_{min}^{e,o} = \{ x.U^- \tensor U^+ \in \overline{L}_{min}^{e}\ | \ \ind_{x.U}(l_{U,x}) \text{ odd} \}.$ \\
-			\end{tab}
-		\end{tab}
-		$L^{o} = \{x.U^- \tensor U^+\ | \ \ind_{x.U}(x) \text{ odd}\}$.\par 
-		\begin{tab}
-			$L_{max}^{o} = \{x.U^- \tensor U^+ \in L^o\ | \ u_q < x \}$.\par
-			$\overline{L}_{max}^{o} = L^{o}\setminus L_{max}^{o}$.
-			\begin{tab}
-				$\overline{L}_{max}^{o,e} = \{ x.U^- \tensor U^+ \in \overline{L}_{max}^{o}\ | \ \ind_{x.U}(r_{U,x}) \text{ even} \}$.\par 
-				$\overline{L}_{max}^{o,o} = \{ x.U^- \tensor U^+ \in \overline{L}_{max}^{o}\ | \ \ind_{x.U}(r_{U,x}) \text{ odd} \}$.
-			\end{tab}
-		\end{tab}
-	\end{tab}
-\end{minipage}
-
-\begin{minipage}{.3\textwidth}
-	\begin{center}
-		\begin{tikzpicture}[scale = .26]
-		\node (L) at (0,0) [scale = 1.5]{$L$};
-		\draw [semithick] (-6,0) -- (L) -- (6,0);
-		\draw [semithick] (-6,-12) -- (6,-12) -- (6,12) -- (-6,12) -- (-6,-12);
-		
-		\node (Le) at (0,6) [scale = 1.3] {$R^e$};
-		\node (Lemax) at (-3,6) {$ {R}^e_{max}$};
-		\node (-Lemax) at (3,6) {$\overline{R}^e_{max}$\!\!};
-		\node at (3,3) [scale = .7] {$\overline{R}^{e,o}_{max}$};
-		\node at (3,9) [scale = .7] {$\overline{R}^{e,e}_{max}$};
-		
-		\draw [semithick] (L) -- (Le) -- (0,12);
-		\draw [semithick] (6,6) -- (-Lemax) -- (Le);
-		
-		\node (Lo) at (0,-6) [scale = 1.3] {$L^o$};
-		\node (Lomin) at (-3,-6) {$ {R}^o_{min}$};
-		\node (-Lomin) at (3,-6) {\,$\overline{R}^o_{min}$\!\!};
-		\node at (3,-3) [scale = .7] {$\overline{R}^{o,e}_{min}$};
-		\node at (3,-9) [scale = .7] {$\overline{R}^{o,o}_{min}$};
-		
-		\draw [semithick] (L) -- (Lo) -- (0,-12);
-		\draw [semithick] (6,-6) -- (-Lomin) -- (Lo);
-		\end{tikzpicture}
-	\end{center}
-\end{minipage}
-\begin{minipage}{.8\textwidth}
-	$R = \{U^-\tensor x.U^+\ | \ U \in \P_q(n),\ x \in \overline{U}\}$.\\
-	\begin{tab}
-		$R^{e} = \{U^-\tensor x.U^+ \in R\ | \ \ind_{x.U}(x) \text{ even}\}$.\par
-		\begin{tab}
-			$R_{max}^{e} = \{U^- \tensor x.U^+ \in R^e\ | \ u_q < x \}$.\par 
-			$\overline{R}_{max}^{e} = R^{e} \setminus R_{max}^{e}$.
-			\begin{tab}
-				$\overline{R}_{max}^{e,e} = \{ U^- \tensor x.U^+ \in \overline{R}_{max}^{e}\ | \ \ind_{x.U}(r_{U,x}) \text{ even} \}$.\par 
-				$\overline{R}_{max}^{e,o} = \{ U^- \tensor x.U^+ \in \overline{R}_{max}^{e}\ | \ \ind_{x.U}(r_{U,x}) \text{ odd} \}$.\\
-			\end{tab}
-		\end{tab}
-		$R^{o} = \{U^- \tensor x.U^+ \in R\ | \ \ind_{x.U}(x) \text{ odd}\}$.\par 
-		\begin{tab}
-			$R_{min}^{o} = \{U^- \tensor x.U^+ \in R^o \ | \  x < u_1 \}$.\par 
-			$\overline{R}_{min}^{o} = R^{o} \setminus R_{min}^{o}$.
-			\begin{tab}
-				$\overline{R}_{min}^{o,e} = \{ U^- \tensor x.U^+ \in \overline{R}_{min}^{o}\ | \ \ind_{x.U}(l_{U,x}) \text{ even} \}$.\par 
-				$\overline{R}_{min}^{o,o} = \{ U^- \tensor x.U^+ \in \overline{R}_{min}^{o}\ | \ \ind_{x.U}(l_{U,x}) \text{ odd} \}$.
-			\end{tab}
-		\end{tab}
-	\end{tab}
-\end{minipage} \\ \\
-We claim the following four identities: 
-\begin{equation}\label{lemma4: existence: eq2}
-\overline{R}_{min}^{o,o} = \overline{L}_{max}^{o,o}\ , \qquad \overline{R}_{min}^{o,e} = \overline{R}_{max}^{e,o}\ , \qquad 
-\overline{L}_{min}^{e,o} = \overline{L}_{max}^{o,e}\ , \qquad \overline{L}_{min}^{e,e} = \overline{R}_{max}^{e,e}.
-\end{equation}
-We show only the proof of the first one. The other three are proven analogously.
-\begin{alignat*}{2}
-&\boxed{U^-\tensor x.U^+ \in \overline{R}_{min}^{o,o}}\ &\Longrightarrow\ &\boxed{U^-\tensor x.U^+ =\, l_{U,x}.V_U(x)^-\tensor V_{U,x}^+ \in \overline{L}_{max}^{o,o} \ \ } \\ 
-&\boxed{x.U^-\tensor U^+ \in \overline{L}_{max}^{o,o}}\ &\Longrightarrow\ &\boxed{x.U^-\tensor U^+ =\, W_U(x)^-\tensor r_{U,x}.W_{U,x}^+ \in \overline{R}_{min}^{o,o} \! }
-\end{alignat*}
-The identities in (\ref{lemma4: existence: eq2}) imply 
-\begin{equation} \label{lemma4: existence: eq3} 
-\sum_{\overline{L}_{max}^{o}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
-\sum_{\overline{R}_{max}^{e}} d_{U^-} \tensor d_{x.U^+}\ \ +\ \ 
-\sum_{\overline{L}_{min}^{e}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
-\sum_{\overline{R}_{min}^{o}} d_{U^-} \tensor d_{x.U^+} = 0.
-\end{equation}
-Let us now consider the right hand side of (\ref{lemma4: existence: eq1})
-\begin{equation*}
-\sum_{U\in\P_{q+1}(n)} d_{U^-} \tensor d_{U^+} +\, d_{U^+} \tensor d_{U^-.}
-\end{equation*}
-Notice it is equal to
-\begin{align*}
-&\, \sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ odd}}} d_{u_{q+1}.(U \smallsetminus u_{q+1})^-} \tensor d_{(U \smallsetminus u_{q+1})^+}\ \ + 
-\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ even}}} d_{(U\smallsetminus u_{q+1})^-} \tensor d_{u_{q+1}.(U \smallsetminus u_{q+1})^+}\ \ + \\
-&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{u_1.(U\smallsetminus u_1)^-} \tensor d_{(U\smallsetminus u_1)^+}\ \ +
-\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{(U \smallsetminus u_1)^-} \tensor d_{u_1.(U\smallsetminus u_1)^+.}
-\end{align*}
-This expression, in turn, equals
-\begin{equation*} 
-\sum_{{L}_{max}^{o}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
-\sum_{{R}_{max}^{e}} d_{U^-} \tensor d_{x.U^+}\ \ +\ \ 
-\sum_{{L}_{min}^{e}} d_{x.U^-} \tensor d_{U^+}\ \ +\ \ 
-\sum_{{R}_{min}^{0}} d_{U^-} \tensor d_{x.U^+.}
-\end{equation*}
-Thanks to (\ref{lemma4: existence: eq3}), the above expression equals
-\begin{equation*}
-\sum_{L} d_{x.U^-} \tensor d_{U^+}\ +\ \ 
-\sum_{R} d_{U^-} \tensor d_{x.U^+,}
-\end{equation*}
-the left hand side of (\ref{lemma4: existence: eq1}).
-
-The proof of Proposition \ref{proposition: chain map}, the chain map property, now follows directly from Lemma \ref{lemma3: existence} and Lemma \ref{lemma4: existence}.
+\begin{proof}[Proof of Theorem~\ref{t:main}]
+	For any integer $i$ and $x \in X_n$ we need to prove that
+	\begin{equation} \label{e:main thm proof}
+	(\partial \circ \Delta_{i} + \Delta_{i+1} \circ \partial)(x) = (1 + T) \Delta_{i-1}(x).
+	\end{equation}
+	This identity holds trivially is $q = n-i$ is not in $\{0, \dots, n\}$.
+	Assuming it, we can use Lemma~\ref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
+	\begin{equation*}
+	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^+} \otimes d_{U^-} \, + \, d_{U^+} \otimes d_{\bu.U^-} \Big) (x \otimes x),
+	\end{equation*}
+	whose right hand side is thanks to Lemma~\ref{l:big lemma} equal to
+	\begin{equation*}
+	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^+}(x) \otimes d_{U^-}(x),
+	\end{equation*}
+	which by definition is $(1+T)\Delta_{i-1}(x)$.
+\end{proof}

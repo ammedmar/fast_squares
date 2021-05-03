@@ -2,13 +2,14 @@
 \section{Introduction}
 
 For effective computations involving topological spaces discrete models are indispensable.
-The category of simplicial complexes provides models for not only spaces but, through the simplicial approximation theorem, also for continuous maps between them.
-This combinatorial representation of spaces leads to an algebraic one using the functor of simplicial chains, on which invariants such as the cohomology of spaces can be readily computed through linear algebra alone.
+The category of simplicial complexes provides models not only spaces but also, through the simplicial approximation theorem, for continuous maps between them.
+Simplicial complexes lead to an algebraic models for spaces using the the simplicial chains construction $\chains$ on which invariants such the cohomology of spaces can be readily computed through linear algebra alone.
 
-In this note we focused on further structure present on the mod-2 cohomology of spaces arising from the broken symmetry of any chain approximation to the diagonal map $X \to X \times X$, the so called Steenrod squares $Sq^k \colon H^\bullet(X; \F_2) \to H^\bullet(X; \F_2)$.
-The reason for the existence of these invariants is the close connection between the objects representing mod-2 cohomology and the group $\S_2$, which acts by transposition on the codomain of the diagonal and leaves its image invariant.
+In this note we focused on further structure present on the mod-2 cohomology of spaces arising from the broken symmetry of any chain approximation $\chains(X) \to \chains(X) \otimes \chains(X)$ to the diagonal map $X \to X \times X$, the so called Steenrod squares $Sq^k \colon H^\bullet(X; \F_2) \to H^\bullet(X; \F_2)$.
+\anibal{improve this paragraph}
+At an abstract level these cohomological operations exist because of the close connection between the objects representing mod-2 cohomology and the group $\S_2$, which acts by transposition on the codomain of the diagonal and leaves its image invariant.
 
-Effective constructions of Steenrod squares have been known since the introduction of this cohomology operations in 1947 \cite{steenrod47}.
+Effective constructions of Steenrod squares for simplicial complexes have been known since the introduction of these operations on on Steenrod's seminal 1947 paper \cite{steenrod47}.
 They all rely on the construction of so called cup-$i$ coproducts.
 These are natural linear maps
 \begin{equation*}
@@ -20,15 +21,18 @@ satisfying $\Delta_i = 0$ for $i < 0$ and
 \end{equation*}
 The cup-$i$ coproducts can be interpreted as defining a coherent homotopical correction to the broken symmetry of the diagonal chain approximation $\Delta_0$.
 
-The formulas for these coproducts introduced by Steenrod manifestly appeared in the more general context of $E_\infty$-operads and props in the work of McClure-Smith \cite{mcclure03cochain}, Berger-Fresse \cite{berger04combinatorial}, and the author \cite{medina2020prop1,medina2018prop2}.
-A different construction of cup-$i$ coproducts was given earlier by Real and Gonz\'alez-D\'iaz--Real, based on the EZ-AW chain contraction and was implemented in SAGE by Palmieri.
-
-In this article we introduce a new description of cup-$i$ coproducts which is in a sense dual to that given by Steenrod.
-It allows us to present an algorithm for the computation of a cocycle representative of $\Sq^k([\alpha])$ that is quadratic on the number of basis elements defining the cocycle $\alpha$.
+The formulas for these coproducts introduced by Steenrod appeared in the more general context of $E_\infty$ operads and props in the work of McClure-Smith \cite{mcclure03cochain}, Berger-Fresse \cite{berger04combinatorial}, and the author \cite{medina2020prop1, medina2018prop2}.
+A different construction of cup-$i$ coproducts, which was shown to also agree with Steenrod's, was given earlier by Real \cite{bibid} and Gonz\'alez-D\'iaz--Real \cite{bibid} based on the EZ-AW chain contraction.
 
 The fact these different constructions of cup-$i$ products give rise to the same cohomology operations follows from $\Delta_0$ being a chain approximation to the diagonal.
 It is surprising though that they are all isomorphic at the chain level \cite{medina2018axiomatic}, which points to the combinatorial universality of Steenrod cup-$i$ products.
 See \cite{medina2020globular} for a derivation of the $n$-categorical nerve from it and, through this result, a connection with polyhedral geometry as explained in \cite{bibid}.
+
+The description of cup-$i$ products of Gonz\'alez-D\'iaz--Real leads to an algorithm for the computation of Steenrod squares, which was implemented on \verb|SAGE| by Palmieri.
+In this article we introduce a new description of cup-$i$ coproducts which is in a sense dual to that given by Steenrod.
+These formulas apply to the more general context of simplicial sets but we are particularly interested in simplicial complexes.
+For these we introduce a new algorithm computing Steenrod squares which is much faster than the 
+To show the advantages of our algorithm we compare a \verb|Python| implementation of it with the one in \verb|SAGE|. 
 
 Our new description of the cup-$i$ coproducts is essential for the incorporation of Steenrod squares into the persistence homology pipeline \cite{medina2018persistence}.
 But its use is not restricted to applied topology, since it can also serve as a template for the definition of mod-2 cohomology operations on other homology theories, see for example \cite{bibid} where they are the basis for the definition of mod-2 operations on Khovanov homology.

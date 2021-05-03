@@ -1,0 +1,28 @@
+
+\section{Comparison}
+
+In this section we use \verb|SAGE v9.2| to give a proof of concept comparison between the Gonz\'alez-D\'iaz--Real algorithm for the computation of Steenrod squares and the one introduced here.
+
+We will focus on suspensions of the real projective plane remarking that the present results have been checked to be representative of the situation in general.\footnote{Please see ... for more comprehensive comparison data}
+
+Explain suspensions 
+
+...
+
+The real projective plane
+
+...
+
+We will consider the $i\th$ suspension $\suspension^i \RP^2$ of the real projective plane and the only non-trivial operation on its cohomology $Sq^1(x_{i+1})$.
+
+In \verb|SAGE| we use the method \verb|RealProjectiveSpace(2)| to produce a simplicial complex model for $\RP^2$ and the method \verb|suspension(i)| to give explicit models of $\suspension^i \RP^2$ for any $i \in \{0, \dots, 9\}$.
+Given such models, a basis for their cohomology can be computed using \verb|cohomology_ring(GF(2))| and we apply \verb|Sq(k)| with $k=1$ to the basis element in degree $i+1$. 
+
+We have implemented in \verb|Python| an alternative for the method \verb|Sq(k)| based on Algorithm~\ref{a:algorithm}, and recorded the average execution time of these implementations for each $\suspension^i \RP^2$ over $\lfloor 10000/2^i \rfloor$ runs for each $i \in \{0, \dots, 9\}$
+As presented in Figure~\ref{f:comparison}, the execution time of these algorithms differs exponentially.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{comp_sus_rp2.pdf}
+	\caption{text}
+	\label{f:comparison}
+\end{figure}

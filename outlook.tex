@@ -2,19 +2,21 @@
 \section{Outlook}
 
 The cup-$i$ products arise from effectively constructing coboundaries that coherently enforce the commutative relation of the cup product in cohomology.
-This is part of a general patter in algebraic topology: constructing cochain enforcing cohomological relations lead to further cohomological structures.
-In our case, the commutativity relation of cup product gives rise to Steenrod operations.
+This is part of a general patter in algebraic topology, showing that constructing cochains enforcing cohomological relations usually leads effectively to further cohomological structures.
+In our case, the commutativity relation of the cup product in cohomology leads to Steenrod operations.
 
-There are two notable relations satisfied by the Steenrod squares.
-The first one, known as the \textit{Cartan relation}, expresses the interaction between these operations and the cup product:
+There are two notable relations satisfied by the Steenrod squares themselves.
+The first one, known as the \textit{Cartan relation}, expresses the interaction between these operations and the cup product
 \begin{equation*}
 Sq^k \big( [\alpha] [\beta] \big) = \sum_{i+j=k} Sq^i \big([\alpha]\big)\, Sq^j \big([\beta]\big),
 \end{equation*}
-whereas the second, the \textit{Adem relation} \cite{adem52relations}, expresses dependencies appearing among the iteration of operations:
+whereas the second, the \textit{Adem relation} \cite{adem52relations}, expresses dependencies appearing among the iteration of operations
 \begin{equation} \label{equation: adem relations}
 Sq^i Sq^j = \sum_{k=0}^{\lfloor i/2 \rfloor} {j-k-1 \choose i-2k} Sq^{i+j-k} Sq^k
 \end{equation}
 where $\lfloor- \rfloor$ denotes the integer part function and the binomial coefficient is reduced mod-$2$.
 
 To tap into the secondary structure associated with these relations, one needs to provide effective proofs for them, that is to say, construct explicit cochains that enforce the relations when passing to cohomology.
-Such effective proofs were recently given respectively in \cite{medina2020cartan} and \cite{medina2020adem}, and we expect the additional structure they unlock will also play a role in applied topology.
+Such effective proofs were recently given respectively in \cite{medina2020cartan} and \cite{medina2020adem}, and we expect the additional structure they unlock will also play an important role in computational topology.
+
+For other primes ... Fast implementations of \cite{medina2020odd} ...
