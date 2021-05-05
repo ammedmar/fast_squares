@@ -1,5 +1,5 @@
 
-\section{Steenrod squares} \label{s:steenrod_squares}
+\section{Steenrod squares} \label{s:squares}
 
 Let $\F_2$ be the field with two elements and $\S_2$ the group with only one non-identity element $T$.
 In this section we define for any simplicial complexes $X$ and every integer $k$ the Steenrod $k^{\mathrm{th}}$ square
@@ -13,7 +13,8 @@ Consider the chain complex
 \F_2[\S_2]\{e_2\} & \arrow[l, "1+T"'] \cdots
 \end{tikzcd}
 \end{equation*}
-with its natural $\S_2$-action, and notice that a collection $\{\Delta_i\}_{i\in \Z}$ of linear maps from $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_i = 0$ for $i < 0$ and
+with its natural $\S_2$-action.
+A collection $\{\Delta_i\}_{i \in \Z}$ of linear maps from $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_i = 0$ for $i < 0$ and
 \begin{equation*}
 (1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
 \end{equation*}
@@ -28,7 +29,7 @@ Hom\left(C_\bullet \otimes C_\bullet, \F \right)^{\mathrm S_2} \arrow[r] &
 Hom\left(W(2) \otimes C_\bullet, \F \right)^{\mathrm S_2},
 \end{tikzcd}
 \end{equation*}
-which we can complete, using the adjuntion isomorphisms of Section \ref{sec: preliminaries}, to a commutative diagram
+which we can complete, using the adjunction isomorphisms of Section \ref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
 Hom\left(C_\bullet \otimes C_\bullet, \F \right)^{\mathrm S_2} \arrow[r] &
@@ -41,12 +42,12 @@ Hom\left(W(2)_{\mathrm S_2}, C^\bullet\right),
 \end{equation*}
 where the choice of coefficients ensures the \textit{doubleing map} $\alpha \mapsto \alpha \otimes \alpha$ is linear.
 By adjunction, the dashed arrow defines a linear map
-\begin{equation*}
+\begin{equation} \label{e:Steenrod squares parameterized}
 \begin{tikzcd}[row sep=tiny, column sep = tiny]
 C^\bullet \otimes W(2)_{\mathrm S_2} \arrow[r] &[-10pt] C^\bullet \\
 \alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\Delta_i(-)
 \end{tikzcd}
-\end{equation*}
+\end{equation}
 descending to mod-$2$ cohomology. The Steenrod squares are defined by reindexing this map. Explicitly,
 \begin{equation*}
 \begin{tikzcd}[row sep=tiny, column sep=tiny]

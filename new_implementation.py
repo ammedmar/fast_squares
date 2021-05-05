@@ -1,7 +1,8 @@
 from sage.all import *
 from itertools import tee, combinations
 
-def STSQ(length, cocycle, scomplex):
+
+def _stsq(length, cocycle, scomplex):
     """..."""
     answer = set()
     for pair in combinations(cocycle, 2):
@@ -50,7 +51,7 @@ def SQ(self, i):
         elt = P._from_dict(deg_comp[j], remove_zeros=False)
         cocycle = [spx[0] for spx in elt.to_cycle()]
         simplices = set((tuple(spx) for spx in scomplex.faces()[m]))
-        answer = STSQ(m+1, cocycle, simplices)
+        answer = _stsq(m+1, cocycle, simplices)
         result = {}
         H = scomplex.homology_with_basis(base_ring)
         for gamma_index in H._graded_indices.get(m, []):
@@ -60,4 +61,5 @@ def SQ(self, i):
             if gamma_coeff:
                 result[(m, gamma_index)] = gamma_coeff
         ret += P._from_dict(result, remove_zeros=False)
+
     return ret

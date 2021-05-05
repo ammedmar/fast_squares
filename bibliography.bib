@@ -1,3 +1,61 @@
+@article{gaiotto2016spin,
+	title={Spin TQFTs and fermionic phases of matter},
+	author={Gaiotto, Davide and Kapustin, Anton},
+	journal={International Journal of Modern Physics A},
+	volume={31},
+	number={28n29},
+	pages={1645044},
+	year={2016},
+	publisher={World Scientific}
+}
+
+@article{bhardwaj2017state,
+	title={State sum constructions of spin-TFTs and string net constructions of fermionic phases of matter},
+	author={Bhardwaj, Lakshya and Gaiotto, Davide and Kapustin, Anton},
+	journal={Journal of High Energy Physics},
+	volume={2017},
+	number={4},
+	pages={96},
+	year={2017},
+	publisher={Springer}
+}
+
+@article{kapustin2017fermionic,
+	title={Fermionic SPT phases in higher dimensions and bosonization},
+	author={Kapustin, Anton and Thorngren, Ryan},
+	journal={Journal of High Energy Physics},
+	volume={2017},
+	number={10},
+	pages={1--50},
+	year={2017},
+	publisher={Springer}
+}
+
+
+@article {cantero2020khovanov,
+	AUTHOR = {Cantero Mor\'{a}n, Federico},
+	TITLE = {Higher {S}teenrod squares for {K}hovanov homology},
+	JOURNAL = {Adv. Math.},
+	FJOURNAL = {Advances in Mathematics},
+	VOLUME = {369},
+	YEAR = {2020},
+	PAGES = {107153, 79},
+	ISSN = {0001-8708},
+	MRCLASS = {55P42 (18N50 55S10 57K18)},
+	MRNUMBER = {4094757},
+	MRREVIEWER = {Nikolai N. Saveliev},
+	DOI = {10.1016/j.aim.2020.107153},
+	URL = {https://doi.org/10.1016/j.aim.2020.107153},
+}
+
+@manual{sagemath,
+	Key          = {SageMath},
+	Author       = {{The Sage Developers}},
+	Title        = {{S}ageMath, the {S}age {M}athematics {S}oftware {S}ystem ({V}ersion 9.3.rc3)},
+	note         = {{\tt https://www.sagemath.org}},
+	Year         = {2021},
+}
+
 @article {Kadeishvili03cup-i,
 	AUTHOR = {Kadeishvili, T.},
 	TITLE = {Cochain operations defining {S}teenrod {$\smile_i$}-products
@@ -51,7 +109,7 @@
 }
 
 @misc{bauer2019ripser,
-	title={Ripser: efficient computation of Vietoris-Rips persistence barcodes},
+	title={Ripser: efficient computation of {V}ietoris-{R}ips persistence barcodes},
 	author={Ulrich Bauer},
 	year={2019},
 	eprint={1908.02518},
@@ -87,7 +145,22 @@
 	MRREVIEWER = {W. S. Massey},
 }
 
-@incollection {real99steenrod,
+@article {real1996computability,
+	AUTHOR = {Real, Pedro},
+	TITLE = {On the computability of the {S}teenrod squares},
+	JOURNAL = {Ann. Univ. Ferrara Sez. VII (N.S.)},
+	FJOURNAL = {Annali dell'Universit\`a di Ferrara. Nuova Serie. Sezione VII.
+	Scienze Matematiche},
+	VOLUME = {42},
+	YEAR = {1996},
+	PAGES = {57--63 (1998)},
+	ISSN = {0430-3202},
+	MRCLASS = {55S05 (55S10)},
+	MRNUMBER = {1622630},
+	MRREVIEWER = {N. J. Kuhn},
+}
+
+@incollection {gonzalez99steenrod,
 	AUTHOR = {Gonz\'{a}lez-D\'{\i}az, Roc\'{\i}o and Real, Pedro},
 	TITLE = {A combinatorial method for computing {S}teenrod squares},
 	NOTE = {Effective methods in algebraic geometry (Saint-Malo, 1998)},
@@ -103,6 +176,33 @@
 	MRREVIEWER = {Kalathoor Varadarajan},
 	DOI = {10.1016/S0022-4049(99)00006-7},
 	URL = {https://doi.org/10.1016/S0022-4049(99)00006-7},
+}
+
+@article{gonzalez2003computation,
+	title={Computation of cohomology operations of finite simplicial complexes},
+	author={Gonzalez-Diaz, Rocio and Real, Pedro and others},
+	journal={Homology, Homotopy and Applications},
+	volume={5},
+	number={2},
+	pages={83--93},
+	year={2003},
+	publisher={International Press of Boston}
+}
+
+@article {gonzalez2005hpt,
+	AUTHOR = {Gonzalez-Diaz, Rocio and Real, Pedro},
+	TITLE = {H{PT} and cocyclic operations},
+	JOURNAL = {Homology Homotopy Appl.},
+	FJOURNAL = {Homology, Homotopy and Applications},
+	VOLUME = {7},
+	YEAR = {2005},
+	NUMBER = {2},
+	PAGES = {95--108},
+	ISSN = {1532-0081},
+	MRCLASS = {55S10 (05E99)},
+	MRNUMBER = {2156309},
+	MRREVIEWER = {Adriana Ciampella},
+	URL = {http://projecteuclid.org/euclid.hha/1139839376},
 }
 
 @article{carlsson2005barcode,
@@ -384,22 +484,10 @@
 	MRNUMBER = {4102178},
 	DOI = {10.1016/j.jpaa.2020.106444},
 	URL = {https://doi.org/10.1016/j.jpaa.2020.106444},
-	\begin{lemma} \label{lemma: cup-i constructions and diagonals are the same}
-		Let $C^* = \Hom_{\F}(C_*, \F)$ with $C_*$ a finite dimensional chain complex. The linear duality functor induces a bijection between cup-$i$ structures on $C^*$ and $\F[\Sigma_2]$-linear chain maps $W \to \Hom_{\F}(C_*, C_*^{\tensor 2})$.
-	\end{lemma}
-	
-	\begin{proof}
-		Given $W \to \Hom_{\F}(C_*, C_*^{\tensor 2})$ with $e_i \mapsto \Delta_i$ define $(\alpha \smallsmile_i \beta)(c) = (\alpha \tensor \beta) \Delta_i(c)$. Given a cup-$i$ structure on $C^*$ regard $C_* = \Hom(C^*, \F)$ and define $e_i \mapsto (\Delta_i : C_* \to C_*^{\tensor 2})$ by $\Delta_i(c)(\alpha \tensor \beta) = c(\alpha \smallsmile_i \beta)$. We leave the rest of the proof to the interested reader. 
-	\end{proof}
-}
-@article{rivet2015wright,
-	title={Interactive visualization of 2-d persistence modules},
-	author={Lesnick, Michael and Wright, Matthew},
-	journal={arXiv preprint arXiv:1512.00180},
-	year={2015}
 }
 
-@article {MR54965,
+
+@article {steenrod62cyclic,
 	AUTHOR = {Steenrod, N. E.},
 	TITLE = {Cyclic reduced powers of cohomology classes},
 	JOURNAL = {Proc. Nat. Acad. Sci. U.S.A.},
@@ -424,43 +512,23 @@
 	publisher={Princeton University Press}
 }
 
-@article{silva2011circularcoordinates,
-	title={Persistent cohomology and circular coordinates},
-	author={De Silva, Vin and Morozov, Dmitriy and Vejdemo-Johansson, Mikael},
-	journal={Discrete \& Computational Geometry},
-	volume={45},
-	number={4},
-	pages={737--759},
-	year={2011},
-	publisher={Springer}
+@article{lee2018nanoporous,
+	title={High-throughput screening approach for nanoporous materials genome using topological data analysis: application to zeolites},
+	author={Lee, Yongjin and Barthel, Senja D and D{\l}otko, Pawe{\l} and Moosavi, Seyed Mohamad and Hess, Kathryn and Smit, Berend},
+	journal={Journal of chemical theory and computation},
+	volume={14},
+	number={8},
+	pages={4427--4437},
+	year={2018},
+	publisher={ACS Publications}
 }
 
-@article{dualities2011,
-	title={Dualities in persistent (co)homology},
-	author={De Silva, Vin and Morozov, Dmitriy and Vejdemo-Johansson, Mikael},
-	journal={Inverse Problems},
-	volume={27},
-	number={12},
-	pages={124003},
-	year={2011},
-	publisher={IOP Publishing}
-}
-
-@inproceedings{droppingcols2011,
-	title={Persistent homology computation with a twist},
-	author={Chen, Chao and Kerber, Michael},
-	booktitle={Proceedings 27th European Workshop on Computational Geometry},
-	volume={11},
-	year={2011}
-}
-
-@article{bauer2017ripser,
-	title={Ripser: a lean {C}++ code for the computation of {V}ietoris-{R}ips persistence barcodes},
+@article{bauer2019ripser,
+	title={Ripser: efficient computation of vietoris-rips persistence barcodes},
 	author={Bauer, Ulrich},
-	journal={Software available at https://github. com/Ripser/ripser},
-	year={2017}
+	journal={arXiv preprint arXiv:1908.02518},
+	year={2019}
 }
-
 
 @article{multidimansionalpersistence2009,
 	title={The theory of multidimensional persistence},
