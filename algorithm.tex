@@ -36,7 +36,7 @@ We will prove the correctness of this algorithm by showing that if $\beta = (\al
 \end{lemma}
 
 \begin{proof}
-	Let $U, V \subseteq \{0, \dots, n\}$ be any pair of subsets. If at least one of them is not empty, then $U^+ \neq V^-$.
+	Let $U, V \subseteq \{0, \dots, n\}$ be any pair of subsets. If at least one of them is not empty, then $U^0 \neq V^1$.
 \end{proof}
 
 For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented by $x$ is given by 
@@ -49,13 +49,13 @@ For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented 
 \Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j\Big)
 \Delta_{n-k}(x).
 \end{align*}
-By Lemma~\ref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ and $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of two element subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^+}(x), d_{U^-}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
-This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^+}(x) \cup d_{U^-}(x) = x$.
+By Lemma~\ref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ and $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of two element subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
+This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^0}(x) \cup d_{U^1}(x) = x$.
 
 Let us formalize these observations.
 Let $\widetilde{A}$ be the set of all two element subsets $\{a_i, a_j\} \subseteq A$ with $a_i \cup a_j \in X_{n+k}$.
 There is a natural map $\pi \colon \widetilde{A} \to X_{n+k}$ sending $\{a_i, a_j\}$ to $a_i \cup a_j$.
-Let $\eval \colon A \to \F_2$ be the map sending $\{a_i, a_j\}$ to $1$ if there exist $U \subseteq \{0,\dots,n\}$ of cardinality $k$ such that $\{a_i, a_j\} = \{d_{U^+}(x), d_{U^-}(x)\}$ and let $\eval(\{a_i, a_j\}) = 0$ otherwise.
+Let $\eval \colon A \to \F_2$ be the map sending $\{a_i, a_j\}$ to $1$ if there exist $U \subseteq \{0,\dots,n\}$ of cardinality $k$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and let $\eval(\{a_i, a_j\}) = 0$ otherwise.
 Notice that if such $U$ exists then it is unique.
 With this notation we have
 \begin{equation*}
@@ -70,12 +70,12 @@ Denote
 \overline{a}_{i} = a_i \setminus a_j, \qquad
 \overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j.
 \end{equation*}
-Given $\{a_i, a_j\} \in \pi^{-1}(x)$, there exists $U$ with $\{a_i, a_j\} = \{d_{U^+}(x),\, d_{U^-}(x)\}$
+Given $\{a_i, a_j\} \in \pi^{-1}(x)$, there exists $U$ with $\{a_i, a_j\} = \{d_{U^0}(x),\, d_{U^1}(x)\}$
 if and only if $U = \pos_{x}(\overline{a}_{ij})$ and
 \begin{equation} \label{e:pos's equal U's}
-\big\{\pos_{x}(\overline{a}_i),\, \pos_{x}(\overline{a}_j)\big\} = \{U^+, U^-\}.
+\big\{\pos_{x}(\overline{a}_i),\, \pos_{x}(\overline{a}_j)\big\} = \{U^0, U^1\}.
 \end{equation}
-Recall that $U^+$ (resp. $U^-$) is the subset of $U \subseteq \{0, \dots, n+k\}$ with elements satisfying that their position in $U$ plus its position in $\{0, \dots, n+k\}$ is $0$ mod 2 (resp. $1$ mod 2).
+Recall that $U^0$ (resp. $U^1$) is the subset of $U \subseteq \{0, \dots, n+k\}$ with elements satisfying that their position in $U$ plus its position in $\{0, \dots, n+k\}$ is $0$ mod 2 (resp. $1$ mod 2).
 Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \pos_x(\overline{a}_{ij}) \to \F_2$ defined by
 \begin{equation*}
 \ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2

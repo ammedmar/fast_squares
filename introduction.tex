@@ -1,24 +1,24 @@
 
 \section{Introduction}
 
-For effective computations involving topological spaces discrete models are indispensable.
+For effective computations involving topological spaces, discrete models are indispensable.
 The category of simplicial complexes provides models not only for spaces but also, through the simplicial approximation theorem, for continuous maps between them.
-We can obtain from this combinatorial models algebraic ones using the simplicial chains construction $\chains$.
-In this algebraic representation, invariants of spaces such as their cohomology ranks with field coefficients ---their betti numbers--- can be readily computed through linear algebra alone.
+We can obtain from these combinatorial models algebraic ones using the simplicial chains construction $\chains$.
+In this algebraic representation, invariants of spaces such as their betti numbers ---the ranks of its cohomology with field coefficients--- can be readily computed through linear algebra alone.
 
-In this article we focused on finer invariants of spaces present in their mod 2 cohomology going beyond betti numbers.
+In this article we focused on finer invariants of spaces enriching their mod 2 cohomology and going beyond betti numbers.
 We are referring to the celebrated Steenrod squares
 \begin{equation*}
 Sq^k \colon H^\bullet(X; \F_2) \to H^\bullet(X; \F_2)
 \end{equation*}
-which can be thought of as arising from the broken symmetry of the diagonal map
+which can be thought of as arising from the broken $\S_2$-symmetry of the diagonal map
 \begin{equation*}
 \begin{tikzcd}[column sep=small, row sep=tiny]
 X \arrow[r] & X \times X \\
 x \arrow[r, mapsto] & (x,x)
 \end{tikzcd}
 \end{equation*}
-occurring during the passage from continuous spaces to discrete/algebraic models.
+occurring during the passage from continuous objects to discrete/algebraic models.
 
 For simplicial complexes, effective constructions of Steenrod squares have been known since their introduction in Steenrod's seminal 1947 paper \cite{steenrod47}.
 They all rely on the construction of \textit{cup-$i$ coproducts}
@@ -30,23 +30,29 @@ natural linear maps satisfying $\Delta_i = 0$ for $i < 0$ and
 (1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial,
 \end{equation*}
 with $\Delta_0$ a chain approximation to the diagonal of $X$.
+The linear dual maps on cochains
+\begin{equation*}
+\smallsmile_i \colon \cochains(X; \F_2)^{\otimes 2} \to \cochains(X; \F_2).
+\end{equation*}
+are known as \textit{cup-$i$ products}.
 
 Several constructions of cup-$i$ coproducts have been given in the literature starting with Steenrod's original formulas.
 These include the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez1999combinatorial, gonzalez2003computation, gonzalez2005hpt} based on the EZ-AW chain contraction, the operadic constructions of McClure-Smith \cite{mcclure03cochain} and Berger-Fresse \cite{berger04combinatorial}, and the prop approach of the author \cite{medina2020prop1, medina2018prop2}.
-Although it has been shown \cite{medina2018axiomatic} that all of these define isomorphic cup-$i$ coproducts, they lead to different effective computations of the Steenrod squares of simplicial complexes.
-One such algorithm is based on \cite{gonzalez1999combinatorial}[Corollary 3.2] and was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
+Although it has been surprisingly shown \cite{medina2018axiomatic} that all of these define isomorphic cup-$i$ coproducts, the alternative descriptions are better suited for different tasks.
+For effective computations of Steenrod squares on simplicial complexes, and algorithm based on \cite{gonzalez1999combinatorial} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 
 In this article we introduce a new description of Steenrod's cup-$i$ coproducts which is in a sense dual to his.
 We are particularly interested in simplicial complexes, but we remark that our formulas apply to the more general context of simplicial sets, a categorical closure of simplicial complexes that include as examples the singular cochains of any topological space.
 For simplicial complexes we use our formulas to introduce a new algorithm computing Steenrod squares, and loosely test it performance implemented in \verb|Python| against the one in \verb|SAGE|.
 
-The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2009topology, lee2018nanoporous, bauer2019ripser, medina2020giottotda}.
+The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks, for example \cite{chan2013topology, lee2018nanoporous}, and for which various softwares have been developed, including \cite{bauer2019ripser, gudhi, medina2020giottotda}.
 
 On the theoretical side, our formulas can serve as a template for the definition of mod 2 cohomology operations in other contexts.
-For example, Cantero-Mor\'an followed this approach to define Steenrod squares in Khovanov homology \cite{cantero2020khovanov}.
+For example, Cantero-Mor\'an \cite{cantero2020khovanov} followed this approach to define Steenrod squares in Khovanov homology.
 
-Another area where cup-$i$ coproducts and not just Steenrod squares have become important is condensed matter physics, serving to describe action functionals and anomalies of discrete approximations to topological field theories \cite{gaiotto2016spin, bhardwaj2017state, kapustin2017fermionic}.
+Other areas besides topology where cup-$i$ products have become important are:condensed matter physics, where they are used to describe action functionals of discrete topological field theories \cite{gaiotto2016spin, bhardwaj2017state, kapustin2017fermionic}, higher category theory, where they can be used to deduce the nerve of $\omega$-categories \cite{medina2020globular}, and convex geometry, where they are connected to projections of cyclic polytopes \cite{kapranov1991combinatorial}.
+It is our hope that the new description of cup-$i$ products presented in this article can serve to facilitate new connections to deepen those already established.
 
-In Section~\ref{s:preliminaries} we review the necessary notions from equivariant homological algebra and simplicial topology to present in Section~\ref{s:squares} a definition of Steenrod squares in terms of cup-$i$ coproducts.
-We introduce our new formulas for cup-$i$ coproducts in Section~\ref{s:formulas}, and our algorithm for the computation of Steenrod squares in Section~\ref{s:algorithm}; providing a proof-of-concept comparison of this algorithm using \verb|SAGE| in Section~\ref{s:comparison}.
+In Section~\ref{s:preliminaries} we review the notions from equivariant homological algebra and simplicial topology needed to present, in Section~\ref{s:squares}, a definition of Steenrod squares in terms of cup-$i$ products.
+We introduce our new formulas in Section~\ref{s:formulas}, and our algorithm for the computation of Steenrod squares in Section~\ref{s:algorithm}; providing a proof-of-concept comparison using \verb|SAGE| in Section~\ref{s:comparison}.
 In Section~\ref{s:proof} we prove that our new formulas define cup-$i$ coproducts, and in Section~\ref{s:outlook} we present an outlook of future research directions.

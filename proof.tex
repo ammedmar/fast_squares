@@ -1,5 +1,5 @@
 
-\section{Proof of our main theorem} \label{s:proof}
+\section{Proof of Theorem~\ref{t:main}} \label{s:proof}
 
 To aid readability of the relatively long proof of Theorem~\ref{t:main} we split it into four lemmas.
 We start with some notation.
@@ -11,16 +11,24 @@ We start with some notation.
 \end{definition}
 
 Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1}^{n-q+1} \cdots \,d_{u_q}^n$ and avoid writing the superscripts when they do not contribute to expositional clarity.
-For any $U \in \P_q(n)$, let $\ind_U \colon U \to \F_2$ sending $u_i \in U$ to $u_i + i$.
+For any $U \in \P_q(n)$, the \textit{index function} of $U$ is given by
+\begin{equation*}
+\begin{tikzcd}[row sep=tiny, column sep=small,
+/tikz/column 1/.append style={anchor=base east},
+/tikz/column 2/.append style={anchor=base west}]
+\ind_U \colon U \arrow[r] & \F_2 \\
+u_i \arrow[r, mapsto] & u_i + i,
+\end{tikzcd}
+\end{equation*}
+and the preimage of $\varepsilon \in \F_2$ is denoted simply by $U^\varepsilon$.
 With this notation we have for any $x \in X_n$
 \begin{equation*}
-\Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^+}(x) \otimes d_{U^-}(x)
+\Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^0}(x) \otimes d_{U^1}(x).
 \end{equation*}
-where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u) = 1\}$
 
 \begin{lemma} \label{l:partial dU = dxU}
 	For any $x \in X_n$ and $U \in \P_{q}(n)$
-	\begin{equation} \label{lemma1: existence: eq1}
+	\begin{equation} \label{lemma1: existence:eq1}
 	\partial \circ d_U(x) = \sum_{\bar{u} \in \overline{U}} d_{\bar{u}.U}(x).
 	\end{equation}
 \end{lemma}
@@ -42,9 +50,9 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
 	\begin{equation} \label{e:pigeon hole 1}
 	\Delta_{n-q-1} \circ \partial (x)\ =\! 
-	\sum_{U \in \P_q(n)} \left( 
-	\sum_{u \in U^-} d_{u.U^+}(x) \otimes d_{U^-}(x) + 
-	\sum_{u \in U^+} d_{U^+}(x) \otimes d_{u.U^-}(x) \right).
+	\sum_{U \in \P_q(n)} \left( \,
+	\sum_{u \in U^1} d_{u.U^0}(x) \otimes d_{U^1}(x) + 
+	\sum_{u \in U^0} d_{U^0}(x) \otimes d_{u.U^1}(x) \right).
 	\end{equation}
 \end{lemma}
 
@@ -56,11 +64,11 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	\end{align*}
 	and notice that identity \eqref{e:pigeon hole 1} is equivalent to the following identity:
 	\begin{equation} \label{e:pigeon hole 2}
-	\sum_{(u, V) \in S_1} d_{V^+}d_u \otimes d_{V^-}d_u \ \, = \!
+	\sum_{(u, V) \in S_1} d_{V^0}d_u \otimes d_{V^1}d_u \ \, = \!
 	\sum_{(w, W) \in S_2} 
 	\begin{cases}
-	d_{w.W^+} \otimes d_{W^-} & \text{ if } w \in W^-, \\
-	d_{W^+} \otimes d_{w.W^-} & \text{ if } w \in W^+.
+	d_{w.W^0} \otimes d_{W^1} & \text{ if } w \in W^1, \\
+	d_{W^0} \otimes d_{w.W^1} & \text{ if } w \in W^0.
 	\end{cases}
 	\end{equation}	
 	Define $S_1 \to S_2$ by sending $\big(u,\, \{v_1 < \cdots < v_{q-1}\} \big)$ to $\big(u,\, \{w_1 < \cdots < w_{q}\} \big)$ with
@@ -78,10 +86,10 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	\end{equation*}
 	To establishes \eqref{e:pigeon hole 2} we use the simplicial identity to notice that if $(u, V) \mapsto (u, W)$ then
 	\begin{equation*}
-	d_{V^+}d_u \otimes d_{V^-}d_u =
+	d_{V^0}d_u \otimes d_{V^1}d_u =
 	\begin{cases}
-	d_{u.W^+} \otimes d_{W^-} & \text{ if } u \in W^-, \\
-	d_{W^+} \otimes d_{u.W^-} & \text{ if } u \in W^+,
+	d_{u.W^0} \otimes d_{W^1} & \text{ if } u \in W^1, \\
+	d_{W^0} \otimes d_{u.W^1} & \text{ if } u \in W^0,
 	\end{cases}
 	\end{equation*}
 	which concludes the proof.
@@ -92,7 +100,7 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
 	\begin{equation} \label{e:boundary of Delta}
 	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
-	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^+} \otimes d_{U^-} \, + \, d_{U^+} \otimes d_{\bu.U^-} \Big) (x \otimes x).
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
 	\end{equation}
 \end{lemma}
 
@@ -101,10 +109,10 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	\begin{equation*}
 	\begin{split}
 	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = & \
-	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^+} \otimes d_{U^-}\ +\ d_{U^-} \otimes \partial \circ d_{U^-} \Big) (x \otimes x) \\ = & \!\!
-	\sum_{\substack{U \in \P_q(n) \\ v \in \overline{U^+},\ w \in \overline{U^-} } }\!\! \Big( d_{v.U^+} \otimes d_{U^-}\ +\ d_{U^+} \otimes d_{w.U^-}\Big) (x \otimes x) \\ = &
+	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^0} \otimes d_{U^1}\ +\ d_{U^1} \otimes \partial \circ d_{U^1} \Big) (x \otimes x) \\ = & \!\!
+	\sum_{\substack{U \in \P_q(n) \\ v \in \overline{U^0},\ w \in \overline{U^1} } }\!\! \Big( d_{v.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{w.U^1}\Big) (x \otimes x) \\ = &
 	\quad \Delta_{n-q-2} \circ \partial_n (x) \ + 
-	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^+} \otimes d_{U^-}\ +\ d_{U^+} \otimes d_{\bu.U^-}\Big) (x \otimes x)
+	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{\bu.U^1}\Big) (x \otimes x)
 	\end{split}
 	\end{equation*}
 	as claimed.
@@ -113,15 +121,15 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 \begin{lemma} \label{l:big lemma}  
 	For any $q \in \{0, \dots, n\}$
 	\begin{equation} \label{e:big lemma}
-	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} d_{\bu.U^+} \otimes d_{U^-}\, +\ d_{U^+} \otimes d_{\bu.U^-}\, = \
-	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^+} \otimes d_{U^-.}
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} d_{\bu.U^0} \otimes d_{U^1}\, +\ d_{U^0} \otimes d_{\bu.U^1}\, = \
+	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1.}
 	\end{equation}
 \end{lemma}
 
 \begin{proof}
 	Let us consider the right hand side of (\ref{e:big lemma})
 	\begin{equation} \label{e:big lemma rhs}
-	\sum_{U \in \P_{q+1}(n)} d_{U^+} \otimes d_{U^-}\, +\ d_{U^-} \otimes d_{U^+.}
+	\sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1}\, +\ d_{U^1} \otimes d_{U^0.}
 	\end{equation}
 	Notice that for any $U = \{u_1 < \cdots < u_{q+1}\} \in \P_{q+1}(n)$ we have
 	\begin{align*}
@@ -132,24 +140,24 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	\begin{equation} \label{e:big lemma rhs w/o endpoints}
 	\begin{split}
 	&\, \sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ even}}}
-	d_{u_{q+1}.(U \sm u_{q+1})^+} \otimes d_{(U \sm u_{q+1})^-}\ \ + 
+	d_{u_{q+1}.(U \sm u_{q+1})^0} \otimes d_{(U \sm u_{q+1})^1}\ \ + 
 	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ odd}}}
-	d_{(U \sm u_{q+1})^+} \otimes d_{u_{q+1}.(U \sm u_{q+1})^-} \\ +
-	&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{u_1.(U \sm u_1)^+} \otimes d_{(U\sm u_1)^-} \quad +
-	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^+} \otimes d_{u_1.(U\sm u_1)^-.}
+	d_{(U \sm u_{q+1})^0} \otimes d_{u_{q+1}.(U \sm u_{q+1})^1} \\ +
+	&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{u_1.(U \sm u_1)^0} \otimes d_{(U\sm u_1)^1} \quad +
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^0} \otimes d_{u_1.(U\sm u_1)^1.}
 	\end{split}
 	\end{equation}
 	With notation that we introduce below we will have by definition that \eqref{e:big lemma rhs w/o endpoints} is equal to
 	\begin{equation} \label{e:big lemma rhs promising} 
-	\sum_{{L}_{max}^{e}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \ 
-	\sum_{{R}_{max}^{o}} d_{U^+} \otimes d_{\bu.U^-}\ \ +\ \ 
-	\sum_{{L}_{min}^{o}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \ 
-	\sum_{{R}_{min}^{e}} d_{U^+} \otimes d_{\bu.U^-.}
+	\sum_{{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
+	\sum_{{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
+	\sum_{{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
+	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1.}
 	\end{equation}
 	and that the left hand side of \eqref{e:big lemma} is equal to
 	\begin{equation} \label{e:big lemma lhs}
-	\sum_{L} d_{\bu.U^+} \otimes d_{U^-}\ +\ \ 
-	\sum_{R} d_{U^+} \otimes d_{\bu.U^-.}
+	\sum_{L} d_{\bu.U^0} \otimes d_{U^1}\ +\ \ 
+	\sum_{R} d_{U^0} \otimes d_{\bu.U^1.}
 	\end{equation}
 	
 	For any $U = \{u_1 < \cdots < u_q\} \in \P_{q}(n)$ and $\bu \in \overline{U}$ define when possible
@@ -157,7 +165,7 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	l_U^\bu = \max \{u \in U \mid u < \bu\}, \qquad
 	r_U^\bu = \min\{u \in U \mid \bu < u\},
 	\end{equation*}
-	and the following sets, where we use tabbing to represent inclusion and a schematic to aid readability:
+	and the following sets, where we use tabbing to represent inclusion and a schematic to aid readability:\\
 	
 	\input{diagramatic}
 
@@ -196,22 +204,22 @@ where $U^+ = \{u \in U \mid \ind_U(u) = 0\}$ and $U^- = \{u \in U \mid \ind_U(u)
 	\ind_{V}(u) = \ind_{U}(u) = \ind_{W}(u).
 	\end{equation*}
 	We show the proof of the first identity in \eqref{e:big lemma four identities}.
-	Let us consider $U^+ \otimes \bu.U^- \in \overline{R}_{min}^{e, e}$ which by definition implies $\ind_{\bu.U}(\bu) = \ind_{\bu.U}(l_{U}^\bu) = 0$.
-	This is equivalent to $\bu \in V^-$ and $l \in U^+$.
+	Let us consider $U^0 \otimes \bu.U^1 \in \overline{R}_{min}^{e, e}$ which by definition implies $\ind_{\bu.U}(\bu) = \ind_{\bu.U}(l_{U}^\bu) = 0$.
+	This is equivalent to $\bu \in V^1$ and $l \in U^0$.
 	Therefore, 
 	\begin{equation*}
-	U^+ \otimes \bu.U^- =  l_{U}^\bu.V^+ \otimes V^-,
+	U^0 \otimes \bu.U^1 =  l_{U}^\bu.V^0 \otimes V^1,
 	\end{equation*}
-	and since $l_{U}^\bu.V^+ \otimes V^-$ is an element in $\overline{L}_{max}^{e,e}$ we have the inclusion $\overline{R}_{max}^{e,e} \subseteq \overline{L}_{max}^{e,e}$\,.
-	Similarly, the element $\bu.U^+ \otimes U^- \in \overline{L}_{max}^{e,e}$ is equal to $W^+ \otimes r.W^- \in \overline{R}_{min}^{e,e}$ which gives the other inclusion and proves the first identity in \eqref{e:big lemma four identities}.
+	and since $l_{U}^\bu.V^0 \otimes V^1$ is an element in $\overline{L}_{max}^{e,e}$ we have the inclusion $\overline{R}_{max}^{e,e} \subseteq \overline{L}_{max}^{e,e}$\,.
+	Similarly, the element $\bu.U^0 \otimes U^1 \in \overline{L}_{max}^{e,e}$ is equal to $W^0 \otimes r.W^1 \in \overline{R}_{min}^{e,e}$ which gives the other inclusion and proves the first identity in \eqref{e:big lemma four identities}.
 	The others are proven analogously.
 	
 	The identities in \eqref{e:big lemma four identities} imply that
 	\begin{equation} \label{e:big lemma zero sum}
-	\sum_{\overline{L}_{min}^{e}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \
-	\sum_{\overline{L}_{max}^{o}} d_{\bu.U^+} \otimes d_{U^-}\ \ +\ \
-	\sum_{\overline{R}_{max}^{e}} d_{U^+} \otimes d_{\bu.U^-}\ \ +\ \ 
-	\sum_{\overline{R}_{min}^{o}} d_{U^+} \otimes d_{\bu.U^-}\ =\ 0,
+	\sum_{\overline{L}_{min}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \
+	\sum_{\overline{L}_{max}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \
+	\sum_{\overline{R}_{max}^{e}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
+	\sum_{\overline{R}_{min}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ =\ 0,
 	\end{equation}
 	and, therefore, that $\eqref{e:big lemma lhs}$ is equal to \eqref{e:big lemma rhs promising} as claimed.
 \end{proof}
@@ -227,11 +235,11 @@ We can now provide the proof of our main theorem.
 	Assuming it, we can use Lemma~\ref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
 	\begin{equation*}
 	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
-	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^+} \otimes d_{U^-} \, + \, d_{U^+} \otimes d_{\bu.U^-} \Big) (x \otimes x),
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x),
 	\end{equation*}
 	whose right hand side is thanks to Lemma~\ref{l:big lemma} equal to
 	\begin{equation*}
-	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^+}(x) \otimes d_{U^-}(x),
+	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0}(x) \otimes d_{U^1}(x),
 	\end{equation*}
 	which by definition is $(1+T)\Delta_{i-1}(x)$.
 \end{proof}

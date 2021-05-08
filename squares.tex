@@ -18,24 +18,33 @@ A collection $\{\Delta_i\}_{i \in \Z}$ of linear maps from $\chains \to \chains^
 \begin{equation*}
 (1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
 \end{equation*}
-is the same data as an $\S_2$-equivariant chain map
-\begin{equation} \label{e: steenrod diagonal}
+is, using the adjuntion isomorphism, the same as an $\S_2$-equivariant chain map
+\begin{equation} \label{e:steenrod diagonal}
 W \otimes C_\bullet \to C_\bullet^{\otimes 2}.
 \end{equation}
-Using the linear duality functor on the map \eqref{e: steenrod diagonal} and passing to fix points we have a chain map
+We refer to any non-zero such map that is natural with respect to simplicial maps, i.e., making the diagram
 \begin{equation*}
 \begin{tikzcd}
-Hom\left(C_\bullet \otimes C_\bullet, \F \right)^{\mathrm S_2} \arrow[r] &
-Hom\left(W(2) \otimes C_\bullet, \F \right)^{\mathrm S_2},
+W \otimes \chains(X) \arrow[r] \arrow[d, "\id \otimes f_\bullet"] & \chains(X)^{\otimes 2} \arrow[d, "f_\bullet \otimes f_\bullet"] \\
+W \otimes \chains(X) \arrow[r]& \chains(X)^{\otimes 2}
+\end{tikzcd}
+\end{equation*}
+commute for any simplicial map $f \colon X \to Y$, as a \textit{cup-$i$ construction} and to the map $\Delta_i$ as its associated \textit{cup-$i$ coproduct}.
+
+Using the linear duality functor on the map \eqref{e:steenrod diagonal} assumed to be a cup-$i$ construction and passing to fix points gives a chain map
+\begin{equation*}
+\begin{tikzcd}
+Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
+Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2},
 \end{tikzcd}
 \end{equation*}
 which we can complete, using the adjunction isomorphisms of Section \ref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
-Hom\left(C_\bullet \otimes C_\bullet, \F \right)^{\mathrm S_2} \arrow[r] &
-Hom\left(W(2) \otimes C_\bullet, \F \right)^{\mathrm S_2} \arrow[d] \\
+Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
+Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[d] \\
 \left(C^\bullet \otimes C^\bullet\right)^{\mathrm S_2} \arrow[u]&
-Hom\left(W(2)_{\mathrm S_2} \otimes C_\bullet, \F \right) \arrow[d] \\
+Hom\left(W(2)_{\mathrm S_2} \otimes C_\bullet, \F_2 \right) \arrow[d] \\
 C^\bullet \arrow[u, "doubleing"] \arrow[r, dashed]&
 Hom\left(W(2)_{\mathrm S_2}, C^\bullet\right),
 \end{tikzcd}
@@ -48,16 +57,18 @@ C^\bullet \otimes W(2)_{\mathrm S_2} \arrow[r] &[-10pt] C^\bullet \\
 \alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\Delta_i(-)
 \end{tikzcd}
 \end{equation}
-descending to mod-$2$ cohomology. The Steenrod squares are defined by reindexing this map. Explicitly,
+descending to mod $2$ cohomology.
+The \textit{Steenrod squares}, whose importance in homotopy theory is hard to overstate, are defined by reindexing this map.
+Explicitly,
 \begin{equation*}
 \begin{tikzcd}[row sep=tiny, column sep=tiny]
 Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
 \phantom{Sq^k \colon}{[\alpha]} \arrow[r, |->] & {\left[(\alpha \otimes \alpha)\Delta_{n-k}(-) \right]}.
 \end{tikzcd}
 \end{equation*}
-The importance of Steenrod squares in homotopy theory is hard to overstate.
 
-\begin{remark}
-	For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod-$2$ homology of $\mathrm S_2$.
-	Steenrod also defined operation on the mod-$p$ homology of spaces for odd primes \cite{}, this are parameterized by the mod-$p$ homology of $\mathrm S_p$, and the analogue of the $\Delta_i$ maps of Steenrod where defined in \cite{medina2020odd}.
-\end{remark}
+Although we do not use the algebra structure on the mod 2 cohomology of spaces in this article, we remark that the linear dual of $\Delta_0$ represents it, explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $\Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the name of these operations.
+
+For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\mathrm S_2$.
+Steenrod later used this viewpoint to define non-constructively for any prime $p$ operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology}.
+Analogues of the $\Delta_i$ maps for odd primes constructively defining these operations were given in \cite{medina2020odd}.
