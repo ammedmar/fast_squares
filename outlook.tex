@@ -1,13 +1,13 @@
 
-\section{Outlook} \label{s:outlook}
+\section{Secondary operations} \label{s:outlook}
 
-Topological data analysis...
+%The speed gained with the proposed algorithm is key for the applications of Steenrod squares in topological data analysis.
 
-The cup-$i$ products arise from effectively constructing coboundaries that coherently enforce the commutative relation of the cup product in cohomology.
-This is part of a general patter in algebraic topology, showing that constructing cochains enforcing cohomological relations usually leads effectively to further cohomological structures.
-In our case, the commutativity relation of the cup product in cohomology leads to Steenrod operations.
+Lifting relations from the (co)homology level to the (co)chain level is often a source of further structure.
+For example, cup-$i$ products provide an effective construction of coboundaries coherently enforcing the commutativity relation of the cup product in cohomology, which are used to define Steenrod squares in mod 2 cohomology.
 
-There are two notable relations satisfied by the Steenrod squares themselves.
+It is natural then to wonder about what relations are satisfied by Steenrod squares themselves.
+There are two notable relations to consider.
 The first one, known as the \textit{Cartan relation}, expresses the interaction between these operations and the cup product
 \begin{equation*}
 Sq^k \big( [\alpha] [\beta] \big) = \sum_{i+j=k} Sq^i \big([\alpha]\big)\, Sq^j \big([\beta]\big),
@@ -20,5 +20,3 @@ where $\lfloor- \rfloor$ denotes the integer part function and the binomial coef
 
 To tap into the secondary structure associated with these relations, one needs to provide effective proofs for them, that is to say, construct explicit cochains that enforce the relations when passing to cohomology.
 Such effective proofs were recently given respectively in \cite{medina2020cartan} and \cite{medina2020adem}, and we expect the additional structure they unlock will also play an important role in computational topology.
-
-For other primes ... Fast implementations of \cite{medina2020odd} ...
