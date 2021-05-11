@@ -5,15 +5,15 @@ To aid readability of the relatively long proof of Lemma~\ref{l:main} we split i
 We start with some notation.
 
 \begin{definition}
-	Let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$.
-	For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $x \in \overline{U}$, define $x.U \in \P_{q+1}(n)$ to contain $x$ and the elements in $U$.
-	For $x \in U$, define $U \sm x \in \P_{q-1}(n)$ to contain the elements in $U$ different from $x$.
+	For $q \in \{0, \dots, n\}$, let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_q\}$ with $u_j \in \{0, \dots, n\}$.
+	For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $\bu \in \overline{U}$, define $\bu.U \in \P_{q+1}(n)$ to contain $\bu$ and the elements in $U$.
+	For $q > 0$ and $u \in U$, define $U \sm u \in \P_{q-1}(n)$ to contain the elements of $U$ not equal to $u$.
 \end{definition}
 
-Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1}^{n-q+1} \cdots \,d_{u_q}^n$ and avoid writing the superscripts when they do not contribute to expositional clarity.
+Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1} \cdots \; d_{u_q}$ with $d_{\emptyset} = \id$.
 For any $U \in \P_q(n)$, the \textit{index function} of $U$ is given by
 \begin{equation*}
-\begin{tikzcd}[row sep=tiny, column sep=small,
+\begin{tikzcd}[row sep=-3pt, column sep=small,
 /tikz/column 1/.append style={anchor=base east},
 /tikz/column 2/.append style={anchor=base west}]
 \ind_U \colon U \arrow[r] & \F_2 \\
@@ -21,22 +21,23 @@ u_i \arrow[r, mapsto] & u_i + i,
 \end{tikzcd}
 \end{equation*}
 and the preimage of $\varepsilon \in \F_2$ is denoted simply by $U^\varepsilon$.
-With this notation we have for any $x \in X_n$
+With this notation Definition~\ref{d:cup-i coproducts} reads
 \begin{equation*}
 \Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^0}(x) \otimes d_{U^1}(x).
 \end{equation*}
+for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 
 \begin{lemma} \label{l:partial dU = dxU}
 	For any $x \in X_n$ and $U \in \P_{q}(n)$
 	\begin{equation} \label{lemma1: existence:eq1}
-	\partial \circ d_U(x) = \sum_{\bar{u} \in \overline{U}} d_{\bar{u}.U}(x).
+	\partial_{n-q} \circ d_U(x) = \sum_{\bar{u} \in \overline{U}} d_{\bar{u}.U}(x).
 	\end{equation}
 \end{lemma}
 
 \begin{proof}
 	Let $U = \{u_1 < \cdots < u_q\}$. Using the simplicial relation \eqref{e:simplicial relation} we have
 	\begin{equation*}
-	\partial \circ d_U(x) = 
+	\partial_{n-q} \circ d_U(x) = 
 	\sum_{i=0}^{n-q} d_i\, d_{u_1} \cdots\, d_{u_q}(x) = 
 	\sum_{\bar{u} \in \overline{U}} d_{u_1} \cdots\, d_{\bar{u}} \cdots\, d_{u_q}(x) =
 	\sum_{\bar{u} \in \overline{U}} d_{\bar{u}.U}(x)
@@ -44,15 +45,13 @@ With this notation we have for any $x \in X_n$
 	as claimed.
 \end{proof}
 
-\anibal{Check the $q=0$ case below.}
-
 \begin{lemma} \label{l:pigeon hole}
-	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
+	For any $x \in X_n$ and $q \in \{1, \dots, n\}$
 	\begin{equation} \label{e:pigeon hole 1}
-	\Delta_{n-q-1} \circ \partial (x)\ =\! 
+	\Delta_{n-q} \circ \partial_n (x)\ =\! 
 	\sum_{U \in \P_q(n)} \left( \,
-	\sum_{u \in U^1} d_{u.U^0}(x) \otimes d_{U^1}(x) + 
-	\sum_{u \in U^0} d_{U^0}(x) \otimes d_{u.U^1}(x) \right).
+	\sum_{u \in U^1} d_{u.U^0} \otimes d_{U^1} + 
+	\sum_{u \in U^0} d_{U^0} \otimes d_{u.U^1} \right)(x \otimes x).
 	\end{equation}
 \end{lemma}
 
@@ -96,29 +95,55 @@ With this notation we have for any $x \in X_n$
 \end{proof}
 
 \begin{lemma} \label{l:boundary of Delta}
-	For any $x \in X_n$ and $q \in \{0, \dots, n\}$
+	For any $x \in X_n$ and integer $i \in \{0, \dots, n\}$ we have that
 	\begin{equation} \label{e:boundary of Delta}
-	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
-	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
+	(\partial \circ \Delta_i + \Delta_i \circ \partial)(x) \ = \! 
+	\sum_{\substack{U \in \P_{n-i}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
 	\end{equation}
 \end{lemma}
 
 \begin{proof}
-	Using Lemma~\ref{l:partial dU = dxU} and Lemma~\ref{l:pigeon hole} we have
+	If $i = n$ then $\Delta_n \circ \partial (x) = 0$ and we need to prove that
+	\begin{equation*}
+	\partial \circ \Delta_n (x) \ = \
+	\sum_{i=0}^n \big( d_i \otimes \id + \id \otimes d_i \big)(x \otimes x) \ = \
+	\sum_{\bu \in \overline{\emptyset}} \big( d_\bu \otimes \id + \id \otimes d_\bu \big)(x \otimes x),
+	\end{equation*}
+	as claimed.
+	Let $q = n-i$ and assume $q \in \{1,\dots,n\}$.
+	We want to prove that
+	\begin{equation*}
+	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q} \circ \partial_n \Big) (x) \ = \! 
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
+	\end{equation*}
+	Using Lemma~\ref{l:partial dU = dxU} we have
 	\begin{equation*}
 	\begin{split}
 	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = & \
-	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^0} \otimes d_{U^1}\ +\ d_{U^1} \otimes \partial \circ d_{U^1} \Big) (x \otimes x) \\ = & \!\!
-	\sum_{\substack{U \in \P_q(n) \\ v \in \overline{U^0},\ w \in \overline{U^1} } }\!\! \Big( d_{v.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{w.U^1}\Big) (x \otimes x) \\ = &
-	\quad \Delta_{n-q-2} \circ \partial_n (x) \ + 
-	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{\bu.U^1}\Big) (x \otimes x)
+	\sum_{U \in \P_q(n)} \Big( \partial \circ d_{U^0} \otimes d_{U^1}\ +\
+	d_{U^0} \otimes \partial \circ d_{U^1} \Big) (x \otimes x) \\ = & \!\!
+	\sum_{\substack{U \in \P_q(n) \\ \bar v \in \overline{U^0},\ \bar w \in \overline{U^1} } }\!\! \Big( d_{\bar v.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{\bar w.U^1}\Big) (x \otimes x).
 	\end{split}
 	\end{equation*}
-	as claimed.
+	Since for $\varepsilon \in \F_2$ we have a partition of $\overline{U^\varepsilon}$ into $U^{1+\varepsilon}$ and $\overline{U}$ the above can be written as
+	\begin{align*}
+	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = &
+	\sum_{U \in \P_q(n)} \left( \,
+	\sum_{u \in U^1} d_{u.U^0} \otimes d_{U^1} + 
+	\sum_{u \in U^0} d_{U^0} \otimes d_{u.U^1} \right)(x \otimes x) \\ + & 
+	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{\bu.U^1}\Big) (x \otimes x)
+	\end{align*}
+	and Lemma~\ref{l:pigeon hole} implies	
+	\begin{align*}
+	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = \
+	\Delta_{n-q} \circ \partial_n (x) \ \  +
+	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{\bu.U^1}\Big) (x \otimes x)
+	\end{align*}
+	which proves the claim.
 \end{proof}
 
 \begin{lemma} \label{l:big lemma}  
-	For any $q \in \{0, \dots, n\}$
+	For any $q \in \{0, \dots, n-1\}$
 	\begin{equation} \label{e:big lemma}
 	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} d_{\bu.U^0} \otimes d_{U^1}\, +\ d_{U^0} \otimes d_{\bu.U^1}\, = \
 	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1.}
@@ -167,7 +192,7 @@ With this notation we have for any $x \in X_n$
 	and the following sets, where we use tabbing to represent inclusion and a schematic to aid readability:\\
 	
 	\input{diagramatic}
-
+	
 	With this notation it is a direct observation that \eqref{e:big lemma rhs w/o endpoints}, the right hand side of \eqref{e:big lemma}, is equal to \eqref{e:big lemma rhs promising}; and that the left hand side of \eqref{e:big lemma} is equal to \eqref{e:big lemma lhs}.
 	
 	To show that \eqref{e:big lemma rhs promising} and \eqref{e:big lemma lhs} are equal we need the following identities:
@@ -228,15 +253,17 @@ We can now provide the proof of Lemma~\ref{l:main} and of our main theorem.
 \begin{proof}[Proof of Lemma~\ref{l:main}]
 	For any integer $i$ and $x \in X_n$ we need to prove that
 	\begin{equation} \label{e:main thm proof}
-	(\partial \circ \Delta_{i} + \Delta_{i+1} \circ \partial)(x) = (1 + T) \Delta_{i-1}(x).
+	(\partial \circ \Delta_{i} + \Delta_{i} \circ \partial)(x) = (1 + T) \Delta_{i-1}(x).
 	\end{equation}
-	This identity holds trivially is $q = n-i$ is not in $\{0, \dots, n\}$.
-	Assuming it, we can use Lemma~\ref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
+	If $i < 0$ or $i > n+1$ then both sides are equal to $0$ by definition.
+	If $i = 0$, the right hand side is $0$ by definition and the left hand side is $0$ since the Alexander-Whitney diagonal is a chain map.
+	If $i = n+1$, then the left hand side is equal to $0$ by definition and the right hand side is equal to $(1+T) (x \otimes x) = 0$.
+	Let $q = n-i$ and assume $q \not\in \{0, \dots, n-1\}$.
+	We can use Lemma~\ref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
 	\begin{equation*}
-	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q-2} \circ \partial_n \Big) (x) \ = \! 
 	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x),
 	\end{equation*}
-	whose right hand side is thanks to Lemma~\ref{l:big lemma} equal to
+	whose right hand side is, thanks to Lemma~\ref{l:big lemma}, equal to
 	\begin{equation*}
 	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0}(x) \otimes d_{U^1}(x),
 	\end{equation*}
