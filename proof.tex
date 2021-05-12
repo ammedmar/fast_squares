@@ -1,7 +1,7 @@
 
-\section{Proof of Lemma~\ref{l:main}} \label{s:proof}
+\section{Proof of \cref{l:main}} \label{s:proof}
 
-To aid readability of the relatively long proof of Lemma~\ref{l:main} we split it into four lemmas.
+To aid readability of the relatively long proof of \cref{l:main} we split it into four lemmas.
 We start with some notation.
 
 \begin{definition}
@@ -21,7 +21,7 @@ u_i \arrow[r, mapsto] & u_i + i,
 \end{tikzcd}
 \end{equation*}
 and the preimage of $\varepsilon \in \F_2$ is denoted simply by $U^\varepsilon$.
-With this notation Definition~\ref{d:cup-i coproducts} reads
+With this notation \cref{d:cup-i coproducts} reads
 \begin{equation*}
 \Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^0}(x) \otimes d_{U^1}(x).
 \end{equation*}
@@ -116,7 +116,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q} \circ \partial_n \Big) (x) \ = \! 
 	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
 	\end{equation*}
-	Using Lemma~\ref{l:partial dU = dxU} we have
+	Using \cref{l:partial dU = dxU} we have
 	\begin{equation*}
 	\begin{split}
 	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = & \
@@ -133,7 +133,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\sum_{u \in U^0} d_{U^0} \otimes d_{u.U^1} \right)(x \otimes x) \\ + & 
 	\sum_{\substack{U\in\P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1}\ +\ d_{U^0} \otimes d_{\bu.U^1}\Big) (x \otimes x)
 	\end{align*}
-	and Lemma~\ref{l:pigeon hole} implies	
+	and \cref{l:pigeon hole} implies	
 	\begin{align*}
 	\partial_{2n-q} \circ \Delta_{n - q} (x) \ = \
 	\Delta_{n-q} \circ \partial_n (x) \ \  +
@@ -151,7 +151,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{lemma}
 
 \begin{proof}
-	Let us consider the right hand side of (\ref{e:big lemma})
+	Let us consider the right hand side of (\cref{e:big lemma})
 	\begin{equation} \label{e:big lemma rhs}
 	\sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1}\, +\ d_{U^1} \otimes d_{U^0.}
 	\end{equation}
@@ -248,9 +248,9 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	and, therefore, that $\eqref{e:big lemma lhs}$ is equal to \eqref{e:big lemma rhs promising} as claimed.
 \end{proof}
 
-We can now provide the proof of Lemma~\ref{l:main} and of our main theorem.
+We can now provide the proof of \cref{l:main} and of our main theorem.
 
-\begin{proof}[Proof of Lemma~\ref{l:main}]
+\begin{proof}[Proof of \cref{l:main}]
 	For any integer $i$ and $x \in X_n$ we need to prove that
 	\begin{equation} \label{e:main thm proof}
 	(\partial \circ \Delta_{i} + \Delta_{i} \circ \partial)(x) = (1 + T) \Delta_{i-1}(x).
@@ -259,11 +259,11 @@ We can now provide the proof of Lemma~\ref{l:main} and of our main theorem.
 	If $i = 0$, the right hand side is $0$ by definition and the left hand side is $0$ since the Alexander-Whitney diagonal is a chain map.
 	If $i = n+1$, then the left hand side is equal to $0$ by definition and the right hand side is equal to $(1+T) (x \otimes x) = 0$.
 	Let $q = n-i$ and assume $q \not\in \{0, \dots, n-1\}$.
-	We can use Lemma~\ref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
+	We can use \cref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
 	\begin{equation*}
 	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x),
 	\end{equation*}
-	whose right hand side is, thanks to Lemma~\ref{l:big lemma}, equal to
+	whose right hand side is, thanks to \cref{l:big lemma}, equal to
 	\begin{equation*}
 	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0}(x) \otimes d_{U^1}(x),
 	\end{equation*}

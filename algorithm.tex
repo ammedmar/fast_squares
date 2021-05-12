@@ -11,7 +11,7 @@ Consider $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdot
 1 & i=j, \\ 0 & i\neq j,
 \end{cases}
 \end{equation*}
-and let $B \subseteq X_{n+k}$ be the output of algorithm $SQ_n^k$ applied to $A$, please consult Figure~\ref{f:algorithm}.
+and let $B \subseteq X_{n+k}$ be the output of algorithm $SQ_n^k$ applied to $A$, please consult Figure~\cref{f:algorithm}.
 \begin{figure}[h]
 	\input{stsq}
 	\caption{Algorithm producing for a simplicial complex $X$, non-negative integer $n$, integer $k$ between $1$ and $n$, and cocycle $\alpha$ presented as a set $A \subseteq X_n$, a cocycle representing $Sq^k([\alpha])$ returned as a set $B \subseteq X_{n+k}$.
@@ -49,7 +49,7 @@ For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented 
 \Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j\Big)
 \Delta_{n-k}(x).
 \end{align*}
-By Lemma~\ref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ and $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of two element subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
+By \cref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ and $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of two element subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
 This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^0}(x) \cup d_{U^1}(x) = x$.
 
 Let us formalize these observations.

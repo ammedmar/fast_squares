@@ -16,8 +16,8 @@ We will consider the $i\th$ suspension $\suspension^i \RP^2$ and the non-trivial
 In \verb|SAGE| we use the methods \verb|RealProjectiveSpace(2)| and \verb|suspension(i)| to produce a simplicial complex model of $\suspension^i \RP^2$ for each $i \in \{0, \dots, 10\}$.
 Given such model of $\suspension^i \RP^2$ we apply \verb|cohomology_ring(GF(2))| to it and use \verb|basis()| to obtain a model of the element $\suspension^i x_1$.
 Finally we apply \verb|Sq(k)| to it with $k=1$ and record the execution time of this last step.
-We implemented in \verb|Python| an alternative for the method \verb|Sq(k)| based on Algorithm~\ref{a:algorithm} and modified the above pipeline accordingly.
-We recorded the average execution time of these implementations for each $\suspension^i \RP^2$ over $\lfloor 10000/2^i \rfloor$ runs for each $i \in \{0, \dots, 10\}$. We present the results of this analysis in Figure~\ref{f:comparison}.
+We implemented in \verb|Python| an alternative for the method \verb|Sq(k)| based on \cref{a:algorithm} and modified the above pipeline accordingly.
+We recorded the average execution time of these implementations for each $\suspension^i \RP^2$ over $\lfloor 10000/2^i \rfloor$ runs for each $i \in \{0, \dots, 10\}$. We present the results of this analysis in \cref{f:comparison}.
 We observe that the execution time of the implementation based on our algorithm is constant whereas the one in \verb|SAGE| grows exponentially.
 
 \begin{figure}
