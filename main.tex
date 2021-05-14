@@ -1,4 +1,5 @@
 \documentclass{amsart}
+\usepackage{amsaddr}
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage{tikz-cd}
 \usepackage{bm}
@@ -18,12 +19,11 @@ pdfpagelabels]{hyperref}
 	urlcolor=blue}
 \usepackage[capitalise]{cleveref}
 
-
 % layout
 \setlength{\textwidth}{\paperwidth}
-\addtolength{\textwidth}{-1.5in}
+\addtolength{\textwidth}{-2in}
 \setlength{\textheight}{\paperheight}
-\addtolength{\textheight}{-1.5in}
+\addtolength{\textheight}{-2in}
 \calclayout
 
 % update to MSC2020
@@ -82,20 +82,20 @@ pdfpagelabels]{hyperref}
 \newcommand{\anibal}[1]{\textcolor{blue}{\underline{Anibal}: #1}}
 \renewcommand{\th}{^\mathrm{th}}
 
+
 \begin{document}	
 	\title{New formulas for cup-$i$ products and fast computation of Steenrod squares}
-	\author{Anibal M. Medina-Mardones}
-	\thanks{The author acknowledges financial support from Innosuisse grant 32875.1 IP-ICT - 1.}
-	\address{Max Planck Institute for Mathematics in Bonn}
-	\email{ammedmar@mpim-bonn.mpg.de}
-	\address{Department of Mathematics, University of Notre Dame}
+	\author[A. Medina-Mardones]{Anibal M. Medina-Mardones}
+	\address{Max Planck Institute for Mathematics, Bonn, Germany}
+	\address{Department of Mathematics, University of Notre, Notre Dame, IN, USA}
 	\email{amedinam@nd.edu}
+	\thanks{A.M-M. acknowledges financial support from Innosuisse grant \mbox{32875.1 IP-ICT - 1} and the hospitality of the Laboratory for Topology and Neuroscience at EPFL where part of this work developed.}
 	
 	\begin{abstract}
 		Operations on the cohomology of spaces are central tools in topology that enhance the descriptive power of this computable invariant.
-		With mod 2 coefficients, Steenrod squares are the most important of such operations, and effective methods for their computation rely on the structure defined on cochains by cup-$i$ products.
-		These are important in their own right, having connections to, among others, lattice field theory, convex geometry and higher category theory.
-		In this article we present new formulas for cup-$i$ products and use them to introduce and implement a fast algorithm for the computation of Steenrod squares on the cohomology of simplicial complexes.
+		For cohomology with mod 2 coefficients, Steenrod squares are the most important of these operations.
+		Their effective computation rely on the structure defined on cochains by cup-$i$ products which is important in its own right, having connections to, among others, lattice field theory, convex geometry and higher category theory.
+		In this article we present new formulas for cup-$i$ products and use them to introduce a fast algorithm for the computation of Steenrod squares on the cohomology of simplicial complexes.
 	\end{abstract}
 	
 	\maketitle

@@ -1,11 +1,13 @@
 
-\section{Steenrod squares} \label{s:squares}
+\section{Cup-$i$ products and Steenrod squares} \label{s:squares}
 
 Let $\F_2$ be the field with two elements and $\S_2$ the group with only one non-identity element $T$.
 In this section we define for any simplicial complexes $X$ and every integer $k$ the Steenrod $k^{\mathrm{th}}$ square
 \begin{equation*}
-Sq^k \colon H^\bullet(X; \F_2) \to H^{\bullet}(X; \F_2).
+Sq^k \colon H^\bullet(X; \F_2) \to H^{\bullet}(X; \F_2)
 \end{equation*}
+using an arbitrary cup-$i$ construction.
+
 Consider the chain complex
 \begin{equation*}
 \begin{tikzcd}[column sep=normal]
@@ -14,45 +16,44 @@ Consider the chain complex
 \end{tikzcd}
 \end{equation*}
 with its natural $\S_2$-action.
-A collection $\{\Delta_i\}_{i \in \Z}$ of linear maps from $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_i = 0$ for $i < 0$ and
-\begin{equation*}
-(1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
-\end{equation*}
-is, using the adjuntion isomorphism, the same as an $\S_2$-equivariant chain map
-\begin{equation} \label{e:steenrod diagonal}
-W \otimes C_\bullet \to C_\bullet^{\otimes 2}.
-\end{equation}
-We refer to any non-zero such map that is natural with respect to simplicial maps, i.e., making the diagram
-\begin{equation*}
-\begin{tikzcd}
-W \otimes \chains(X) \arrow[r] \arrow[d, "\id \otimes f_\bullet"] & \chains(X)^{\otimes 2} \arrow[d, "f_\bullet \otimes f_\bullet"] \\
-W \otimes \chains(X) \arrow[r]& \chains(X)^{\otimes 2}
-\end{tikzcd}
-\end{equation*}
-commute for any simplicial map $f \colon X \to Y$, as a \textit{cup-$i$ construction} and to the map $\Delta_i$ as its associated \textit{cup-$i$ coproduct}.
 
-Using the linear duality functor on the map \eqref{e:steenrod diagonal} assumed to be a cup-$i$ construction and passing to fix points gives a chain map
+For any simplicial complex $X$, consider an $\S_2$-equivariant chain map
+\begin{equation} \label{e:steenrod diagonal}
+\Delta_X \colon W \otimes \chains(X; \F_2) \to \chains(X; \F_2)^{\otimes 2}
+\end{equation}
+where the $\S_2$-action in the domain is concentrated in $W$ and in the target is the transposition of factors $T(a \otimes b) = b \otimes a$.
+We say that this collection of maps is natural if for any simplicial map $f \colon X \to Y$ we have $\Delta_Y \circ f_\bullet = f_\bullet^{\otimes 2} \circ \Delta_X$, and we say that is \textit{cup-$i$ construction} if it is natural and the image of a $0$-simplex is not 0.
+
+A cup-$i$ construction is determined by a collection $\{\Delta_i\}_{i \in \Z}$ of natural linear maps $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_0 \big([v_0]\big) \neq 0$ for any vertex $v_0$ and
+\begin{equation} \label{e:boundary of cup-i}
+(1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
+\end{equation}
+for any $i \in \Z$.
+The correspondence is given by $\Delta_i = \Delta(e_i \otimes -)$, and we refer to the map $\Delta_i$ as the \textit{cup-$i$ coproduct} of the cup-$i$ construction, and to the linear dual $\smallsmile_i$ of $\Delta_i$ as its \textit{cup-$i$ product}.
+
+Let us consider a cup-$i$ construction $W \otimes C_\bullet \to C_\bullet^{\otimes 2}$.
+Using the linear duality functor and passing to fix points gives a chain map
 \begin{equation*}
 \begin{tikzcd}
-Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
-Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2},
+\Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
+\Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2},
 \end{tikzcd}
 \end{equation*}
 which we can complete, using the adjunction isomorphisms of \cref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
-Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
-Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[d] \\
+\Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
+\Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[d] \\
 \left(C^\bullet \otimes C^\bullet\right)^{\mathrm S_2} \arrow[u]&
-Hom\left(W(2)_{\mathrm S_2} \otimes C_\bullet, \F_2 \right) \arrow[d] \\
+\Hom\left(W(2)_{\mathrm S_2} \otimes C_\bullet, \F_2 \right) \arrow[d] \\
 C^\bullet \arrow[u, "doubleing"] \arrow[r, dashed]&
-Hom\left(W(2)_{\mathrm S_2}, C^\bullet\right),
+\Hom\left(W(2)_{\mathrm S_2}, C^\bullet\right),
 \end{tikzcd}
 \end{equation*}
 where the choice of coefficients ensures the \textit{doubleing map} $\alpha \mapsto \alpha \otimes \alpha$ is linear.
-By adjunction, the dashed arrow defines a linear map
+Using the adjunction isomorphism \eqref{e:adjunction isomorphism}, the dashed arrow defines a linear map
 \begin{equation} \label{e:Steenrod squares parameterized}
-\begin{tikzcd}[row sep=tiny, column sep = tiny]
+\begin{tikzcd}[row sep=0pt, column sep = tiny]
 C^\bullet \otimes W(2)_{\mathrm S_2} \arrow[r] &[-10pt] C^\bullet \\
 \alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\Delta_i(-)
 \end{tikzcd}
@@ -61,14 +62,19 @@ descending to mod $2$ cohomology.
 The \textit{Steenrod squares}, whose importance in homotopy theory is hard to overstate, are defined by reindexing this map.
 Explicitly,
 \begin{equation*}
-\begin{tikzcd}[row sep=tiny, column sep=tiny]
+\begin{tikzcd}[row sep=0pt, column sep=tiny]
 Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
 \phantom{Sq^k \colon}{[\alpha]} \arrow[r, |->] & {\left[(\alpha \otimes \alpha)\Delta_{n-k}(-) \right]}.
 \end{tikzcd}
 \end{equation*}
 
-Although we do not use the algebra structure on the mod 2 cohomology of spaces in this article, we remark that the linear dual of $\Delta_0$ represents it, explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $\Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the name of these operations.
+\begin{remark}
+	Although in this article we do not use the algebra structure on the mod 2 cohomology of spaces, we remark that the cup-$0$ product of a cup-$i$ construction represents the product of this algebra.
+	Explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $\Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the name of these operations.
+\end{remark}
 
-For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\mathrm S_2$.
-Steenrod later used this viewpoint to define non-constructively for any prime $p$ operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology}.
-Analogues of the $\Delta_i$ maps for odd primes constructively defining these operations were given in \cite{medina2020odd}.
+\begin{remark}
+	For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\mathrm S_2$.
+	Steenrod later used this group homology viewpoint to define non-constructively for any prime $p$ operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology}.
+	Analogues of the $\Delta_i$ maps for odd primes that define these operations constructively were introduced in \cite{medina2020odd} and implemented in \cite{medina2021computer}.
+\end{remark}

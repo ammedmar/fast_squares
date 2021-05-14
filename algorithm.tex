@@ -1,10 +1,13 @@
 
-\section{New algorithm} \label{s:algorithm}
+\section{New algorithm for Steenrod squares} \label{s:algorithm}
 
-Given a finite simplicial complex $X$ we now present an algorithm for the determination of a cocycle representative of $Sq^k([\alpha])$ given a representative cocycle $\alpha$ in degree $-n$.
+For a finite simplicial complex $X$ we now present an algorithm constructing a representative $\beta$ of $Sq^k([\alpha])$ given a representative $\alpha$ of $[\alpha]$.
 
-If $k$ is a negative integer or greater than $n$ we $Sq^k([\alpha]) = 0$, and if $k = 0$ we we have $Sq^k([\alpha]) = [\alpha]$ which are uninteresting cases, so we assume $k$ is between $1$ and $n$.
+Let $-n$ be the degree of the cocycle $\alpha$.
+If $k$ is a negative integer or greater than $n$ we take $\beta = 0$ since $Sq^k([\alpha]) = 0$.
+If $k = 0$, we take $\beta = \alpha$ since $Sq^k([\alpha]) = [\alpha]$.
 
+Let us assume $k \in \{1, \dots, n\}$.
 Consider $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ such that
 \begin{equation*}
 \alpha_i(a_j) = \begin{cases}

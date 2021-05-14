@@ -1,9 +1,7 @@
 
-\section{New formulas} \label{s:formulas}
+\section{New formulas for cup-$i$ products} \label{s:formulas}
 
 In this section we introduce our new description of cup-$i$ coproducts.
-We define them for simplicial complexes although there is no obstruction interpreting these formulas as defining cup-$i$ coproducts on simplicial sets \cite{friedman2012simplicial}, a more general notion.
-
 Let $X$ be a simplicial complex and $x \in X_n$.
 For a set
 \begin{equation*}
@@ -16,19 +14,23 @@ we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(
 	\begin{equation*}
 	\Delta_i : C_\bullet(X; \F_2) \to C(X; \F_2)^{\otimes 2}_\bullet
 	\end{equation*}
-	is the linear map defined on a basis element $x \in X_n$ to be $0$ if $i \not\in \{0, \dots, n\}$ and otherwise by
+	is the linear map defined on a basis element $x \in X_n$ to be $0$ if $i \not\in \{0, \dots, n\}$ and
 	\begin{equation} \label{equation: simplicial cup-i coproducts}
-	\Delta_i(x) = \sum d_{U^0}(x) \otimes d_{U^1}(x),
+	\Delta_i(x) = \sum d_{U^0}(x) \otimes d_{U^1}(x)
 	\end{equation}
-	where the sum is taken over all sets $U = \{u_1 < \cdots < u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$ and where
+	otherwise, where the sum is taken over all sets $U = \{u_1 < \cdots < u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$ and where
 	\begin{equation*}
 	U^0 = \{u_j \in U\mid u_j \equiv j \text{ mod } 2\}, \qquad
 	U^1 = \{u_j \in U\mid u_j \not\equiv j \text{ mod } 2\}.
 	\end{equation*}
 \end{definition}
 
+\begin{remark}
+	There is no obstruction interpreting these formulas as defining cup-$i$ coproducts on the normalized chains of simplicial sets \cite{friedman2012simplicial}.
+\end{remark}
+
 \begin{example}
-	For any $x \in X_n$ and $i = 0$ the formula above reduces to
+	For any $x \in X_n$ and $i = 0$ our formulas give
 	\begin{equation*}
 	\Delta_0(x) = \sum_{i=0}^n d_{i+1} \cdots d_{n}(x) \otimes d_{0} \cdots d_{i-1}(x),
 	\end{equation*}
@@ -36,25 +38,22 @@ we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(
 \end{example}
 
 \begin{example}
-	For any basis element $x \in X_n$ we have
+	For any basis element $x \in X_n$ our formulas give
 	\begin{equation*}
 	\Delta_n(x) = x \otimes x,
 	\end{equation*}
 	implying that $Sq^0$ is the identity in cohomology.
 \end{example}
 
-\begin{theorem}
+\begin{theorem} \label{t:main}
 	The maps introduced in \cref{d:cup-i coproducts} define a cup-$i$ construction.
 \end{theorem}
 
-Since by the previous examples the maps are not identically zero, we need to check they are natural with respect to simplicial maps and that they satisfy \eqref{e:boundary of cup-i}.
-We state these claims as a pair of lemmas.
+Since by the previous example $\Delta_0\big([v_0]\big) = [v_0] \otimes [v_0] \neq 0$, we need to check that each $\Delta_i$ is natural and satisfies \eqref{e:boundary of cup-i}.
+We state these claims as two lemmas.
 
-\begin{lemma}
-	If $f$ is a simplicial map, then, for every $i \in \Z$,
-	\begin{equation*}
-	\Delta_i \circ f_\bullet = (f_\bullet \otimes f_\bullet) \circ \Delta_i.
-	\end{equation*}
+\begin{lemma} \label{l:naturality}
+	The maps of \cref{d:cup-i coproducts} satisfy $\Delta_i \circ f_\bullet = (f_\bullet \otimes f_\bullet) \circ \Delta_i$ for any simplicial map $f$ and integer $i$.
 \end{lemma}
 
 \begin{proof}
@@ -73,11 +72,8 @@ We state these claims as a pair of lemmas.
 	If it does we have that	$j, j+1 \in U^0$ or $j, j+1 \in U^1$ since they are consecutive so $\ind_U(i) = \ind_U(i+1)$.
 \end{proof}
 
-\begin{lemma} \label{l:main}
-	For any integer $i$,
-	\begin{equation} \label{eq: cup-i coproducts boundary relation}
-	\partial \circ \Delta_{i} + \Delta_{i+1} \circ \partial = (1 +T ) \Delta_{i-1}.
-	\end{equation}
-\end{lemma}
+We devote \cref{s:proof} to the proof of the following lemma, which together with \cref{l:naturality} imply \cref{t:main}.
 
-We devote \cref{s:proof} to the proof of this theorem.
+\begin{lemma} \label{l:main}
+	The maps of \cref{d:cup-i coproducts} satisfy $\partial \circ \Delta_{i} + \Delta_{i+1} \circ \partial = (1+T) \Delta_{i-1}$ for any integer $i$.
+\end{lemma}
