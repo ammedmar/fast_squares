@@ -27,7 +27,7 @@ They all rely on the construction of \textit{cup-$i$ coproducts}
 \end{equation*}
 i.e., natural linear maps satisfying
 \begin{equation*}
-(1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
+(1+T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
 \end{equation*}
 for every integer $i$, and such that $\Delta_0$ is a chain approximation to the diagonal of $X$.
 
@@ -43,7 +43,7 @@ Although it has been shown that all of these define isomorphic cup-$i$ coproduct
 For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez1999combinatorial} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 
 In this article we introduce a new description of Steenrod's cup-$i$ coproducts.
-We are particularly interested in simplicial complexes, but we remark that our formulas apply to the more general context of simplicial sets, a categorical closure of simplicial complexes that includes, for example, the singular cochains of a topological space.
+We are particularly interested in simplicial complexes, but we remark that our formulas apply to the more general context of simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
 
 For simplicial complexes we use our formulas to introduce a new algorithm computing Steenrod square.
 Additionally, we report a performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
