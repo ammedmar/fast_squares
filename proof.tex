@@ -5,7 +5,7 @@ To aid readability of the relatively long proof of \cref{l:main} we split it int
 We start with some notation.
 
 \begin{definition}
-	For $q \in \{0, \dots, n\}$, let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_q\}$ with $u_j \in \{0, \dots, n\}$.
+	For $n \geq0$ and $q \in \{0, \dots, n\}$, let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_q\}$ with $u_j \in \{0, \dots, n\}$.
 	For any $U \in \P_q(n)$, let $\overline{U} \in \P_{n+1-q}(n)$ contain the elements of $\{0, \dots, n\}$ not in $U$. For $\bu \in \overline{U}$, define $\bu.U \in \P_{q+1}(n)$ to contain $\bu$ and the elements in $U$.
 	For $q > 0$ and $u \in U$, define $U \sm u \in \P_{q-1}(n)$ to contain the elements of $U$ not equal to $u$.
 \end{definition}
@@ -17,10 +17,12 @@ For any $U \in \P_q(n)$, the \textit{index function} of $U$ is given by
 /tikz/column 1/.append style={anchor=base east},
 /tikz/column 2/.append style={anchor=base west}]
 \ind_U \colon U \arrow[r] & \F_2 \\
-u_i \arrow[r, mapsto] & u_i + i,
+u_i \arrow[r, mapsto] & u_i + i.
 \end{tikzcd}
 \end{equation*}
-and the preimage of $\varepsilon \in \F_2$ is denoted simply by $U^\varepsilon$.
+The preimage of $\varepsilon \in \F_2$ by $\ind_{U}$ is denoted by $U^\varepsilon \subseteq U$.
+
+For the rest of this section we consider a simplicial complex $X$.
 With this notation \cref{d:cup-i coproducts} reads
 \begin{equation*}
 \Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^0}(x) \otimes d_{U^1}(x).
@@ -59,9 +61,9 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	Let
 	\begin{align*}
 	& S_1 = \big\{ (u, V)\mid V \in \P_{q-1}(n-1) \text{ and } u \in \{0,\dots,n\} \big\}, \\
-	& S_2 = \big\{ (w, W)\mid W \in \P_{q}(n) \text{ and } w \in W \big\}
+	& S_2 = \big\{ (w, W)\mid W \in \P_{q}(n) \text{ and } w \in W \big\}.
 	\end{align*}
-	and notice that identity \eqref{e:pigeon hole 1} is equivalent to the following identity:
+	Identity \eqref{e:pigeon hole 1} is equivalent to
 	\begin{equation} \label{e:pigeon hole 2}
 	\sum_{(u, V) \in S_1} d_{V^0}d_u \otimes d_{V^1}d_u \ \, = \!
 	\sum_{(w, W) \in S_2} 
@@ -83,7 +85,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\begin{equation*}
 	\frac{(n+1)!}{(n+1-q)!(q-1)!}.
 	\end{equation*}
-	To establishes \eqref{e:pigeon hole 2} we use the simplicial identity to notice that if $(u, V) \mapsto (u, W)$ then
+	The simplicial identity implies that if $(u, V) \mapsto (u, W)$ then
 	\begin{equation*}
 	d_{V^0}d_u \otimes d_{V^1}d_u =
 	\begin{cases}
@@ -95,7 +97,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{proof}
 
 \begin{lemma} \label{l:boundary of Delta}
-	For any $x \in X_n$ and integer $i \in \{0, \dots, n\}$ we have that
+	For any $x \in X_n$ and integer $i \in \{0, \dots, n\}$
 	\begin{equation} \label{e:boundary of Delta}
 	(\partial \circ \Delta_i + \Delta_i \circ \partial)(x) \ = \! 
 	\sum_{\substack{U \in \P_{n-i}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
@@ -103,13 +105,14 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{lemma}
 
 \begin{proof}
-	If $i = n$ then $\Delta_n \circ \partial (x) = 0$ and we need to prove that
+	If $i = n$ then $\Delta_n \circ \partial_n (x) = 0$, and since
 	\begin{equation*}
-	\partial \circ \Delta_n (x) \ = \
+	\partial_{2n} \circ \Delta_n (x) \ = \
+	\partial_{2n} (x \otimes x) \ = \
 	\sum_{i=0}^n \big( d_i \otimes \id + \id \otimes d_i \big)(x \otimes x) \ = \
 	\sum_{\bu \in \overline{\emptyset}} \big( d_\bu \otimes \id + \id \otimes d_\bu \big)(x \otimes x),
 	\end{equation*}
-	as claimed.
+	the claim is proven in this case.
 	Let $q = n-i$ and assume $q \in \{1,\dots,n\}$.
 	We want to prove that
 	\begin{equation*}
@@ -151,7 +154,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{lemma}
 
 \begin{proof}
-	Let us consider the right hand side of (\cref{e:big lemma})
+	Let us consider the right hand side of \eqref{e:big lemma}
 	\begin{equation} \label{e:big lemma rhs}
 	\sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1}\, +\ d_{U^1} \otimes d_{U^0.}
 	\end{equation}
@@ -168,21 +171,21 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ odd}}}
 	d_{(U \sm u_{q+1})^0} \otimes d_{u_{q+1}.(U \sm u_{q+1})^1} \\ +
 	&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{u_1.(U \sm u_1)^0} \otimes d_{(U\sm u_1)^1} \quad +
-	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^0} \otimes d_{u_1.(U\sm u_1)^1.}
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^0} \otimes d_{u_1.(U\sm u_1)^1} \ .
 	\end{split}
 	\end{equation}
-	With notation that we introduce below we will have by definition that \eqref{e:big lemma rhs w/o endpoints} is equal to
-	\begin{equation} \label{e:big lemma rhs promising} 
+	With notation introduced below we will have that \eqref{e:big lemma rhs w/o endpoints} is equal to
+	\begin{equation*}
 	\sum_{{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
 	\sum_{{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
 	\sum_{{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
-	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1.}
-	\end{equation}
+	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ ,
+	\end{equation*}
 	and that the left hand side of \eqref{e:big lemma} is equal to
-	\begin{equation} \label{e:big lemma lhs}
+	\begin{equation*}
 	\sum_{L} d_{\bu.U^0} \otimes d_{U^1}\ +\ \ 
-	\sum_{R} d_{U^0} \otimes d_{\bu.U^1.}
-	\end{equation}
+	\sum_{R} d_{U^0} \otimes d_{\bu.U^1} \ .
+	\end{equation*}
 	
 	For any $U = \{u_1 < \cdots < u_q\} \in \P_{q}(n)$ and $\bu \in \overline{U}$ define when possible
 	\begin{equation*}
@@ -193,16 +196,37 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	
 	\input{diagramatic}
 	
-	With this notation it is a direct observation that \eqref{e:big lemma rhs w/o endpoints}, the right hand side of \eqref{e:big lemma}, is equal to \eqref{e:big lemma rhs promising}; and that the left hand side of \eqref{e:big lemma} is equal to \eqref{e:big lemma lhs}.
-	
-	To show that \eqref{e:big lemma rhs promising} and \eqref{e:big lemma lhs} are equal we need the following identities:
+	With this notation the claim of this lemma is equivalent to 
+	\begin{align*}
+	\sum_{L} d_{\bu.U^0} \otimes d_{U^1}\ +\ \ 
+	\sum_{R} d_{U^0} \otimes d_{\bu.U^1} \ & = \
+	\sum_{{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
+	\sum_{{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \\ \ & +\ \ 
+	\sum_{{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
+	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ ,
+	\end{align*}
+	or, equivalently, that their difference is $0$.
+	Explicitly
+	\begin{equation*}
+	\sum_{\overline{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
+	\sum_{\overline{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
+	\sum_{\overline{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
+	\sum_{\overline{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ = \ 0.
+	\end{equation*}
+	This follows from the identities
 	\begin{equation} \label{e:big lemma four identities}
 	\overline{R}_{min}^{e,e} = \overline{L}_{max}^{e,e}\ , \qquad
 	\overline{R}_{min}^{e,o} = \overline{R}_{max}^{o,e}\ , \qquad 
 	\overline{L}_{min}^{o,e} = \overline{L}_{max}^{e,o}\ , \qquad
-	\overline{L}_{min}^{o,o} = \overline{R}_{max}^{o,o}.
+	\overline{L}_{min}^{o,o} = \overline{R}_{max}^{o,o}\ ,
 	\end{equation}
-	For a pair $U \in \P_q(n)$ and $\bu \in \overline{U}$ define when possible the sets $V^\bu_U = \{v_1 < \cdots < v_q\}$ and $W_U^\bu = \{w_1 < \cdots < w_q\}$ by
+	which we now prove.
+	
+	For a pair $U \in \P_q(n)$ and $\bu \in \overline{U}$ define when possible the sets 
+	\begin{equation*}
+	V^\bu_U = \{v_1 < \cdots < v_q\}, \qquad W_U^\bu = \{w_1 < \cdots < w_q\},
+	\end{equation*}
+	by
 	\begin{align*}
 	v_i = 
 	\begin{cases}
@@ -218,7 +242,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\end{align*}
 	Intuitively, $V_U^\bu$ is obtained from $U$ by replacing with $\bu$ the largest element in $U$ that is less than $\bu$.
 	A similar description applies to $W_U^\bu$.
-	When $U$ and $\bu$ are clear from the context we simplify notation of $V^\bu_U$ and $W^\bu_U$ to $V$ and $W$ respectively.
+	When $U$ and $\bu$ are clear from the context we simplify notation respectively writing $V$ and $W$ instead of $V^\bu_U$ and $W^\bu_U$, and $l$ and $r$ instead of $l_U^\bu$ and $r_U^\bu$.
 	Notice that
 	\begin{equation*}
 	l.V = \bu.U = r.W
@@ -227,25 +251,17 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\begin{equation*}
 	\ind_{V}(u) = \ind_{U}(u) = \ind_{W}(u).
 	\end{equation*}
-	We show the proof of the first identity in \eqref{e:big lemma four identities}.
-	Let us consider $U^0 \otimes \bu.U^1 \in \overline{R}_{min}^{e, e}$ which by definition implies $\ind_{\bu.U}(\bu) = \ind_{\bu.U}(l_{U}^\bu) = 0$.
+	
+	Let us now show that $\overline{R}_{min}^{e,e} = \overline{L}_{max}^{e,e}$.
+	Consider $U^0 \otimes \bu.U^1 \in \overline{R}_{min}^{e, e}$ which by definition satisfies $\ind_{\bu.U}(\bu) = \ind_{\bu.U}(l_{U}^\bu) = 0$.
 	This is equivalent to $\bu \in V^1$ and $l \in U^0$.
 	Therefore, 
 	\begin{equation*}
-	U^0 \otimes \bu.U^1 =  l_{U}^\bu.V^0 \otimes V^1,
+	U^0 \otimes \bu.U^1 = \, l.V^0 \otimes V^1
 	\end{equation*}
-	and since $l_{U}^\bu.V^0 \otimes V^1$ is an element in $\overline{L}_{max}^{e,e}$ we have the inclusion $\overline{R}_{max}^{e,e} \subseteq \overline{L}_{max}^{e,e}$\,.
-	Similarly, the element $\bu.U^0 \otimes U^1 \in \overline{L}_{max}^{e,e}$ is equal to $W^0 \otimes r.W^1 \in \overline{R}_{min}^{e,e}$ which gives the other inclusion and proves the first identity in \eqref{e:big lemma four identities}.
-	The others are proven analogously.
-	
-	The identities in \eqref{e:big lemma four identities} imply that
-	\begin{equation} \label{e:big lemma zero sum}
-	\sum_{\overline{L}_{min}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \
-	\sum_{\overline{L}_{max}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \
-	\sum_{\overline{R}_{max}^{e}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
-	\sum_{\overline{R}_{min}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ =\ 0,
-	\end{equation}
-	and, therefore, that $\eqref{e:big lemma lhs}$ is equal to \eqref{e:big lemma rhs promising} as claimed.
+	and, since $l.V^0 \otimes V^1$ is an element in $\overline{L}_{max}^{e,e}$, we have $\overline{R}_{max}^{e,e} \subseteq \overline{L}_{max}^{e,e}$\,.
+	Similarly, an element $\bu.U^0 \otimes U^1 \in \overline{L}_{max}^{e,e}$ is equal to $W^0 \otimes r.W^1 \in \overline{R}_{min}^{e,e}$ which gives the other inclusion and proves the first identity in \eqref{e:big lemma four identities}.
+	The others are proven analogously, and the lemma follows.
 \end{proof}
 
 We can now provide the proof of \cref{l:main} and of our main theorem.

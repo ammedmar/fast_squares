@@ -1,26 +1,29 @@
 
 \section{New algorithm for Steenrod squares} \label{s:algorithm}
 
-For a finite simplicial complex $X$ we now present an algorithm constructing a representative $\beta$ of $Sq^k([\alpha])$ given a representative $\alpha$ of $[\alpha]$.
+Throughout this section we use $\Delta_i$ to denote the maps introduced in \cref{d:cup-i coproducts}.
 
-Let $-n$ be the degree of the cocycle $\alpha$.
-If $k$ is a negative integer or greater than $n$ we take $\beta = 0$ since $Sq^k([\alpha]) = 0$.
-If $k = 0$, we take $\beta = \alpha$ since $Sq^k([\alpha]) = [\alpha]$.
+For a finite simplicial complex we now present an algorithm constructing a representative cocycle $\beta$ of $Sq^k([\alpha])$ given a cocycle representative $\alpha$ of the cohomology class $[\alpha]$.
+
+Let $-n$ be the degree of $\alpha$.
+If $k$ is a negative integer or greater than $n$ we take $\beta = 0$ since $Sq^k([\alpha]) = 0$ in that case.
+If $k = 0$, we take $\beta = \alpha$ since $Sq^0([\alpha]) = [\alpha]$ as explained in \cref{e:Sq0 is the identity}.
 
 Let us assume $k \in \{1, \dots, n\}$.
-Consider $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ such that
+Consider $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ and
 \begin{equation*}
 \alpha_i(a_j) = \begin{cases}
-1 & i=j, \\ 0 & i\neq j,
+1 & i=j, \\ 0 & i\neq j.
 \end{cases}
 \end{equation*}
-and let $B \subseteq X_{n+k}$ be the output of algorithm $SQ_n^k$ applied to $A$, please consult Figure~\cref{f:algorithm}.
-\begin{figure}[h]
+Consider the algorithm $SQ_n^k$ presented in \cref{f:algorithm} and let $B \subseteq X_{n+k}$ be its output when the input is $A$.
+\begin{figure}
 	\input{stsq}
 	\caption{Algorithm producing for a simplicial complex $X$, non-negative integer $n$, integer $k$ between $1$ and $n$, and cocycle $\alpha$ presented as a set $A \subseteq X_n$, a cocycle representing $Sq^k([\alpha])$ returned as a set $B \subseteq X_{n+k}$.
 	We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$.}
 	\label{f:algorithm}
 \end{figure}
+
 We will prove the correctness of this algorithm by showing that if $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, then
 \begin{equation*}
 \beta(x) =
@@ -29,19 +32,31 @@ We will prove the correctness of this algorithm by showing that if $\beta = (\al
 0 & x \not\in B.
 \end{cases}
 \end{equation*}
+Let us first record a form of freeness satisfied by the cup-$i$ coproducts.
 
 \begin{lemma} \label{l:freeness}
-	For any $x \in X_{n+k}$ and $i,j \in \{1,\dots,m\}$ we have:
+	Consider a set of basis cochains $\{\gamma_i\}_{i=1}^m$ in $C^{-n}(X; \F_2)$. For $x \in X_{n+k}$ and $i, j \in \{1,\dots,m\}$ we have:
 	\begin{enumerate}
-		\item if $i=j$, then $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) = 0$,
-		\item if $i \neq j$ and $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$, then $(\alpha_j \otimes \alpha_i)\Delta_{n-k}(x) = 0$.
+		\item if $i=j$ and $k>0$, then $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) = 0$,
+		\item if $i \neq j$ and $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) = 0$.
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
+	Recall that
+	\begin{equation*}
+	\Delta_{n-k}(x) \ = \! \sum_{\substack{U \subseteq \{0, \dots, n\} \\ \vert U \vert = k}}
+	d_{U^0}(x) \otimes d_{U^1}(x).
+	\end{equation*}
+	
+	If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then there exists a non-empty $U$ in the sum with $U^0 = U^1$, which is impossible since $U^0 \cap U^1 = \emptyset$.
+	
+	If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$ and $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) \neq 0$, then there are distinct subsets $V$ and $W$ in the sum such that $V^0 = W^1$ and $W^0 = V^1$, which is impossible since $V = V^0 \cup V^1 = W^0 \cup W^1 = W$.
+	
 	Let $U, V \subseteq \{0, \dots, n\}$ be any pair of subsets. If at least one of them is not empty, then $U^0 \neq V^1$.
 \end{proof}
 
+Let us now return to the correctness of the algorithm.
 For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented by $x$ is given by 
 \begin{align*}
 \beta(x) & =
@@ -52,7 +67,7 @@ For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented 
 \Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j\Big)
 \Delta_{n-k}(x).
 \end{align*}
-By \cref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ and $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of two element subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
+By \cref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ or $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
 This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^0}(x) \cup d_{U^1}(x) = x$.
 
 Let us formalize these observations.
@@ -62,7 +77,7 @@ Let $\eval \colon A \to \F_2$ be the map sending $\{a_i, a_j\}$ to $1$ if there 
 Notice that if such $U$ exists then it is unique.
 With this notation we have
 \begin{equation*}
-\beta(x) = \sum_{\pi^{-1}(x)} \eval(\{a_i, a_j\}).
+\beta(x) \ = \! \sum_{\{a_i, a_j\} \in \pi^{-1}(x)} \! \eval(\{a_i, a_j\}).
 \end{equation*}
 We will give a computational characterization of $\eval(\{a_i, a_j\}) = 1$ after introducing some more notation.
 
@@ -88,4 +103,4 @@ being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different valu
 \ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}.
 \end{equation*}
 
-Therefore, for any $x \in X_{n+k}$ we have $\beta(x) = 1$ if and only if the set of pairs $\{a_i, a_j\}$ in $\pi^{-1}(x)$ with $\eval(\{a_i, a_j\}) = 1$ is even; which is equivalent to the condition $x \in B$.
+Therefore, for any $x \in X_{n+k}$ we have $\beta(x) = 1$ if and only if the set of pairs $\{a_i, a_j\}$ in $\pi^{-1}(x)$ with $\eval(\{a_i, a_j\}) = 1$ is odd; which is equivalent to the condition $x \in B$.
