@@ -52,8 +52,6 @@ Let us first record a form of freeness satisfied by the cup-$i$ coproducts.
 	If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then there exists a non-empty $U$ in the sum with $U^0 = U^1$, which is impossible since $U^0 \cap U^1 = \emptyset$.
 	
 	If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$ and $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) \neq 0$, then there are distinct subsets $V$ and $W$ in the sum such that $V^0 = W^1$ and $W^0 = V^1$, which is impossible since $V = V^0 \cup V^1 = W^0 \cup W^1 = W$.
-	
-	Let $U, V \subseteq \{0, \dots, n\}$ be any pair of subsets. If at least one of them is not empty, then $U^0 \neq V^1$.
 \end{proof}
 
 Let us now return to the correctness of the algorithm.
@@ -71,7 +69,7 @@ By \cref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ or $\
 This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^0}(x) \cup d_{U^1}(x) = x$.
 
 Let us formalize these observations.
-Let $\widetilde{A}$ be the set of all two element subsets $\{a_i, a_j\} \subseteq A$ with $a_i \cup a_j \in X_{n+k}$.
+Let $\widetilde{A}$ be the set of all two-element subsets $\{a_i, a_j\} \subseteq A$ with $a_i \cup a_j \in X_{n+k}$.
 There is a natural map $\pi \colon \widetilde{A} \to X_{n+k}$ sending $\{a_i, a_j\}$ to $a_i \cup a_j$.
 Let $\eval \colon A \to \F_2$ be the map sending $\{a_i, a_j\}$ to $1$ if there exist $U \subseteq \{0,\dots,n\}$ of cardinality $k$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and let $\eval(\{a_i, a_j\}) = 0$ otherwise.
 Notice that if such $U$ exists then it is unique.

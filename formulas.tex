@@ -10,7 +10,7 @@ U = \{u_1 < \dots < u_r\} \subseteq \{0, \dots, n\}
 we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(x) = x$.
 
 \begin{definition} \label{d:cup-i coproducts}	
-	For any simplicial complex $X$ and an integer $i$, the \textit{cup-$i$ coproduct}
+	For any simplicial complex $X$ and integer $i$, the \textit{cup-$i$ coproduct}
 	\begin{equation*}
 	\Delta_i : C_\bullet(X; \F_2) \to C(X; \F_2)^{\otimes 2}_\bullet
 	\end{equation*}
@@ -18,7 +18,7 @@ we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(
 	\begin{equation} \label{equation: simplicial cup-i coproducts}
 	\Delta_i(x) = \sum d_{U^0}(x) \otimes d_{U^1}(x)
 	\end{equation}
-	otherwise, where the sum is taken over all sets $U = \{u_1 < \cdots < u_{n-i}\}$ with $u_j \in \{0, \dots, n\}$ and where
+	otherwise, where the sum is taken over all subsets $U = \{u_1 < \cdots < u_{n-i}\} \subseteq \{0, \dots, n\}$ and
 	\begin{equation*}
 	U^0 = \{u_j \in U\mid u_j \equiv j \text{ mod } 2\}, \qquad
 	U^1 = \{u_j \in U\mid u_j \not\equiv j \text{ mod } 2\}.
@@ -69,7 +69,7 @@ We state these claims as two lemmas.
 	If $f_\bullet(x) = 0$ then there exists consecutive elements $v_j$ and $v_{j+1}$ with $f(v_j) = f(v_{j+1})$.
 	To prove that $(f_\bullet \otimes f_\bullet) \circ \Delta(x) = 0$ it suffices to show that for any $U \in \P_{n-i}(n)$ either the simplex $f \big(d_{U^0}(x) \big)$ or $f \big( d_{U^1}(x) \big)$ contains both $v_j$ and $v_{j+1}$.
 	If $U$ does not contain both $j$ and $j+1$ this is immediate.
-	If it does we have that	$j, j+1 \in U^0$ or $j, j+1 \in U^1$ since they are consecutive so $\ind_U(i) = \ind_U(i+1)$.
+	If it does, we have that $j, j+1 \in U^0$ or $j, j+1 \in U^1$ since they are consecutive hence $\ind_U(i) = \ind_U(i+1)$.
 \end{proof}
 
 We devote \cref{s:proof} to the proof of the following lemma, which together with \cref{l:naturality} imply \cref{t:main}.
