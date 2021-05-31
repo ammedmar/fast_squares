@@ -32,46 +32,34 @@ pdfpagelabels]{hyperref}
 	\textup{2020} Mathematics Subject Classification}
 \makeatother
 
-\newcommand{\W}{\mathsf{W}}
+% commands
 \newcommand{\F}{\mathbb{F}}
 \renewcommand{\S}{\mathrm{S}}
+\renewcommand{\P}{\mathrm{P}}
 \renewcommand{\k}{\Bbbk}
-\renewcommand{\th}{\mathrm{th}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\ind}{\mathrm{ind}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\simplex}{\bm{\Delta}}
+\newcommand{\chains}{C_\bullet}
+\newcommand{\chain}[1]{C_{#1}}
+\newcommand{\cochains}{C^\bullet}
+\newcommand{\cochain}[1]{C^{#1}}
+\newcommand{\suspension}{\Sigma}
+\newcommand{\sm}{\smallsetminus}
+\renewcommand{\th}{^\mathrm{th}}
 \DeclareMathOperator{\xor}{\triangle}
 \DeclareMathOperator{\eval}{eval}
 \DeclareMathOperator{\pos}{pos}
 \newcommand{\bu}{{\bar{u}}}
-\newcommand{\sm}{\smallsetminus}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\RP}{\mathbb{R}\mathrm{P}}
-\newcommand{\suspension}{\Sigma}
-
-\newcommand{\Z}{\mathbb{Z}}
-\renewcommand{\P}{\mathrm{P}}
-\newcommand{\D}{\mathrm{D}}
-\newcommand{\chains}{C_\bullet}
-\newcommand{\cochains}{C^\bullet}
-\newcommand{\Hom}{\mathrm{Hom}}
-\newcommand{\Mod}{\mathbf{Mod}_{\F}}
-\newcommand{\cMod}{\mathbf{Mod}_{\F}^{\simplex}}
-\newcommand{\Ch}{\mathbf{Ch}_{\F}}
-\newcommand{\cCh}{\mathbf{Ch}_{\F}^{\simplex}}
-\newcommand{\sSet}{\mathbf{sSet}}
-\newcommand{\id}{\mathrm{id}}
-\newcommand{\ind}{\mathrm{ind}}
-\newcommand{\p}{\mathrm{p}}
-\newcommand{\q}{\mathrm{q}}
-\newcommand{\Sq}{\mathrm{Sq}}
-\newcommand{\simplex}{\bm{\Delta}}
-
-\DeclareMathOperator*{\displaytensor}{\otimes}
 
 % environment
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{claim}[theorem]{Claim}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
@@ -79,13 +67,12 @@ pdfpagelabels]{hyperref}
 \newenvironment{tab}{\list{}{\rightmargin 0pt}\item\relax}{\endlist}
 
 % other
-\newcommand{\anibal}[1]{\textcolor{blue}{\underline{Anibal}: #1}}
-\renewcommand{\th}{^\mathrm{th}}
+%\newcommand{\anibal}[1]{\textcolor{blue}{\underline{Anibal}: #1}}
 
 
 \begin{document}	
 	\title{New formulas for cup-$i$ products and fast computation of Steenrod squares}
-	\author[Anibal Medina-Mardones]{Anibal M. Medina-Mardones}
+	\author{Anibal M. Medina-Mardones}
 	\address{Max Planck Institute for Mathematics, Bonn, Germany}
 	\address{Department of Mathematics, University of Notre, Notre Dame, IN, USA}
 	\email{ammedmar@mpim-bonn.mpg.de}

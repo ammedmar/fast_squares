@@ -1,5 +1,5 @@
 
-\section{Cup-$i$ products and Steenrod squares} \label{s:squares}
+\section{Cup-$i$ constructions and Steenrod squares} \label{s:squares}
 
 Let $\F_2$ be the field with two elements and $\S_2$ the group with only one non-identity element $T$.
 In this section we define for any simplicial complexes $X$ and every integer $k$ the Steenrod $k^{\mathrm{th}}$ square
@@ -16,20 +16,25 @@ Consider the chain complex
 \end{tikzcd}
 \end{equation*}
 with its natural $\S_2$-action.
+For any simplicial complex $X$, the chain complex $W \otimes \chains(X; \F_2)$ has an $\S_2$-action concentrated in the left factor, and $\chains(X; \F_2)^{\otimes 2}$ has one given by transposition of factors.
 
-For any simplicial complex $X$, consider an $\S_2$-equivariant chain map
+We are interested in $\S_2$-equivariant chain maps
 \begin{equation} \label{e:steenrod diagonal}
 \Delta_X \colon W \otimes \chains(X; \F_2) \to \chains(X; \F_2)^{\otimes 2}
 \end{equation}
-where the $\S_2$-action in the domain is concentrated in $W$ and in the target is the transposition of factors $T(a \otimes b) = b \otimes a$.
-We say that this collection of maps is natural if for any simplicial map $f \colon X \to Y$ we have $\Delta_Y \circ f_\bullet = f_\bullet^{\otimes 2} \circ \Delta_X$, and we say that is \textit{cup-$i$ construction} if it is natural and the image of a $0$-simplex is not 0.
+defined naturally for every simplicial complex, i.e., such that for any simplicial map $f \colon X \to Y$ we have $\Delta_Y \circ f_\bullet = f_\bullet^{\otimes 2} \circ \Delta_X$.
+We say this is a \textit{cup-$i$ construction} if $\Delta_X \neq 0$ for a simplicial complex $X$ with a single vertex.
 
-A cup-$i$ construction is determined by a collection $\{\Delta_i\}_{i \in \Z}$ of natural linear maps $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_0 \big([v_0]\big) \neq 0$ for any vertex $v_0$ and
+A cup-$i$ construction is determined by a collection $\{\Delta_i\}_{i \in \Z}$ of natural linear maps $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_0 \big([v]\big) \neq 0$ for any vertex $v$ and
 \begin{equation} \label{e:boundary of cup-i}
 (1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
 \end{equation}
 for any $i \in \Z$.
 The correspondence is given by $\Delta_i = \Delta(e_i \otimes -)$, and we refer to the map $\Delta_i$ as the \textit{cup-$i$ coproduct} of the cup-$i$ construction, and to the linear dual $\smallsmile_i$ of $\Delta_i$ as its \textit{cup-$i$ product}.
+Explicitly, given two cochains $\alpha$ and $\beta$ and a chain $c$ we have
+\begin{equation*}
+(\alpha \smallsmile_i \beta)(c) = (\alpha \otimes \beta) \Delta_i(c).
+\end{equation*}
 
 Let us consider a cup-$i$ construction $W \otimes C_\bullet \to C_\bullet^{\otimes 2}$.
 Using the linear duality functor and passing to fix points gives a chain map
@@ -39,7 +44,7 @@ Using the linear duality functor and passing to fix points gives a chain map
 \Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2},
 \end{tikzcd}
 \end{equation*}
-which we can complete, using the adjunction isomorphisms of \cref{s:preliminaries}, to a commutative diagram
+which we can complete, using isomorphisms \eqref{e:adjunction isomorphism} and \eqref{e:invariant hom iso hom coinvariants} of \cref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
 \Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
@@ -51,7 +56,7 @@ C^\bullet \arrow[u, "doubleing"] \arrow[r, dashed]&
 \end{tikzcd}
 \end{equation*}
 where the choice of coefficients ensures the \textit{doubleing map} $\alpha \mapsto \alpha \otimes \alpha$ is linear.
-Using the adjunction isomorphism \eqref{e:adjunction isomorphism}, the dashed arrow defines a linear map
+Using the adjunction isomorphism, the dashed arrow defines a linear map
 \begin{equation} \label{e:Steenrod squares parameterized}
 \begin{tikzcd}[row sep=0pt, column sep = tiny]
 C^\bullet \otimes W(2)_{\mathrm S_2} \arrow[r] &[-10pt] C^\bullet \\
@@ -59,7 +64,7 @@ C^\bullet \otimes W(2)_{\mathrm S_2} \arrow[r] &[-10pt] C^\bullet \\
 \end{tikzcd}
 \end{equation}
 descending to mod $2$ cohomology.
-The \textit{Steenrod squares}, whose importance in homotopy theory is hard to overstate, are defined by reindexing this map.
+The \textit{Steenrod squares} are defined by reindexing this map.
 Explicitly,
 \begin{equation*}
 \begin{tikzcd}[row sep=0pt, column sep=tiny]
@@ -69,12 +74,16 @@ Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
 \end{equation*}
 
 \begin{remark}
+	For the interested reader we mention that a cup-$i$ construction also define, through a well known categorical construction, natural cup-$i$ products on the normalized cochains of simplicial sets \cite{friedman2012simplicial} and, consequently, Steenrod squares in their mod 2 cohomology.
+\end{remark}
+
+\begin{remark}
 	Although in this article we do not use the algebra structure on the mod 2 cohomology of spaces, we remark that the cup-$0$ product of a cup-$i$ construction represents the product of this algebra.
-	Explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $\Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the name of these operations.
+	Explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the name of the $Sq^k$ operations.
 \end{remark}
 
 \begin{remark}
 	For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\mathrm S_2$.
-	Steenrod later used this group homology viewpoint to define non-constructively operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology} for any prime $p$.
+	Steenrod used this group homology viewpoint to non-constructively define operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology} for any prime $p$.
 	To define these constructively, analogues of the $\Delta_i$ maps for odd primes were introduced in \cite{medina2020odd} and implemented in \cite{medina2021computer}.
 \end{remark}

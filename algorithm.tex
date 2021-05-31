@@ -1,45 +1,47 @@
 
 \section{New algorithm for Steenrod squares} \label{s:algorithm}
 
-Throughout this section we use $\Delta_i$ to denote the maps introduced in \cref{d:cup-i coproducts}.
+%Throughout this section we use $\Delta_i$ to denote the $i\th$ map introduced in \cref{d:cup-i coproducts}.
 
-For a finite simplicial complex we now present an algorithm constructing a representative cocycle $\beta$ of $Sq^k([\alpha])$ given a cocycle representative $\alpha$ of the cohomology class $[\alpha]$.
+For a finite simplicial complex $X$ we now present an algorithm effectively constructing a cocycle representing $Sq^k([\alpha])$ given a cocycle $\alpha$.
 
-Let $-n$ be the degree of $\alpha$.
-If $k$ is a negative integer or greater than $n$ we take $\beta = 0$ since $Sq^k([\alpha]) = 0$ in that case.
-If $k = 0$, we take $\beta = \alpha$ since $Sq^0([\alpha]) = [\alpha]$ as explained in \cref{e:Sq0 is the identity}.
-
-Let us assume $k \in \{1, \dots, n\}$.
-Consider $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ and
+Let $-n$ be the degree of $\alpha$ and let $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ and
 \begin{equation*}
 \alpha_i(a_j) = \begin{cases}
 1 & i=j, \\ 0 & i\neq j.
 \end{cases}
 \end{equation*}
-Consider the algorithm $SQ_n^k$ presented in \cref{f:algorithm} and let $B \subseteq X_{n+k}$ be its output when the input is $A$.
-\begin{figure}
-	\input{stsq}
-	\caption{Algorithm producing for a simplicial complex $X$, non-negative integer $n$, integer $k$ between $1$ and $n$, and cocycle $\alpha$ presented as a set $A \subseteq X_n$, a cocycle representing $Sq^k([\alpha])$ returned as a set $B \subseteq X_{n+k}$.
-	We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$.}
-	\label{f:algorithm}
-\end{figure}
-
-We will prove the correctness of this algorithm by showing that if $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, then
-\begin{equation*}
+If $k < 0$ or $k > n$, we have by definition that $Sq^k([\alpha]) = 0$ and we can take $0$ as its representative.
+If $k = 0$, \cref{ex:Sq0 is the identity} shows that $Sq^0([\alpha]) = [\alpha]$ so we can take $\alpha$ as its representative.
+For $k \in \{1, \dots, n\}$ we will construct a set $B \subseteq X_{n+k}$ such that if $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, where $\Delta_{n-k}(-)$ is presented in \cref{d:cup-i coproducts}, we have
+\begin{equation} \label{e:correctness}
 \beta(x) =
 \begin{cases}
 1 & x \in B, \\
-0 & x \not\in B.
+0 & x \not\in B,
 \end{cases}
-\end{equation*}
-Let us first record a form of freeness satisfied by the cup-$i$ coproducts.
+\end{equation}
+for any basis element $x \in X_{n+k}$.
+
+Consider \cref{a:algorithm} presented in \cref{f:algorithm} and let $B \subseteq X_{n+k}$ be its output when the input is $A$.
+
+\begin{figure}
+	\input{stsq}
+	\caption{Algorithm producing for a simplicial complex $X$, non-negative integer $n$, integer $k$ between $1$ and $n$, and cocycle $\alpha$ presented as a set $A \subseteq X_n$, a cocycle representing $Sq^k([\alpha])$ returned as a set $B \subseteq X_{n+k}$.
+		We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$.}
+	\label{f:algorithm}
+\end{figure}
+
+Before verifying \eqref{e:correctness}, let us record a property satisfied by our cup-$i$ construction that can be thought of as a form of ``freeness".
 
 \begin{lemma} \label{l:freeness}
-	Consider a set of basis cochains $\{\gamma_i\}_{i=1}^m$ in $C^{-n}(X; \F_2)$. For $x \in X_{n+k}$ and $i, j \in \{1,\dots,m\}$ we have:
+	Let $\gamma_1 + \cdots + \gamma_m$ be the basis representation of a cochain in $C^{-n}(X; \F_2)$.
+	For integers $k$ and $i, j \in \{1, \dots, m\}$ with $i \neq j$, and any $x \in X_{n+k}$:
 	\begin{enumerate}
-		\item if $i=j$ and $k>0$, then $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) = 0$,
-		\item if $i \neq j$ and $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) = 0$.
+		\item if $k \neq 0$, then $(\gamma_i \otimes \gamma_i)\Delta_{n-k}(x) = 0$,
+		\item if $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) = 0$,
 	\end{enumerate}
+	where $\Delta_{n-k}$ is the $(n-k)\th$ map introduced in \cref{d:cup-i coproducts}.
 \end{lemma}
 
 \begin{proof}

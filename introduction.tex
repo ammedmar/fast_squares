@@ -4,7 +4,7 @@
 For effective computations involving topological spaces, discrete models are indispensable.
 The category of simplicial complexes provides models not only for spaces but also, through the simplicial approximation theorem, for continuous maps between them.
 We can obtain from these combinatorial models algebraic ones using the simplicial chains construction $\chains$.
-In this algebraic representation, invariants of spaces such as their betti numbers can be readily computed through linear algebra alone.
+In this algebraic representation, invariants of spaces such as their betti numbers can be readily computed using linear algebra alone.
 
 In this article we focused on finer invariants of spaces enriching their mod 2 cohomology and going beyond betti numbers.
 We are referring to the celebrated Steenrod squares
@@ -34,16 +34,16 @@ These \textit{cup-$i$ coproducts} and their linear dual products are important i
 For example, in condensed matter physics they are used to describe action functionals of topological field theories \cite{gaiotto2016spin, bhardwaj2017state, kapustin2017fermionic}, in higher category theory, they can be used to deduce the nerve of $n$-categories \cite{medina2020globular}, and in convex geometry, they are connected to projections of cyclic polytopes \cite{kapranov1991combinatorial}.
 
 In this article we introduce a new cup-$i$ construction.
-We are particularly interested in simplicial complexes, but we remark that our formulas apply to the more general context of simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
+We are particularly interested in simplicial complexes, but our formulas apply in the more general context of simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
 
 Several cup-$i$ constructions have been given in the literature starting with Steenrod's original formulas~\cite{steenrod47}.
 These include those resulting from the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez1999combinatorial, gonzalez2003computation, gonzalez2005hpt} based on the EZ-AW chain contraction, the operadic methods of McClure-Smith \cite{mcclure03cochain} and Berger-Fresse \cite{berger04combinatorial}, and the prop viewpoint of the author \cite{medina2020prop1, medina2018prop2}.
-The question of comparing these different cup-$i$ constructions will be addressed via an axiomatic characterization \cite{medina2018axiomatic} showing that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
+The question of comparing these different cup-$i$ constructions will be addressed via an axiomatic characterization in \cite{medina2018axiomatic}, where it is shown that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
 
-We highlight three uses of our formulas:
-1) They are key to prove the axiomatic characterization of cup-$i$ products just mentioned.
-2) They were reinterpreted by Cantero-Mor\'an \cite{cantero2020khovanov} in the context of augmented semi-simplicial objects in the Burnside category to define Steenrod squares in the mod 2 Khovanov homology of knots \cite{khovanov2000categorification}.
-3) They lead to fast computations of Steenrod square as describe next.
+We highlight three uses of our formulas.
+1) They are key to prove the axiomatic characterization of cup-$i$ products mentioned above.
+2) In \cite{cantero2020khovanov}, Cantero-Mor\'an defined Steenrod squares in mod 2 Khovanov homology \cite{khovanov2000categorification} by reinterpreting them in the context of augmented semi-simplicial objects in the Burnside category.
+3) They lead to fast computations of Steenrod square as we describe next.
 
 For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez1999combinatorial} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 We use our formulas to introduce a new algorithm for this task, and present a performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.

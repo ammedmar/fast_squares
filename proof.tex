@@ -1,8 +1,10 @@
 
 \section{Proof of \cref{l:main}} \label{s:proof}
 
+Throughout this section $X$ denotes a simplicial complex and $\Delta_i$ the $i\th$ map introduced in \cref{d:cup-i coproducts}.
+
 To aid readability of the relatively long proof of \cref{l:main} we split it into four lemmas.
-We start with some notation.
+We start by introducing some notation.
 
 \begin{definition}
 	For $n \geq0$ and $q \in \{0, \dots, n\}$, let $\P_q(n)$ be the set of all sets $U = \{u_1 < \cdots < u_q\}$ with $u_j \in \{0, \dots, n\}$.
@@ -17,17 +19,15 @@ For any $U \in \P_q(n)$, the \textit{index function} of $U$ is given by
 /tikz/column 1/.append style={anchor=base east},
 /tikz/column 2/.append style={anchor=base west}]
 \ind_U \colon U \arrow[r] & \F_2 \\
-u_i \arrow[r, mapsto] & u_i + i.
+u_i \arrow[r, mapsto] & u_i + i,
 \end{tikzcd}
 \end{equation*}
-The preimage of $\varepsilon \in \F_2$ by $\ind_{U}$ is denoted by $U^\varepsilon \subseteq U$.
+and we denote the preimage of $\varepsilon \in \F_2$ by $U^\varepsilon \subseteq U$.
 
-For the rest of this section we consider a simplicial complex $X$.
-With this notation \cref{d:cup-i coproducts} reads
+With this notation, for any basis element $x \in X_n$ and $i \in \{0, \dots, n\}$ we have
 \begin{equation*}
-\Delta_{n-q}(x)\ =\! \sum_{U \in \P_q(n)} d_{U^0}(x) \otimes d_{U^1}(x).
+\Delta_{i}(x)\ =\! \sum_{U \in \P_{n-i}(n)} d_{U^0}(x) \otimes d_{U^1}(x).
 \end{equation*}
-for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 
 \begin{lemma} \label{l:partial dU = dxU}
 	For any $x \in X_n$ and $U \in \P_{q}(n)$
@@ -97,7 +97,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{proof}
 
 \begin{lemma} \label{l:boundary of Delta}
-	For any $x \in X_n$ and integer $i \in \{0, \dots, n\}$
+	For any $x \in X_n$ and $i \in \{1, \dots, n\}$
 	\begin{equation} \label{e:boundary of Delta}
 	(\partial \circ \Delta_i + \Delta_i \circ \partial)(x) \ = \! 
 	\sum_{\substack{U \in \P_{n-i}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
@@ -105,16 +105,15 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{lemma}
 
 \begin{proof}
-	If $i = n$ then $\Delta_n \circ \partial_n (x) = 0$, and since
-	\begin{equation*}
-	\partial_{2n} \circ \Delta_n (x) \ = \
-	\partial_{2n} (x \otimes x) \ = \
-	\sum_{i=0}^n \big( d_i \otimes \id + \id \otimes d_i \big)(x \otimes x) \ = \
-	\sum_{\bu \in \overline{\emptyset}} \big( d_\bu \otimes \id + \id \otimes d_\bu \big)(x \otimes x),
-	\end{equation*}
-	the claim is proven in this case.
-	Let $q = n-i$ and assume $q \in \{1,\dots,n\}$.
-	We want to prove that
+%	If $i = n$ then $\Delta_n \circ \partial_n (x) = 0$, and since
+%	\begin{equation*}
+%	\partial_{2n} \circ \Delta_n (x) \ = \
+%	\partial_{2n} (x \otimes x) \ = \
+%	\sum_{i=0}^n \big( d_i \otimes \id + \id \otimes d_i \big)(x \otimes x) \ = \
+%	\sum_{\bu \in \overline{\emptyset}} \big( d_\bu \otimes \id + \id \otimes d_\bu \big)(x \otimes x),
+%	\end{equation*}
+%	the claim is proven in this case.
+	Let $q = n-i$, we want to prove that
 	\begin{equation*}
 	\Big( \partial_{2n-q} \circ \Delta_{n - q} \, +\, \Delta_{n-q} \circ \partial_n \Big) (x) \ = \! 
 	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x).
@@ -146,24 +145,30 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 \end{proof}
 
 \begin{lemma} \label{l:big lemma}  
-	For any $q \in \{0, \dots, n-1\}$
-	\begin{equation} \label{e:big lemma}
-	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} d_{\bu.U^0} \otimes d_{U^1}\, +\ d_{U^0} \otimes d_{\bu.U^1}\, = \
-	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1.}
+	For any $x \in X_n$ and $i \in \{1, \dots, n\}$
+	\begin{equation}
+	\sum_{\substack{U \in \P_{n-i}(n) \\ \bu \in \overline{U}}} d_{\bu.U^0} \otimes d_{U^1}\, +\ d_{U^0} \otimes d_{\bu.U^1}\, = \
+	(1+T) \Delta_{i-1}(x).
 	\end{equation}
 \end{lemma}
 
 \begin{proof}
-	Let us consider the right hand side of \eqref{e:big lemma}
-	\begin{equation} \label{e:big lemma rhs}
-	\sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1}\, +\ d_{U^1} \otimes d_{U^0.}
+	Let $q = n-i \in \{0, \dots, n-1\}$.
+	We need to show that
+	\begin{equation} \label{e:big lemma}
+	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} d_{\bu.U^0} \otimes d_{U^1}\, +\ d_{U^0} \otimes d_{\bu.U^1}\, = \
+	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1.}
 	\end{equation}
 	Notice that for any $U = \{u_1 < \cdots < u_{q+1}\} \in \P_{q+1}(n)$ we have
 	\begin{align*}
 	& \forall u \in (U \sm u_1), \qquad \ind_{U}(u) \neq \ind_{U \sm u_1}(u), \\
 	& \forall u \in (U \sm u_{q+1}), \quad \ind_{U}(u) = \ind_{U \sm u_{q+1}}(u).
 	\end{align*}
-	Therefore, \eqref{e:big lemma rhs} is equal to
+	Therefore, the right hand side of \eqref{e:big lemma}
+	\begin{equation} \label{e:big lemma rhs}
+	\sum_{U \in \P_{q+1}(n)} d_{U^0} \otimes d_{U^1}\, +\ d_{U^1} \otimes d_{U^0}
+	\end{equation}
+	is equal to
 	\begin{equation} \label{e:big lemma rhs w/o endpoints}
 	\begin{split}
 	&\, \sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ even}}}
@@ -171,20 +176,21 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_{q+1}) \text{ odd}}}
 	d_{(U \sm u_{q+1})^0} \otimes d_{u_{q+1}.(U \sm u_{q+1})^1} \\ +
 	&\ \,\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ odd}}} d_{u_1.(U \sm u_1)^0} \otimes d_{(U\sm u_1)^1} \quad +
-	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^0} \otimes d_{u_1.(U\sm u_1)^1} \ .
+	\sum_{\substack{U \in \P_{q+1}(n) \\ \ind_U(u_1) \text{ even}}} d_{(U \sm u_1)^0} \otimes d_{u_1.(U\sm u_1)^1.}
 	\end{split}
 	\end{equation}
-	With notation introduced below we will have that \eqref{e:big lemma rhs w/o endpoints} is equal to
+	
+	With notation that will be introduced next, \eqref{e:big lemma rhs w/o endpoints} will be seen to be equal to
 	\begin{equation*}
 	\sum_{{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
 	\sum_{{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
 	\sum_{{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
-	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ ,
+	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1,}
 	\end{equation*}
-	and that the left hand side of \eqref{e:big lemma} is equal to
+	and the left hand side of \eqref{e:big lemma} to
 	\begin{equation*}
 	\sum_{L} d_{\bu.U^0} \otimes d_{U^1}\ +\ \ 
-	\sum_{R} d_{U^0} \otimes d_{\bu.U^1} \ .
+	\sum_{R} d_{U^0} \otimes d_{\bu.U^1.}
 	\end{equation*}
 	
 	For any $U = \{u_1 < \cdots < u_q\} \in \P_{q}(n)$ and $\bu \in \overline{U}$ define when possible
@@ -196,31 +202,30 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	
 	\input{diagramatic}
 	
-	With this notation the claim of this lemma is equivalent to 
+	With this notation, \eqref{e:big lemma} is equivalent to 
 	\begin{align*}
 	\sum_{L} d_{\bu.U^0} \otimes d_{U^1}\ +\ \ 
 	\sum_{R} d_{U^0} \otimes d_{\bu.U^1} \ & = \
 	\sum_{{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
 	\sum_{{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \\ \ & +\ \ 
 	\sum_{{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
-	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ ,
+	\sum_{{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1,}
 	\end{align*}
-	or, equivalently, that their difference is $0$.
-	Explicitly
+	or, equivalently, to their difference being $0$.
+	Explicitly,
 	\begin{equation*}
 	\sum_{\overline{L}_{max}^{e}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
 	\sum_{\overline{R}_{max}^{o}} d_{U^0} \otimes d_{\bu.U^1}\ \ +\ \ 
 	\sum_{\overline{L}_{min}^{o}} d_{\bu.U^0} \otimes d_{U^1}\ \ +\ \ 
-	\sum_{\overline{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ = \ 0.
+	\sum_{\overline{R}_{min}^{e}} d_{U^0} \otimes d_{\bu.U^1} \ = \ 0,
 	\end{equation*}
-	This follows from the identities
+	which is a direct consequence of the following identities we now prove:
 	\begin{equation} \label{e:big lemma four identities}
-	\overline{R}_{min}^{e,e} = \overline{L}_{max}^{e,e}\ , \qquad
-	\overline{R}_{min}^{e,o} = \overline{R}_{max}^{o,e}\ , \qquad 
-	\overline{L}_{min}^{o,e} = \overline{L}_{max}^{e,o}\ , \qquad
-	\overline{L}_{min}^{o,o} = \overline{R}_{max}^{o,o}\ ,
+	\overline{R}_{min}^{e,e} = \overline{L}_{max,}^{e,e} \qquad
+	\overline{R}_{min}^{e,o} = \overline{R}_{max,}^{o,e} \qquad 
+	\overline{L}_{min}^{o,e} = \overline{L}_{max,}^{e,o} \qquad
+	\overline{L}_{min}^{o,o} = \overline{R}_{max.}^{o,o}
 	\end{equation}
-	which we now prove.
 	
 	For a pair $U \in \P_q(n)$ and $\bu \in \overline{U}$ define when possible the sets 
 	\begin{equation*}
@@ -242,7 +247,7 @@ for any basis element $x \in X_n$ and $q \in \{0, \dots, n\}$.
 	\end{align*}
 	Intuitively, $V_U^\bu$ is obtained from $U$ by replacing with $\bu$ the largest element in $U$ that is less than $\bu$.
 	A similar description applies to $W_U^\bu$.
-	When $U$ and $\bu$ are clear from the context we simplify notation respectively writing $V$ and $W$ instead of $V^\bu_U$ and $W^\bu_U$, and $l$ and $r$ instead of $l_U^\bu$ and $r_U^\bu$.
+	When $U$ and $\bu$ are clear from the context we simplify notation writing $V$ and $W$ instead of $V^\bu_U$ and $W^\bu_U$, and $l$ and $r$ instead of $l_U^\bu$ and $r_U^\bu$.
 	Notice that
 	\begin{equation*}
 	l.V = \bu.U = r.W
@@ -272,16 +277,11 @@ We can now provide the proof of \cref{l:main} and of our main theorem.
 	(\partial \circ \Delta_{i} + \Delta_{i} \circ \partial)(x) = (1 + T) \Delta_{i-1}(x).
 	\end{equation}
 	If $i < 0$ or $i > n+1$ then both sides are equal to $0$ by definition.
-	If $i = 0$, the right hand side is $0$ by definition and the left hand side is $0$ since the Alexander-Whitney diagonal is a chain map.
-	If $i = n+1$, then the left hand side is equal to $0$ by definition and the right hand side is equal to $(1+T) (x \otimes x) = 0$.
-	Let $q = n-i$ and assume $q \not\in \{0, \dots, n-1\}$.
-	We can use \cref{l:boundary of Delta} to express the left hand side of \eqref{e:main thm proof} as
+	If $i = 0$, the right hand side of \eqref{e:main thm proof} is $0$ by definition and the left hand side is $0$ since the Alexander-Whitney diagonal is a chain map, please consult \cref{ex:alexander-whitney diagonal} for the relationship between $\Delta_0$ and this well known map.
+	If $i = n+1$, then the left hand side of \eqref{e:main thm proof} is equal to $0$ by definition and the right hand side is equal to $(1+T) (x \otimes x) = 0$.
+	If $i \in \{0, \dots, n-1\}$, \cref{l:boundary of Delta} expresses the left hand side of \eqref{e:main thm proof} as
 	\begin{equation*}
 	\sum_{\substack{U \in \P_{q}(n) \\ \bu \in \overline{U}}} \Big( d_{\bu.U^0} \otimes d_{U^1} \, + \, d_{U^0} \otimes d_{\bu.U^1} \Big) (x \otimes x),
 	\end{equation*}
-	whose right hand side is, thanks to \cref{l:big lemma}, equal to
-	\begin{equation*}
-	(1+T) \sum_{U \in \P_{q+1}(n)} d_{U^0}(x) \otimes d_{U^1}(x),
-	\end{equation*}
-	which by definition is $(1+T)\Delta_{i-1}(x)$.
+	whose right hand side is, thanks to \cref{l:big lemma}, equal to $(1+T)\Delta_{i-1}(x)$.
 \end{proof}
