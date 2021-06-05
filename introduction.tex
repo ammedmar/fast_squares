@@ -3,10 +3,10 @@
 
 For effective computations involving topological spaces, discrete models are indispensable.
 The category of simplicial complexes provides models not only for spaces but also, through the simplicial approximation theorem, for continuous maps between them.
-We can obtain from these combinatorial models algebraic ones using the simplicial chains construction $\chains$.
-In this algebraic representation, invariants of spaces such as their betti numbers can be readily computed using linear algebra alone.
+We can obtain algebraic models from these using the simplicial chains construction $\chains$.
+In this algebraic representation, invariants of spaces such as Betti numbers can be readily computed using linear algebra alone.
 
-In this article we focused on finer invariants of spaces enriching their mod 2 cohomology and going beyond betti numbers.
+In this article we focused on finer invariants of spaces enriching their mod 2 cohomology and going beyond Betti numbers.
 We are referring to the celebrated Steenrod squares
 \begin{equation*}
 Sq^k \colon H^\bullet(X; \F_2) \to H^\bullet(X; \F_2).
@@ -47,7 +47,7 @@ We highlight three uses of our formulas.
 
 For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez1999combinatorial} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 We use our formulas to introduce a new algorithm for this task, and present a performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
-The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, carlsson2013viral, lee2018nanoporous} and for which various softwares \cite{bauer2019ripser, gudhi, medina2020giottotda} exist.
+The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, carlsson2013viral, lee2018nanoporous} and for which various softwares exist \cite{bauer2019ripser, gudhi, medina2020giottotda}.
 
 We now overview the contents of this article.
 In \cref{s:preliminaries} we review the notions from equivariant homological algebra and simplicial topology needed to present, in \cref{s:squares}, the definition of cup-$i$ construction and Steenrod squares.
