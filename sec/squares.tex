@@ -1,26 +1,26 @@
 
-\section{Cup-$i$ constructions and Steenrod squares} \label{s:squares}
+\section{Cup-\texorpdfstring{$i$}{i} constructions and Steenrod squares} \label{s:squares}
 
-Let $\F_2$ be the field with two elements and $\S_2$ the group with only one non-identity element $T$.
+Let $\Ftwo$ be the field with two elements and $\S_2$ the group with only one non-identity element $T$.
 In this section we define for any simplicial complexes $X$ and every integer $k$ the Steenrod $k^{\mathrm{th}}$ square
 \begin{equation*}
-Sq^k \colon H^\bullet(X; \F_2) \to H^{\bullet}(X; \F_2)
+Sq^k \colon H^\bullet(X; \Ftwo) \to H^{\bullet}(X; \Ftwo)
 \end{equation*}
 using an arbitrary cup-$i$ construction.
 
 Consider the chain complex
 \begin{equation*}
 \begin{tikzcd}[column sep=normal]
-& W =  \F_2[\S_2]\{e_0\} & \arrow[l, "1+T"'] \F_2[\S_2]\{e_1\} & \arrow[l, "1+T"']
-\F_2[\S_2]\{e_2\} & \arrow[l, "1+T"'] \cdots
+& W =  \Ftwo[\S_2]\{e_0\} & \arrow[l, "1+T"'] \Ftwo[\S_2]\{e_1\} & \arrow[l, "1+T"']
+\Ftwo[\S_2]\{e_2\} & \arrow[l, "1+T"'] \cdots
 \end{tikzcd}
 \end{equation*}
 with its natural $\S_2$-action.
-For any simplicial complex $X$, the chain complex $W \otimes \chains(X; \F_2)$ has an $\S_2$-action concentrated in the left factor, and $\chains(X; \F_2)^{\otimes 2}$ has one given by transposition of factors.
+For any simplicial complex $X$, the chain complex $W \otimes \chains(X; \Ftwo)$ has an $\S_2$-action concentrated in the left factor, and $\chains(X; \Ftwo)^{\otimes 2}$ has one given by transposition of factors.
 
 We are interested in $\S_2$-equivariant chain maps
 \begin{equation} \label{e:steenrod diagonal}
-\Delta_X \colon W \otimes \chains(X; \F_2) \to \chains(X; \F_2)^{\otimes 2}
+\Delta_X \colon W \otimes \chains(X; \Ftwo) \to \chains(X; \Ftwo)^{\otimes 2}
 \end{equation}
 defined naturally for every simplicial complex, i.e., such that for any simplicial map $f \colon X \to Y$ we have $\Delta_Y \circ f_\bullet = f_\bullet^{\otimes 2} \circ \Delta_X$.
 We say this is a \textit{cup-$i$ construction} if $\Delta_X \neq 0$ for a simplicial complex $X$ with a single vertex.
@@ -40,17 +40,17 @@ Let us consider a cup-$i$ construction $W \otimes C_\bullet \to C_\bullet^{\otim
 Using the linear duality functor and passing to fix points gives a chain map
 \begin{equation*}
 \begin{tikzcd}
-\Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
-\Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2},
+\Hom\left(C_\bullet \otimes C_\bullet, \Ftwo \right)^{\mathrm S_2} \arrow[r] &
+\Hom\left(W(2) \otimes C_\bullet, \Ftwo \right)^{\mathrm S_2},
 \end{tikzcd}
 \end{equation*}
 which we can complete, using isomorphisms \eqref{e:adjunction isomorphism} and \eqref{e:invariant hom iso hom coinvariants} of \cref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
-\Hom\left(C_\bullet \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[r] &
-\Hom\left(W(2) \otimes C_\bullet, \F_2 \right)^{\mathrm S_2} \arrow[d] \\
+\Hom\left(C_\bullet \otimes C_\bullet, \Ftwo \right)^{\mathrm S_2} \arrow[r] &
+\Hom\left(W(2) \otimes C_\bullet, \Ftwo \right)^{\mathrm S_2} \arrow[d] \\
 \left(C^\bullet \otimes C^\bullet\right)^{\mathrm S_2} \arrow[u]&
-\Hom\left(W(2)_{\mathrm S_2} \otimes C_\bullet, \F_2 \right) \arrow[d] \\
+\Hom\left(W(2)_{\mathrm S_2} \otimes C_\bullet, \Ftwo \right) \arrow[d] \\
 C^\bullet \arrow[u, "doubleing"] \arrow[r, dashed]&
 \Hom\left(W(2)_{\mathrm S_2}, C^\bullet\right),
 \end{tikzcd}
@@ -85,5 +85,5 @@ Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
 \begin{remark}
 	For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\mathrm S_2$.
 	Steenrod used this group homology viewpoint to non-constructively define operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology} for any prime $p$.
-	To define these constructively, analogues of the $\Delta_i$ maps for odd primes were introduced in \cite{medina2020odd} and implemented in \cite{medina2021computer}.
+	To define these constructively, analogues of the $\Delta_i$ maps for odd primes were introduced in \cite{medina2020maysteenrod} and implemented in \cite{medina2021computer}.
 \end{remark}

@@ -9,7 +9,7 @@ In this algebraic representation, invariants of spaces such as Betti numbers can
 In this article we focused on finer invariants of spaces enriching their mod 2 cohomology and going beyond Betti numbers.
 We are referring to the celebrated Steenrod squares
 \begin{equation*}
-Sq^k \colon H^\bullet(X; \F_2) \to H^\bullet(X; \F_2).
+Sq^k \colon H^\bullet(X; \Ftwo) \to H^\bullet(X; \Ftwo).
 \end{equation*}
 These operations can be thought of as arising from the broken $\S_2$-symmetry of the diagonal map
 \begin{equation*}
@@ -20,10 +20,10 @@ x \arrow[r, mapsto] & (x,x)
 \end{equation*}
 occurring during the passage from continuous descriptions to discrete/algebraic models.
 
-For simplicial complexes, effective constructions of Steenrod squares have been known since their introduction in Steenrod's seminal 1947 paper \cite{steenrod47}.
+For simplicial complexes, effective constructions of Steenrod squares have been known since their introduction in Steenrod's seminal 1947 paper \cite{steenrod1947products}.
 They all rely on a \textit{cup-$i$ construction}, a structure on chains given by a collection of natural linear maps
 \begin{equation*}
-\Delta_i \colon \chains(X; \F_2)  \to \chains(X; \F_2)^{\otimes 2}\,,
+\Delta_i \colon \chains(X; \Ftwo)  \to \chains(X; \Ftwo)^{\otimes 2}\,,
 \end{equation*}
 satisfying
 \begin{equation*}
@@ -36,8 +36,8 @@ For example, in condensed matter physics they are used to describe action functi
 In this article we introduce a new cup-$i$ construction.
 We are particularly interested in simplicial complexes, but our formulas apply in the more general context of simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
 
-Several cup-$i$ constructions have been given in the literature starting with Steenrod's original formulas~\cite{steenrod47}.
-These include those resulting from the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez1999combinatorial, gonzalez2003computation, gonzalez2005hpt} based on the EZ-AW chain contraction, the operadic methods of McClure-Smith \cite{mcclure03cochain} and Berger-Fresse \cite{berger04combinatorial}, and the prop viewpoint of the author \cite{medina2020prop1, medina2018prop2}.
+Several cup-$i$ constructions have been given in the literature starting with Steenrod's original formulas~\cite{steenrod1947products}.
+These include those resulting from the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez-diaz1999steenrod, gonzalez2003computation, gonzalez-diaz2005cocyclic} based on the EZ-AW chain contraction, the operadic methods of McClure-Smith \cite{mcclure2003multivariable} and Berger-Fresse \cite{berger2004combinatorial}, and the prop viewpoint of the author \cite{medina2020prop1, medina2018prop2}.
 The question of comparing these different cup-$i$ constructions will be addressed via an axiomatic characterization in \cite{medina2018axiomatic}, where it is shown that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
 
 We highlight three uses of our formulas.
@@ -45,11 +45,12 @@ We highlight three uses of our formulas.
 2) In \cite{cantero2020khovanov}, Cantero-Mor\'an defined Steenrod squares in mod 2 Khovanov homology \cite{khovanov2000categorification} by reinterpreting them in the context of augmented semi-simplicial objects in the Burnside category.
 3) They lead to fast computations of Steenrod square as we describe next.
 
-For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez1999combinatorial} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
+For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez-diaz1999steenrod} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 We use our formulas to introduce a new algorithm for this task, and present a performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
-The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, carlsson2013viral, lee2018nanoporous} and for which various softwares exist \cite{bauer2019ripser, gudhi, medina2020giottotda}.
+The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, carlsson2013viral, lee2018nanoporous} and for which various softwares exist \cite{bauer2019ripser, gudhi, medina2021giotto}.
 
-We now overview the contents of this article.
+\subsection*{Outline}
+
 In \cref{s:preliminaries} we review the notions from equivariant homological algebra and simplicial topology needed to present, in \cref{s:squares}, the definition of cup-$i$ construction and Steenrod squares.
 We introduce our new formulas in \cref{s:formulas}, and our algorithm in \cref{s:algorithm}; providing a proof-of-concept comparison using \verb|SAGE| in \cref{s:comparison}.
 In \cref{s:proof}, the technical core of this article, we prove that our new formulas define a cup-$i$ construction, and in \cref{s:outlook} we discuss finer invariants associated to Steenrod squares.

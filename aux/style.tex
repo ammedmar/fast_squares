@@ -1,0 +1,86 @@
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+\usepackage{mathbbol} % changes \mathbb{} and adds more support
+\usepackage{csquotes}
+
+% bibliography
+\usepackage[backend=biber,
+	style=alphabetic,
+	backref=true,
+	url=false,
+	doi=false,
+	isbn=false,
+	eprint=false
+	]{biblatex}
+
+\addbibresource{aux/bibliography.bib}
+\addbibresource{aux/usualpapers.bib}
+\addbibresource{aux/mypapers.bib}
+
+\renewbibmacro{in:}{}  % don't display "in:" before the journal name
+\AtEveryBibitem{\clearfield{pages}}  % don't show page numbers
+
+% get titles hyperlinked
+\DeclareFieldFormat{title}{\myhref{\mkbibemph{#1}}}
+\DeclareFieldFormat
+[article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+{title}{\myhref{\mkbibquote{#1\isdot}}}
+
+\newcommand{\doiorurl}{%
+	\iffieldundef{url}
+	{\iffieldundef{eprint}
+		{}
+		{http://arxiv.org/abs/\strfield{eprint}}}
+	{\strfield{url}}%
+}
+
+\newcommand{\myhref}[1]{%
+	\ifboolexpr{%
+		test {\ifhyperref}
+		and
+		not test {\iftoggle{bbx:eprint}}
+		and
+		not test {\iftoggle{bbx:url}}
+	}
+	{\href{\doiorurl}{#1}}
+	{#1}%
+}
+
+% references
+\usepackage[bookmarks=true,
+	linktocpage=true,
+	bookmarksnumbered=true,
+	breaklinks=true,
+	pdfstartview=FitH,
+	hyperfigures=false,
+	plainpages=false,
+	naturalnames=true,
+	colorlinks=true,
+	pagebackref=false,
+	pdfpagelabels]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	citecolor=blue,
+	filecolor=blue,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\usepackage[capitalize, noabbrev]{cleveref}
+\let\subsectionSymbol\S
+\crefname{subsection}{\subsectionSymbol\!}{subsections}
+
+% layout
+\addtolength{\textwidth}{0in}
+\addtolength{\textheight}{0in}
+\calclayout
+
+% update to MSC2020
+\makeatletter
+\@namedef{subjclassname@2020}{%
+	\textup{2020} Mathematics Subject Classification}
+\makeatother
+
+% table of contents
+\setcounter{tocdepth}{1}

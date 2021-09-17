@@ -8,8 +8,10 @@
 *.synctex.gz
 *.toc
 *.txss
-/__pycache__
-/.ipynb_checkpoints
+/python/__pycache__
+.ipynb_checkpoints
 *.pkl
 *.png
 *.zip
+*.bcf
+*.xml

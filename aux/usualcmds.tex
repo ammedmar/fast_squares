@@ -1,0 +1,131 @@
+% environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+% hyphenation
+\hyphenation{co-chain}
+\hyphenation{co-al-ge-bras}
+
+% elements
+\newcommand{\id}{\mathsf{id}}
+\newcommand{\M}{\cM}
+\newcommand{\UM}{{\forget(\M)}}
+\newcommand{\SL}{{\M_{sl}}}
+\newcommand{\USL}{{\forget(\M_{sl})}}
+\newcommand{\Surj}{\cX}
+\newcommand{\BE}{\cE}
+
+% sets and spaces
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\k}{\Bbbk}
+\newcommand{\Ftwo}{{\mathbb{F}_2}}
+\newcommand{\Fp}{{\mathbb{F}_p}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\Cp}{{\mathbb{C}_p}}
+\newcommand{\graphs}{\mathfrak{G}}
+\newcommand{\gsimplex}{\mathbb{\Delta}}
+\newcommand{\gcube}{\mathbb{I}}
+\newcommand{\scube}[1]{(\triangle^{\!1})^{\times #1}}
+
+% categories
+\newcommand{\Cat}{\mathsf{Cat}}
+\newcommand{\Fun}{\mathsf{Fun}}
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Ch}{\mathsf{Ch}}
+\newcommand{\simplex}{\triangle}
+\newcommand{\sSet}{\mathsf{sSet}}
+\newcommand{\cube}{\square}
+\newcommand{\cSet}{\mathsf{cSet}}
+\newcommand{\Alg}{\mathsf{Alg}}
+\newcommand{\coAlg}{\mathsf{coAlg}}
+\newcommand{\biAlg}{\mathsf{biAlg}}
+\newcommand{\sGrp}{\mathsf{sGrp}}
+\newcommand{\Nec}{\mathsf{Nec}}
+\newcommand{\nSet}{\mathsf{nSet}}
+\newcommand{\Mon}{\mathsf{Mon}}
+\newcommand{\Smod}{\mathsf{Mod}_{\S}}
+\newcommand{\Sbimod}{\mathsf{biMod}_{\S}}
+\newcommand{\operads}{\mathsf{Oper}}
+\newcommand{\props}{\mathsf{Prop}}
+
+% operators
+\DeclareMathOperator{\free}{F}
+\DeclareMathOperator{\forget}{U}
+\DeclareMathOperator{\yoneda}{\mathcal{Y}}
+\DeclareMathOperator{\EZ}{EZ}
+\DeclareMathOperator{\chains}{N}
+\DeclareMathOperator{\schains}{N^{\simplex}}
+\DeclareMathOperator{\cchains}{N^{\cube}}
+\DeclareMathOperator{\cochains}{N^{\vee}}
+\DeclareMathOperator{\scochains}{N^{\vee}_{\simplex}}
+\DeclareMathOperator{\ccochains}{N^{\vee}_{\cube}}
+\DeclareMathOperator{\Schains}{S}
+\DeclareMathOperator{\sSchains}{S^{\simplex}}
+\DeclareMathOperator{\cSchains}{S^{\cube}}
+\DeclareMathOperator{\sScochains}{S^{\vee}_{\simplex}}
+\DeclareMathOperator{\cScochains}{S^{\vee}_{\cube}}
+\DeclareMathOperator{\gchains}{C}
+\DeclareMathOperator{\sSing}{Sing^{\simplex}}
+\DeclareMathOperator{\cSing}{Sing^{\cube}}
+\newcommand{\loops}{\Omega}
+\DeclareMathOperator{\cobar}{\mathbf{\Omega}}
+\DeclareMathOperator{\triangulate}{\mathcal{T}}
+\DeclareMathOperator{\cubify}{\mathcal{U}}
+\DeclareMathOperator{\projection}{\pi}
+\DeclareMathOperator{\inclusion}{\iota}
+
+% other
+\renewcommand{\th}{\mathrm{th}}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\tensor}{\otimes}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\bars}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\Vert}
+\newcommand{\angles}[1]{\langle#1\rangle}
+\newcommand{\pairing}[2]{\langle#1, #2\rangle}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\defeq}{\stackrel{\mathrm{def}}{=}}
+\newcommand{\pdfEinfty}{\texorpdfstring{${E_\infty}$}{E-infty}}
+
+% letters
+\newcommand{\bk}{\mathbb{k}}
+\newcommand{\bF}{\mathbb{F}}
+
+\newcommand{\sA}{\mathsf{A}}
+\newcommand{\sB}{\mathsf{B}}
+\newcommand{\sC}{\mathsf{C}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\rB}{\mathrm{B}}
+\newcommand{\rP}{\mathrm{P}}
+
+% comments
+\newcommand{\anibal}[1]{\textcolor{blue}{\underline{Anibal}: #1}}
