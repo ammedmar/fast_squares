@@ -1,42 +1,19 @@
 \documentclass{amsart}
 \usepackage[boxruled, noend]{algorithm2e}
-\include{aux/style}
-\include{aux/usualcmds}
-\include{aux/commands}
-
-\usepackage{bm}
-\usepackage{graphicx, fancyvrb}
-
-% commands
-\renewcommand{\P}{\mathrm{P}}
-\newcommand{\RP}{\mathbb{R}\mathrm{P}}
-\newcommand{\ind}{\mathrm{ind}}
-\newcommand{\chain}[1]{C_{#1}}
-\newcommand{\suspension}{\Sigma}
-\newcommand{\sm}{\smallsetminus}
-\DeclareMathOperator{\xor}{\triangle}
-\DeclareMathOperator{\eval}{eval}
-\DeclareMathOperator{\pos}{pos}
-\newcommand{\bu}{{\bar{u}}}
-\DeclareMathOperator{\modulo}{mod}
-
-% environment
-\newenvironment{tab}{\list{}{\rightmargin 0pt}\item\relax}{\endlist}
-
+\input{aux/style}
+\input{aux/commands}
 
 \title[new formulas for cup-$i$ products]{New formulas for cup-$i$ products and fast computation of Steenrod squares}
 \author{Anibal M. Medina-Mardones}
-\address{Max Planck Institute for Mathematics, Bonn, Germany}
-\address{Department of Mathematics, University of Notre, Notre Dame, IN, USA}
+\address{Max Planck Institute for Mathematics \and University of Notre Dame}
 \email{ammedmar@mpim-bonn.mpg.de}
-\thanks{The author thanks the hospitality of the \textit{Laboratory for Topology and Neuroscience} at EPFL and acknowledges partial support from \textit{Innosuisse} grant \mbox{32875.1 IP-ICT-1}.}
 \keywords{Cup-$i$ products, Steenrod squares, simplicial complexes, cohomology operations, effective constructions}
 
 \begin{document}
-	\input{aux/abstract}
+	\input{sec/abstract}
 	\maketitle
 	\input{sec/introduction}
-	\input{aux/acknowledgments}
+	\input{sec/acknowledgments}
 	\input{sec/preliminaries}
 	\input{sec/squares}
 	\input{sec/formulas}
@@ -44,6 +21,7 @@
 	\input{sec/comparison}
 	\input{sec/proof}
 	\input{sec/secondary}
+	\input{sec/conclusion}
 	\sloppy
 	\printbibliography
 \end{document}
