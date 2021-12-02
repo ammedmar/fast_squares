@@ -1,8 +1,10 @@
+%!TEX root = ../fast_sq.tex
 
-\section{Comparison} \label{s:comparison}
+\section{Proof of concept comparison} \label{s:comparison}
 
 In this section we present a proof-of-concept comparison between the existing method for the computation of Steenrod squares on simplicial complexes, based on Gonz\'alez-D\'iaz--Real's approach \cite[Corollary 3.2]{gonzalez-diaz1999steenrod}, and the one introduced here.
 We used a \verb|Python| implementation of our algorithm and the open source computer algebra system \verb|SAGE v9.3.rc3| \cite{sagemath} which includes an implementation of the existing method written by John Palmieri.
+A complexity theoretic analysis goes beyond the scope of this paper.
 
 Given a topological space $X$ the \textit{suspension} of $X$ is the topological space $\suspension X$ obtained from $X \times [0,1]$ by collapsing $X \times \{0\}$ and $X \times \{1\}$ to points.
 Suspension is a natural construction and, for each integer $i \neq 0$, there is an isomorphism $H^i(X) \cong H^{i+1}(\suspension X)$, which can be extended to $i = 0$ by considering reduced cohomology.
@@ -19,6 +21,7 @@ Finally, we applied the method \verb|Sq(k)| to it with $k=1$ and record the exec
 We implemented in \verb|Python| an alternative for the method \verb|Sq(k)| based on \cref{a:algorithm} and modified the above pipeline accordingly.
 We recorded the average execution time of these implementations for each $\suspension^i \RP^2$ over $\lfloor 10000/2^i \rfloor$ runs for each $i \in \{0, \dots, 10\}$.
 The results of this pipeline are presented in \cref{f:comparison}.
+
 %We notice that the execution time of the implementation based on our algorithm remains constant whereas the one in \verb|SAGE| grows exponentially.
 
 \begin{figure}

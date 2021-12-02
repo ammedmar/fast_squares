@@ -1,9 +1,10 @@
+%!TEX root = ../fast_sq.tex
 
 \section{New algorithm for Steenrod squares} \label{s:algorithm}
 
 %Throughout this section we use $\Delta_i$ to denote the $i^\th$ map introduced in \cref{d:cup-i coproducts}.
 
-For a finite simplicial complex $X$ we now present an algorithm effectively constructing a cocycle representing $Sq^k([\alpha])$ given a cocycle $\alpha$.
+For a finite simplicial complex $X$ and a cocycle $\alpha$ we now present an algorithm effectively constructing a cocycle representing $Sq^k([\alpha])$.
 
 Let $-n$ be the degree of $\alpha$ and let $A = \{a_1, \dots, a_m\} \subseteq X_n$ be its support.
 Explicitly, if $\alpha_1 + \cdots + \alpha_m$ is the basis representation of $\alpha$ then
@@ -14,7 +15,7 @@ Explicitly, if $\alpha_1 + \cdots + \alpha_m$ is the basis representation of $\a
 \end{equation*}
 If $k < 0$ or $k > n$, we have by definition that $Sq^k([\alpha]) = 0$ and we can take $0$ as its representative.
 If $k = 0$, \cref{ex:Sq0 is the identity} shows that $Sq^0([\alpha]) = [\alpha]$ so we can take $\alpha$ as its representative.
-For $k \in \{1, \dots, n\}$ we will construct a set $B \subseteq X_{n+k}$ such that if $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, where $\Delta_{n-k}(-)$ is presented in \cref{d:cup-i coproducts}, we have
+For $k \in \{1, \dots, n\}$ \cref{a:algorithm} constructs a set $B \subseteq X_{n+k}$ such that if $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, where $\Delta_{n-k}(-)$ is presented in \cref{d:cup-i coproducts}, we have
 \begin{equation} \label{e:correctness}
 \beta(x) =
 \begin{cases}
@@ -23,8 +24,7 @@ For $k \in \{1, \dots, n\}$ we will construct a set $B \subseteq X_{n+k}$ such t
 \end{cases}
 \end{equation}
 for any simplex $x \in X_{n+k}$.
-
-Consider \cref{a:algorithm} presented in \cref{f:algorithm} and let $B \subseteq X_{n+k}$ be its output when the input is $A$.
+In other words, $B$ is the support of a cocycle representative of $Sq^k([\alpha])$.
 
 \begin{figure}
 	\input{aux/stsq}
@@ -32,6 +32,8 @@ Consider \cref{a:algorithm} presented in \cref{f:algorithm} and let $B \subseteq
 	We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$ and $\ind(S) = \{\ind(v) \mid v \in S\}$.}
 	\label{f:algorithm}
 \end{figure}
+
+\subsection{Correctness}
 
 Before verifying \eqref{e:correctness}, let us record a property satisfied by our cup-$i$ construction that can be thought of as a form of ``freeness".
 
@@ -124,37 +126,19 @@ Or, equivalently, that the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ is
 \end{equation*}
 where $\ind(S) = \{\ind(v) \mid v \in S\}$ for any $S \subseteq \overline{a}_{ij}$.
 
-
-%Denote
-%\begin{equation*}
-%\overline{a}_{i} = a_i \setminus a_j, \qquad
-%\overline{a}_{j} = a_j \setminus a_i, \qquad
-%\overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j.
-%\end{equation*}
-%Given $\{a_i, a_j\} \in \pi^{-1}(x)$, there exists $U$ with $\{a_i, a_j\} = \{d_{U^0}(x),\, d_{U^1}(x)\}$
-%if and only if $U = \pos_{x}(\overline{a}_{ij})$ and
-%\begin{equation} \label{e:pos's equal U's}
-%\big\{\pos_{x}(\overline{a}_i),\, \pos_{x}(\overline{a}_j)\big\} = \{U^0, U^1\}.
-%\end{equation}
-%Recall from \cref{d:index function} that for $\varepsilon \in \Ftwo \cong \{0,1\}$ we have $U^\varepsilon = \ind_U^{-1}(\varepsilon)$.
-%Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ defined by
-%\begin{equation*}
-%\ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
-%\end{equation*}
-%being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e.,
-%\begin{equation*}
-%\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}
-%\end{equation*}
-%where $\ind(S) = \{\ind(v) \mid v \in S\}$ for any $S \subseteq \overline{a}_{ij}$.
-
-%Recall that $U^0$ (resp. $U^1$) is the subset of $U \subseteq \{0, \dots, n+k\}$ with elements satisfying that their position in $U$ plus its position in $\{0, \dots, n+k\}$ is $0$ mod 2 (resp. $1$ mod 2).
-%Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \pos_x(\overline{a}_{ij}) \to \Ftwo$ defined by
-%\begin{equation*}
-%\ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
-%\end{equation*}
-%being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e.,
-%\begin{equation*}
-%\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}.
-%\end{equation*}
-
 Therefore, for any $x \in X_{n+k}$ we have $\beta(x) = 1$ if and only if the set of pairs $\{a_i, a_j\}$ in $\pi^{-1}(x)$ with $\eval(\{a_i, a_j\}) = 1$ is odd; which is equivalent to the condition $x \in B$.
+
+\subsection{Advantages}
+
+Consider a simplicial complex $X$, an cocycle $\alpha$ of degree $-n$, and a cup-$i$ construction
+\[
+\Delta_i(x) =
+\sum_{\Gamma_i} x^{(1)} \otimes x^{(2)}.
+\]
+An algorithm for the computation of a representative of the $k^\th$ Steenrod square of the class $[\alpha]$ for $k \in \{1, \dots, n\}$ would loop over simplices $X_{n+k}$ and over $\Gamma_{n-k}$ evaluating $(\alpha \otimes \alpha)$ on the associated tensor pair.
+\cref{a:algorithm} improves on this scheme by not summing over $X_{n+k}$ times $\Gamma_{n-k}$, but filtering summands using the support of $\alpha$.
+So, even if $X_{n+k}$ and $\Gamma_{n-k}$ are very large, \cref{a:algorithm} considers at most
+\[
+\frac{\bars{A} \big( \bars{A}-1 \big)}{2}
+\]
+summands, where $\bars{A}$ is the cardinality of the support of $\alpha$.
