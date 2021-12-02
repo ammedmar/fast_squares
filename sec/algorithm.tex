@@ -1,11 +1,12 @@
 
 \section{New algorithm for Steenrod squares} \label{s:algorithm}
 
-%Throughout this section we use $\Delta_i$ to denote the $i\th$ map introduced in \cref{d:cup-i coproducts}.
+%Throughout this section we use $\Delta_i$ to denote the $i^\th$ map introduced in \cref{d:cup-i coproducts}.
 
 For a finite simplicial complex $X$ we now present an algorithm effectively constructing a cocycle representing $Sq^k([\alpha])$ given a cocycle $\alpha$.
 
-Let $-n$ be the degree of $\alpha$ and let $A = \{a_1, \dots, a_m\} \subseteq X_n$ with $\alpha = \alpha_1 + \cdots + \alpha_m$ and
+Let $-n$ be the degree of $\alpha$ and let $A = \{a_1, \dots, a_m\} \subseteq X_n$ be its support.
+Explicitly, if $\alpha_1 + \cdots + \alpha_m$ is the basis representation of $\alpha$ then
 \begin{equation*}
 \alpha_i(a_j) = \begin{cases}
 1 & i=j, \\ 0 & i\neq j.
@@ -21,39 +22,40 @@ For $k \in \{1, \dots, n\}$ we will construct a set $B \subseteq X_{n+k}$ such t
 0 & x \not\in B,
 \end{cases}
 \end{equation}
-for any basis element $x \in X_{n+k}$.
+for any simplex $x \in X_{n+k}$.
 
 Consider \cref{a:algorithm} presented in \cref{f:algorithm} and let $B \subseteq X_{n+k}$ be its output when the input is $A$.
 
 \begin{figure}
 	\input{aux/stsq}
 	\caption{Algorithm producing for a simplicial complex $X$, non-negative integer $n$, integer $k$ between $1$ and $n$, and cocycle $\alpha$ presented as a set $A \subseteq X_n$, a cocycle representing $Sq^k([\alpha])$ returned as a set $B \subseteq X_{n+k}$.
-		We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$.}
+	We use the notation $S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime)$ and $\ind(S) = \{\ind(v) \mid v \in S\}$.}
 	\label{f:algorithm}
 \end{figure}
 
 Before verifying \eqref{e:correctness}, let us record a property satisfied by our cup-$i$ construction that can be thought of as a form of ``freeness".
 
 \begin{lemma} \label{l:freeness}
-	Let $\gamma_1 + \cdots + \gamma_m$ be the basis representation of a cochain in $C^{-n}(X; \Ftwo)$.
-	For integers $k$ and $i, j \in \{1, \dots, m\}$ with $i \neq j$, and any $x \in X_{n+k}$:
+	Let $\gamma_1 + \dots + \gamma_m$ be the basis representation of a cochain in $C^{-n}(X; \Ftwo)$.
+	Consider $i, j \in \{1, \dots, m\}$ with $i \neq j$ and $x \in X_{n+k}$.
+	Let $\Delta_{n-k}$ be as introduced in \cref{d:cup-i coproducts}.
 	\begin{enumerate}
-		\item if $k \neq 0$, then $(\gamma_i \otimes \gamma_i)\Delta_{n-k}(x) = 0$,
-		\item if $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) = 0$,
+		\item If $k \neq 0$ then $(\gamma_i \otimes \gamma_i)\Delta_{n-k}(x) = 0$.
+		\item If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$ then $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) = 0$.
 	\end{enumerate}
-	where $\Delta_{n-k}$ is the $(n-k)\th$ map introduced in \cref{d:cup-i coproducts}.
 \end{lemma}
 
 \begin{proof}
 	Recall that
 	\begin{equation*}
-	\Delta_{n-k}(x) \ = \! \sum_{\substack{U \subseteq \{0, \dots, n\} \\ \vert U \vert = k}}
+	\Delta_{n-k}(x) \ = \! \sum_{\substack{U \subseteq \{0, \dots, n+k\} \\ \vert U \vert = 2k}}
 	d_{U^0}(x) \otimes d_{U^1}(x).
 	\end{equation*}
 
-	If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$, then there exists a non-empty $U$ in the sum with $U^0 = U^1$, which is impossible since $U^0 \cap U^1 = \emptyset$.
+	(1) If $(\gamma_i \otimes \gamma_i)\Delta_{n-k}(x) \neq 0$, then there exists a non-empty $U$ in the sum with $U^0 = U^1$, which is impossible since $U^0 \cap U^1 = \emptyset$.
 
-	If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$ and $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) \neq 0$, then there are distinct subsets $V$ and $W$ in the sum such that $V^0 = W^1$ and $W^0 = V^1$, which is impossible since $V = V^0 \cup V^1 = W^0 \cup W^1 = W$.
+	(2) If $(\gamma_i \otimes \gamma_j)\Delta_{n-k}(x) \neq 0$ and $(\gamma_j \otimes \gamma_i)\Delta_{n-k}(x) \neq 0$, then there are distinct subsets $V$ and $W$ in the sum such that $V^0 = W^1$ and $W^0 = V^1$.
+	But then $V = V^0 \cup V^1 = W^1 \cup W^0 = W$, which is a contradiction.
 \end{proof}
 
 Let us now return to the correctness of the algorithm.
@@ -67,13 +69,13 @@ For any $x \in X_{n+k}$ the value of $\beta$ evaluated on the chain represented 
 \Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j\Big)
 \Delta_{n-k}(x).
 \end{align*}
-By \cref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ or $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n\}$ of cardinality $k$.
+By \cref{l:freeness}, at most one of the terms $\alpha_i \otimes \alpha_j$ or $\alpha_j \otimes \alpha_i$ evaluates to $1$ on $\Delta_{n-k}(x)$, so to determine the value of $\beta(x)$ we need to count mod 2 the number of subsets $\{i,j\} \subseteq \{1,\dots, m\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ for some $U \subseteq \{0, \dots, n+k\}$ of cardinality $2k$.
 This condition on the pair $\{a_i, a_j\}$ implies in particular that $a_i \cup a_j = x$ since $d_{U^0}(x) \cup d_{U^1}(x) = x$.
 
 Let us formalize these observations.
 Let $\widetilde{A}$ be the set of all two-element subsets $\{a_i, a_j\} \subseteq A$ with $a_i \cup a_j \in X_{n+k}$.
 There is a natural map $\pi \colon \widetilde{A} \to X_{n+k}$ sending $\{a_i, a_j\}$ to $a_i \cup a_j$.
-Let $\eval \colon A \to \Ftwo$ be the map sending $\{a_i, a_j\}$ to $1$ if there exist $U \subseteq \{0,\dots,n\}$ of cardinality $k$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and let $\eval(\{a_i, a_j\}) = 0$ otherwise.
+Let $\eval \colon A \to \Ftwo$ be the map sending $\{a_i, a_j\}$ to $1$ if there exist $U \subseteq \{0, \dots, n+k\}$ of cardinality $2k$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and let $\eval(\{a_i, a_j\}) = 0$ otherwise.
 Notice that if such $U$ exists then it is unique.
 With this notation we have
 \begin{equation*}
@@ -82,25 +84,77 @@ With this notation we have
 We will give a computational characterization of $\eval(\{a_i, a_j\}) = 1$ after introducing some more notation.
 
 Given a finite totally ordered set $S$, the \textit{position function} $\pos_S \colon S \to \Z$ sends an element $s \in S$ to the cardinality of $\{s^\prime \in S \mid s^\prime \leq s\}$.
+For any $S^\prime \subseteq S$ we write
+\[
+\pos_{S} \big( S^\prime \big) =
+\{\pos_{S} (s^\prime) \mid s^\prime \in S^\prime\}.
+\]
+
+Consider $\{a_i, a_j\} \in \pi^{-1}(x)$, two distinct simplices whose union of simplices $a_{ij} = a_i \cup a_j$ equal to $x$.
+Let $(\ast)$ be the statement that there exist $U \subseteq \{0, \dots, n+k\}$ with $\{a_i, a_j\} = \{d_{U^0}(x),\, d_{U^1}(x)\}$.
+Notice that is such $U$ exists then it is unique.
+We will now describe a condition equivalent to $(\ast)$ in terms of $\{a_i, a_j\}$ only.
 Denote
 \begin{equation*}
 \overline{a}_{i} = a_i \setminus a_j, \qquad
-\overline{a}_{i} = a_i \setminus a_j, \qquad
+\overline{a}_{j} = a_j \setminus a_i, \qquad
 \overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j.
 \end{equation*}
-Given $\{a_i, a_j\} \in \pi^{-1}(x)$, there exists $U$ with $\{a_i, a_j\} = \{d_{U^0}(x),\, d_{U^1}(x)\}$
-if and only if $U = \pos_{x}(\overline{a}_{ij})$ and
+A necessary condition for $(\ast)$ is that $\pos_{a_{ij}} \colon \overline{a}_{ij} \to \Z$ is an isomorphism onto $U$.
+Slightly abusing notation we define the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ by
+\begin{equation*}
+\ind(v) = \pos_{a_{ij}}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
+\end{equation*}
+and notice that it fits in the commutative diagram
+\[
+\begin{tikzcd}[column sep=small, row sep=small]
+\overline{a}_{ij} \arrow[rr, "\pos_{a_{ij}}", "\cong"'] \arrow[dr, "\ind"', bend right] & &
+U \arrow[dl, "\ind_U", bend left] \\
+& \Ftwo &
+\end{tikzcd}
+\]
+where $\ind_U$ was introduced in \cref{d:index function}.
+Since for $\varepsilon \in \Ftwo \cong \{0,1\}$ we have $U^\varepsilon = \ind_U^{-1}(\varepsilon)$, condition $(\ast)$ is equivalent to the existence of $U$ with
 \begin{equation} \label{e:pos's equal U's}
-\big\{\pos_{x}(\overline{a}_i),\, \pos_{x}(\overline{a}_j)\big\} = \{U^0, U^1\}.
+\big\{\pos_{a_{ij}}(\overline{a}_i),\, \pos_{a_{ij}}(\overline{a}_j)\big\} = \{U^0, U^1\}.
 \end{equation}
-Recall that $U^0$ (resp. $U^1$) is the subset of $U \subseteq \{0, \dots, n+k\}$ with elements satisfying that their position in $U$ plus its position in $\{0, \dots, n+k\}$ is $0$ mod 2 (resp. $1$ mod 2).
-Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \pos_x(\overline{a}_{ij}) \to \Ftwo$ defined by
+Or, equivalently, that the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ is constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e.,
 \begin{equation*}
-\ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
+\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\},
 \end{equation*}
-being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e.,
-\begin{equation*}
-\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}.
-\end{equation*}
+where $\ind(S) = \{\ind(v) \mid v \in S\}$ for any $S \subseteq \overline{a}_{ij}$.
+
+
+%Denote
+%\begin{equation*}
+%\overline{a}_{i} = a_i \setminus a_j, \qquad
+%\overline{a}_{j} = a_j \setminus a_i, \qquad
+%\overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j.
+%\end{equation*}
+%Given $\{a_i, a_j\} \in \pi^{-1}(x)$, there exists $U$ with $\{a_i, a_j\} = \{d_{U^0}(x),\, d_{U^1}(x)\}$
+%if and only if $U = \pos_{x}(\overline{a}_{ij})$ and
+%\begin{equation} \label{e:pos's equal U's}
+%\big\{\pos_{x}(\overline{a}_i),\, \pos_{x}(\overline{a}_j)\big\} = \{U^0, U^1\}.
+%\end{equation}
+%Recall from \cref{d:index function} that for $\varepsilon \in \Ftwo \cong \{0,1\}$ we have $U^\varepsilon = \ind_U^{-1}(\varepsilon)$.
+%Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ defined by
+%\begin{equation*}
+%\ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
+%\end{equation*}
+%being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e.,
+%\begin{equation*}
+%\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}
+%\end{equation*}
+%where $\ind(S) = \{\ind(v) \mid v \in S\}$ for any $S \subseteq \overline{a}_{ij}$.
+
+%Recall that $U^0$ (resp. $U^1$) is the subset of $U \subseteq \{0, \dots, n+k\}$ with elements satisfying that their position in $U$ plus its position in $\{0, \dots, n+k\}$ is $0$ mod 2 (resp. $1$ mod 2).
+%Therefore, \eqref{e:pos's equal U's} is equivalent to the function $\ind \colon \pos_x(\overline{a}_{ij}) \to \Ftwo$ defined by
+%\begin{equation*}
+%\ind(v) = \pos_{x}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
+%\end{equation*}
+%being constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values, i.e.,
+%\begin{equation*}
+%\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\}.
+%\end{equation*}
 
 Therefore, for any $x \in X_{n+k}$ we have $\beta(x) = 1$ if and only if the set of pairs $\{a_i, a_j\}$ in $\pi^{-1}(x)$ with $\eval(\{a_i, a_j\}) = 1$ is odd; which is equivalent to the condition $x \in B$.

@@ -1,7 +1,7 @@
 
 \section{Proof of \texorpdfstring{\cref{l:main}}{main lemma}} \label{s:proof}
 
-Throughout this section $X$ denotes a simplicial complex and $\Delta_i$ the $i\th$ map introduced in \cref{d:cup-i coproducts}.
+Throughout this section $X$ denotes a simplicial complex and $\Delta_i$ the $i^\th$ map introduced in \cref{d:cup-i coproducts}.
 
 To aid readability of the relatively long proof of \cref{l:main} we split it into four lemmas.
 We start by introducing some notation.
@@ -12,8 +12,8 @@ We start by introducing some notation.
 	For $q > 0$ and $u \in U$, define $U \sm u \in \P_{q-1}(n)$ to contain the elements of $U$ not equal to $u$.
 \end{definition}
 
-Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1} \cdots \; d_{u_q}$ with $d_{\emptyset} = \id$.
-For any $U \in \P_q(n)$, the \textit{index function} of $U$ is given by
+Recall that for any $U = \{u_1 < \cdots < u_q\} \in \P_q(n)$ we write $d_U$ for $d_{u_1} \cdots \; d_{u_q}$ with $d_{\emptyset} = \id$, that
+the \textit{index function} of $U$ is given by
 \begin{equation*}
 \begin{tikzcd}[row sep=-3pt, column sep=small,
 /tikz/column 1/.append style={anchor=base east},
@@ -22,9 +22,9 @@ For any $U \in \P_q(n)$, the \textit{index function} of $U$ is given by
 u_i \arrow[r, mapsto] & u_i + i,
 \end{tikzcd}
 \end{equation*}
-and we denote the preimage of $\varepsilon \in \Ftwo$ by $U^\varepsilon \subseteq U$.
+and that we denote the preimage of $\varepsilon \in \Ftwo \cong \{0, 1\}$ by $U^\varepsilon \subseteq U$.
 
-With this notation, for any basis element $x \in X_n$ and $i \in \{0, \dots, n\}$ we have
+With this notation, for any simplex $x \in X_n$ and $i \in \{0, \dots, n\}$ we have
 \begin{equation*}
 \Delta_{i}(x)\ =\! \sum_{U \in \P_{n-i}(n)} d_{U^0}(x) \otimes d_{U^1}(x).
 \end{equation*}
@@ -277,7 +277,7 @@ We can now provide the proof of \cref{l:main} and of our main theorem.
 	(\partial \circ \Delta_{i} + \Delta_{i} \circ \partial)(x) = (1 + T) \Delta_{i-1}(x).
 	\end{equation}
 	If $i < 0$ or $i > n+1$ then both sides are equal to $0$ by definition.
-	If $i = 0$, the right hand side of \eqref{e:main thm proof} is $0$ by definition and the left hand side is $0$ since the Alexander-Whitney diagonal is a chain map, please consult \cref{ex:alexander-whitney diagonal} for the relationship between $\Delta_0$ and this well known map.
+	If $i = 0$, the right hand side of \eqref{e:main thm proof} is $0$ by definition and the left hand side is $0$ since the Alexander--Whitney diagonal is a chain map, please consult \cref{ex:alexander-whitney diagonal} for the relationship between $\Delta_0$ and this well known map.
 	If $i = n+1$, then the left hand side of \eqref{e:main thm proof} is equal to $0$ by definition and the right hand side is equal to $(1+T) (x \otimes x) = 0$.
 	If $i \in \{0, \dots, n-1\}$, \cref{l:boundary of Delta} expresses the left hand side of \eqref{e:main thm proof} as
 	\begin{equation*}

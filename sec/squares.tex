@@ -2,7 +2,7 @@
 \section{Cup-\texorpdfstring{$i$}{i} constructions and Steenrod squares} \label{s:squares}
 
 Let $\Ftwo$ be the field with two elements and $\S_2$ the group with only one non-identity element $T$.
-In this section we define for any simplicial complexes $X$ and every integer $k$ the Steenrod $k^{\mathrm{th}}$ square
+In this section we define for any simplicial complex $X$ and every integer $k$ the Steenrod $k^{\mathrm{th}}$ square
 \begin{equation*}
 Sq^k \colon H^\bullet(X; \Ftwo) \to H^{\bullet}(X; \Ftwo)
 \end{equation*}
@@ -16,13 +16,13 @@ Consider the chain complex
 \end{tikzcd}
 \end{equation*}
 with its natural $\S_2$-action.
-For any simplicial complex $X$, the chain complex $W \otimes \chains(X; \Ftwo)$ has an $\S_2$-action concentrated in the left factor, and $\chains(X; \Ftwo)^{\otimes 2}$ has one given by transposition of factors.
+For any simplicial complex $X$, the chain complex $W \otimes \chains(X; \Ftwo)$ has an $\S_2$-action concentrated on the left factor, and $\chains(X; \Ftwo)^{\otimes 2}$ has one given by transposition of factors.
 
 We are interested in $\S_2$-equivariant chain maps
 \begin{equation} \label{e:steenrod diagonal}
 \Delta_X \colon W \otimes \chains(X; \Ftwo) \to \chains(X; \Ftwo)^{\otimes 2}
 \end{equation}
-defined naturally for every simplicial complex, i.e., such that for any simplicial map $f \colon X \to Y$ we have $\Delta_Y \circ f_\bullet = f_\bullet^{\otimes 2} \circ \Delta_X$.
+defined naturally for every simplicial complex $X$, i.e., such that for any simplicial map $f \colon X \to Y$ we have $\Delta_Y \circ f_\bullet = f_\bullet^{\otimes 2} \circ \Delta_X$.
 We say this is a \textit{cup-$i$ construction} if $\Delta_X \neq 0$ for a simplicial complex $X$ with a single vertex.
 
 A cup-$i$ construction is determined by a collection $\{\Delta_i\}_{i \in \Z}$ of natural linear maps $\chains \to \chains^{\otimes 2}$ satisfying $\Delta_0 \big([v]\big) \neq 0$ for any vertex $v$ and
@@ -74,11 +74,11 @@ Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
 \end{equation*}
 
 \begin{remark}
-	For the interested reader we mention that a cup-$i$ construction also define, through a well known categorical construction, natural cup-$i$ products on the normalized cochains of simplicial sets \cite{friedman2012simplicial} and, consequently, Steenrod squares in their mod 2 cohomology.
+	For the interested reader we mention that a cup-$i$ construction also defines, through a well known categorical construction, natural cup-$i$ products on the normalized cochains of simplicial sets \cite{friedman2012simplicial} and, consequently, Steenrod squares in their mod 2 cohomology.
 \end{remark}
 
 \begin{remark}
-	Although in this article we do not use the algebra structure on the mod 2 cohomology of spaces, we remark that the cup-$0$ product of a cup-$i$ construction represents the product of this algebra.
+	Although in this article we do not use the algebra structure on the mod~2 cohomology of spaces, we remark that the cup-$0$ product of a cup-$i$ construction represents the product of this algebra.
 	Explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the name of the $Sq^k$ operations.
 \end{remark}
 

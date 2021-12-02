@@ -1,10 +1,10 @@
 \documentclass{amsart}
+\usepackage[boxruled, noend]{algorithm2e}
 \include{aux/style}
 \include{aux/usualcmds}
 \include{aux/commands}
 
 \usepackage{bm}
-\usepackage[boxruled, noend]{algorithm2e}
 \usepackage{graphicx, fancyvrb}
 
 % commands
@@ -18,6 +18,7 @@
 \DeclareMathOperator{\eval}{eval}
 \DeclareMathOperator{\pos}{pos}
 \newcommand{\bu}{{\bar{u}}}
+\DeclareMathOperator{\modulo}{mod}
 
 % environment
 \newenvironment{tab}{\list{}{\rightmargin 0pt}\item\relax}{\endlist}
@@ -28,7 +29,7 @@
 \address{Max Planck Institute for Mathematics, Bonn, Germany}
 \address{Department of Mathematics, University of Notre, Notre Dame, IN, USA}
 \email{ammedmar@mpim-bonn.mpg.de}
-\thanks{The author acknowledges financial support from Innosuisse grant \mbox{32875.1 IP-ICT - 1} and the hospitality of the Laboratory for Topology and Neuroscience at EPFL where part of this work developed.}
+\thanks{The author thanks the hospitality of the \textit{Laboratory for Topology and Neuroscience} at EPFL and acknowledges partial support from \textit{Innosuisse} grant \mbox{32875.1 IP-ICT-1}.}
 \keywords{Cup-$i$ products, Steenrod squares, simplicial complexes, cohomology operations, effective constructions}
 
 \begin{document}
@@ -43,5 +44,6 @@
 	\input{sec/comparison}
 	\input{sec/proof}
 	\input{sec/secondary}
+	\sloppy
 	\printbibliography
 \end{document}
