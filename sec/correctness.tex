@@ -1,0 +1,143 @@
+%!TEX root = ../fast_sq.tex
+
+\section{Correctness of \cref{a:algorithm}} \label{s:correctness}
+
+Let us consider the same setup as above. Explicitly, a simplicial complex $X$, a cocycle $\alpha$ whose support is $A = \{a_1, \dots, a_m\} \subseteq X_n$ and an integer $k \in \{1, \dots, n\}$.
+Denote by $\alpha_i$ the cochain dual of $a_i$, and consider
+$\Delta_{n-k}$ as in \cref{d:cup-i coproducts}.
+
+Before proving \cref{t:algorithm}, the correctness of \cref{a:algorithm}, let us record a few properties satisfied by our cup-$i$ construction.
+
+\begin{lemma} \label{l:freeness}
+	For $i \neq j$ and $x \in X_{n+k}$:
+	\begin{enumerate}
+		\item $(\alpha_i \otimes \alpha_i)\Delta_{n-k}(x) = 0$.
+		\item If $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$ then $(\alpha_j \otimes \alpha_i)\Delta_{n-k}(x) = 0$.
+		\item If $(1+T)(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$ then $x = a_i \cup a_j$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Recall that
+	\begin{equation*}
+	\Delta_{n-k}(x) \ = \! \sum_{\substack{U \subseteq \{0, \dots, n+k\} \\ \vert U \vert = 2k}}
+	d_{U^0}(x) \otimes d_{U^1}(x).
+	\end{equation*}
+
+	\begin{enumerate}
+		\item If $(\alpha_i \otimes \alpha_i)\Delta_{n-k}(x) \neq 0$, then there exists a non-empty $U$ in the sum with $U^0 = U^1$, which is impossible since $U^0 \cap U^1 = \emptyset$.
+
+		\item If $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$ and $(\alpha_j \otimes \alpha_i)\Delta_{n-k}(x) \neq 0$, then there are distinct subsets $V$ and $W$ in the sum such that $V^0 = W^1$ and $W^0 = V^1$.
+		But then $V = V^0 \cup V^1 = W^1 \cup W^0 = W$, which is a contradiction.
+
+		\item If $(1+T)(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$, then there exists $U \subseteq \{0, \dots, n+k\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and, since $U^0 \cap U^1 = \emptyset$, we have $x = d_{U^0}(x) \cup d_{U^1}(x)$.
+		The claim follows.
+	\end{enumerate}
+\end{proof}
+
+The following functions will be use in the proof.
+
+\begin{definition} \label{d:position function}
+	Given a finite totally ordered set $S$, the \textit{position function} $\pos_S \colon S \to \N$ sends an element $s \in S$ to the cardinality of $\{s^\prime \in S \mid s^\prime \leq s\}$.
+\end{definition}
+
+\begin{definition} \label{d:index function}
+	For $U = \{u_1 < \cdots < u_m\} \subseteq \N$ the \textit{index function} is defined by
+	\[
+	\begin{split}
+	\ind_U \colon U & \to \Ftwo \\
+	u_j & \mapsto (u_j + j) \modulo 2.
+	\end{split}
+	\]
+\end{definition}
+
+\begin{lemma} \label{l:partition via index function}
+	For any $U \subset \N$ finite
+	\[
+	U^0 = \ind_U^{-1}(0), \qquad
+	U^1 = \ind_U^{-1}(1).
+	\]
+\end{lemma}
+
+\begin{notation}
+	We recall the following notational conventions:
+	\begin{enumerate}
+		\item For any function $f$ and $S \subseteq \domain(f)$
+		\[
+		f(S) = \{ f(s) \mid s \in S\}.
+		\]
+		\item For any two sets $S$ and $S^\prime$
+		\[
+		S \xor S^\prime = S \cup S^\prime \setminus (S \cap S^\prime).
+		\]
+	\end{enumerate}
+\end{notation}
+
+\begin{proof}[Proof of \cref{t:algorithm}]
+	We have to show that $\supp \beta = B$, where $\beta = (\alpha \otimes \alpha) \Delta_{n-k}$ and $B$ is the output of \cref{a:algorithm} when the input is $A$ and $k$.
+
+	Using (1) in \cref{l:freeness}, for any $x \in X_{n+k}$ we have that
+	\begin{equation} \label{e:proof correctness}
+	\begin{split}
+	\beta(x) & =
+	(\alpha \otimes \alpha) \Delta_{n-k}(x) \\ & =
+	(\alpha_1 + \cdots + \alpha_m)^{\otimes 2} \Delta_{n-k}(x) \\ & =
+	\Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j + \sum_{i} \alpha_i \otimes \alpha_i \Big)
+	\Delta_{n-k}(x) \\ & =
+	\Big(\sum_{i \neq j} \alpha_i \otimes \alpha_j \Big)
+	\Delta_{n-k}(x) \\ & =
+	\sum_{i < j} (1+T) (\alpha_i \otimes \alpha_j)
+	\Delta_{n-k}(x)
+	\end{split}
+	\end{equation}
+	where $\alpha_i$ is the cochain dual to $a_i$.
+	By (2) and (3) in \cref{l:freeness}, for any pair $\{\alpha_i, \alpha_j\}$ the evaluation of $\alpha_i \otimes \alpha_j$ or $\alpha_j \otimes \alpha_i$ on $\Delta_{n-k}(x)$ is non-zero if and only if
+	\[
+	(1+T)(\alpha_i \otimes \alpha_j) \Delta_{n-k}(x) \neq 0
+	\]
+	and $x$ is equal to $a_{ij} = a_i \cup a_j$.
+	We say that the pair $\{\alpha_i, \alpha_j\}$ is  \textit{non-zero} in this case.
+	Using these observations and \eqref{e:proof correctness},
+	the support of $\beta$ can be constructed iterating over pairs $i < j$ as follows: Consider a set $B^\prime$ initialized as the empty set and update it to $B^\prime \triangle \, \{a_{ij}\} = B^\prime \cup \{a_{ij}\} \setminus (B^\prime \cap \{a_{ij}\})$ when $\{\alpha_i, \alpha_j\}$ is non-zero.
+	Here we are taking advantage of the fact that cardinality mod 2 can be kept track of using the symmetric difference.
+	At the end of the iteration we have $\supp \beta = B^\prime$.
+
+	The construction of $B^\prime$ is structurally the same as that of $B$ with the exception that the condition on a pair $\{\alpha_i, \alpha_j\}$ to be non-zero is replaced by an \textbf{if} condition in terms of the pair $\{a_i, a_j\}$ only.
+	The theorem will follow after showing that these two conditions are equivalent.
+
+	A pair $\{\alpha_i, \alpha_j\}$ is non-zero if and only if there exists $U \subseteq \{0, \dots, n+k\}$ of cardinality $2k$ such that
+	\[
+	\{a_i, a_j\} =\{d_{U^0}(a_{ij}), d_{U^1}(a_{ij})\}.
+	\]
+	If such $U$ exists it is unique, and it is the image under the position function $\pos_{a_{ij}} \colon {a}_{ij} \to \N$ of the subset $\overline{a}_{ij}$ defined by
+	\begin{equation*}
+	\overline{a}_{i} = a_i \setminus a_j, \qquad
+	\overline{a}_{j} = a_j \setminus a_i, \qquad
+	\overline{a}_{ij} = \overline{a}_i \cup \overline{a}_j.
+	\end{equation*}
+	Therefore, a pair $\{\alpha_i, \alpha_j\}$ is non-zero if an only if for $U = \pos_{a_{ij}}(\overline{a}_{ij})$ one has
+	\begin{equation} \label{e:pos's equal U's}
+	\big\{\pos_{a_{ij}}(\overline{a}_i),\, \pos_{a_{ij}}(\overline{a}_j)\big\} = \{U^0, U^1\}.
+	\end{equation}
+	We now give an equivalent condition for this.
+	Consider the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ defined by
+	\[
+	\ind(v) =
+	\pos_{a_{ij}}(v) + \pos_{\overline{a}_{ij}}(v) \text{ mod }2
+	\]
+	and notice that the following diagram
+	\[
+	\begin{tikzcd}[column sep=small, row sep=small]
+	\overline{a}_{ij} \arrow[rr, "\pos_{a_{ij}}", "\cong"'] \arrow[dr, "\ind"', bend right] & &
+	U \arrow[dl, "\ind_U", bend left] \\
+	& \Ftwo &
+	\end{tikzcd}
+	\]
+	commutes.
+	Therefore, by \cref{l:partition via index function} the identity \eqref{e:pos's equal U's} holds if an only if the function $\ind \colon \overline{a}_{ij} \to \Ftwo$ is constant on both $\overline{a}_i$ and $\overline{a}_j$ with different values.
+	This is equivalent to the identity
+	\begin{equation*}
+	\ind(\overline{a}_i) \xor \ind(\overline{a}_j) = \{0,1\},
+	\end{equation*}
+	as in the second \textbf{if} condition of \cref{a:algorithm}.
+\end{proof}

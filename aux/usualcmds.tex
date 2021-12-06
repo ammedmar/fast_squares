@@ -7,28 +7,45 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem*{convention}{Convention}
+\newtheorem*{notation}{Notation}
 
 % hyphenation
 \hyphenation{co-chain}
 \hyphenation{co-al-ge-bras}
 
+% basics
+\DeclareMathOperator{\face}{d}
+\DeclareMathOperator{\dege}{s}
+\DeclareMathOperator{\bd}{\partial}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\ot}{\otimes}
+\DeclareMathOperator{\EZ}{EZ}
+\DeclareMathOperator{\AW}{AW}
+\newcommand{\diag}{\mathrm{D}}
+\DeclareMathOperator{\copr}{\Delta}
+\DeclareMathOperator{\aug}{\epsilon}
+\DeclareMathOperator{\pr}{\ast}
+
 % elements
 \newcommand{\id}{\mathsf{id}}
-\newcommand{\M}{\cM}
-\newcommand{\UM}{{\forget(\M)}}
-\newcommand{\SL}{{\M_{sl}}}
-\newcommand{\USL}{{\forget(\M_{sl})}}
+\newcommand{\Med}{\cM}
+\newcommand{\UM}{{\forget(\Med)}}
+\newcommand{\MSL}{{\Med_{sl}}}
+\newcommand{\USL}{{\forget(\Med_{sl})}}
 \newcommand{\Surj}{\cX}
 \newcommand{\BE}{\cE}
 
 % sets and spaces
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\k}{\Bbbk}
+\newcommand{\Sym}{\mathbb{S}}
+\newcommand{\Cyc}{\mathbb{C}}
 \newcommand{\Ftwo}{{\mathbb{F}_2}}
 \newcommand{\Fp}{{\mathbb{F}_p}}
-\renewcommand{\S}{\mathbb{S}}
 \newcommand{\Cp}{{\mathbb{C}_p}}
 \newcommand{\graphs}{\mathfrak{G}}
 \newcommand{\gsimplex}{\mathbb{\Delta}}
@@ -40,6 +57,7 @@
 \newcommand{\Fun}{\mathsf{Fun}}
 \newcommand{\Set}{\mathsf{Set}}
 \newcommand{\Top}{\mathsf{Top}}
+\newcommand{\CW}{\mathsf{CW}}
 \newcommand{\Ch}{\mathsf{Ch}}
 \newcommand{\simplex}{\triangle}
 \newcommand{\sSet}{\mathsf{sSet}}
@@ -52,8 +70,8 @@
 \newcommand{\Nec}{\mathsf{Nec}}
 \newcommand{\nSet}{\mathsf{nSet}}
 \newcommand{\Mon}{\mathsf{Mon}}
-\newcommand{\Smod}{\mathsf{Mod}_{\S}}
-\newcommand{\Sbimod}{\mathsf{biMod}_{\S}}
+\newcommand{\SymMod}{\mathsf{Mod}_{\Sym}}
+\newcommand{\SymBimod}{\mathsf{biMod}_{\Sym}}
 \newcommand{\operads}{\mathsf{Oper}}
 \newcommand{\props}{\mathsf{Prop}}
 
@@ -61,7 +79,14 @@
 \DeclareMathOperator{\free}{F}
 \DeclareMathOperator{\forget}{U}
 \DeclareMathOperator{\yoneda}{\mathcal{Y}}
-\DeclareMathOperator{\EZ}{EZ}
+\DeclareMathOperator{\sSing}{Sing^{\simplex}}
+\DeclareMathOperator{\cSing}{Sing^{\cube}}
+\newcommand{\loops}{\Omega}
+\DeclareMathOperator{\cobar}{\mathbf{\Omega}}
+\DeclareMathOperator{\proj}{\pi}
+\DeclareMathOperator{\incl}{\iota}
+
+% chains
 \DeclareMathOperator{\chains}{N}
 \DeclareMathOperator{\schains}{N^{\simplex}}
 \DeclareMathOperator{\cchains}{N^{\cube}}
@@ -74,14 +99,6 @@
 \DeclareMathOperator{\sScochains}{S^{\vee}_{\simplex}}
 \DeclareMathOperator{\cScochains}{S^{\vee}_{\cube}}
 \DeclareMathOperator{\gchains}{C}
-\DeclareMathOperator{\sSing}{Sing^{\simplex}}
-\DeclareMathOperator{\cSing}{Sing^{\cube}}
-\newcommand{\loops}{\Omega}
-\DeclareMathOperator{\cobar}{\mathbf{\Omega}}
-\DeclareMathOperator{\triangulate}{\mathcal{T}}
-\DeclareMathOperator{\cubify}{\mathcal{U}}
-\DeclareMathOperator{\projection}{\pi}
-\DeclareMathOperator{\inclusion}{\iota}
 
 % other
 \renewcommand{\th}{\mathrm{th}}
@@ -89,8 +106,10 @@
 \DeclareMathOperator*{\colim}{colim}
 \DeclareMathOperator{\coker}{coker}
 \newcommand{\tensor}{\otimes}
-\newcommand{\End}{\mathrm{End}}
 \newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\coEnd}{\mathrm{coEnd}}
+\newcommand{\biEnd}{\mathrm{biEnd}}
 \newcommand{\bars}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\Vert}
 \newcommand{\angles}[1]{\langle#1\rangle}
@@ -114,6 +133,7 @@
 \newcommand{\cD}{\mathcal{D}}
 \newcommand{\cE}{\mathcal{E}}
 
+\newcommand{\cL}{\mathcal{L}}
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\cO}{\mathcal{O}}
@@ -125,7 +145,10 @@
 \newcommand{\cZ}{\mathcal{Z}}
 
 \newcommand{\rB}{\mathrm{B}}
+\newcommand{\rH}{\mathrm{H}}
 \newcommand{\rP}{\mathrm{P}}
+
+\newcommand{\bbF}{\mathbb{F}}
 
 % comments
 \newcommand{\anibal}[1]{\textcolor{blue}{\underline{Anibal}: #1}}

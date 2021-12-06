@@ -2,14 +2,18 @@
 
 \section{New formulas for cup-\texorpdfstring{$i$}{i} products} \label{s:formulas}
 
+\anibal{Improve intro}
+
 In this section we introduce our new description of a cup-$i$ construction.
 
-Let $X$ be a simplicial complex and $x \in X_n$.
-For a set
-\begin{equation*}
-U = \{u_1 < \dots < u_r\} \subseteq \{0, \dots, n\}
-\end{equation*}
-we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(x) = x$.
+\begin{notation}
+	Let $X$ be a simplicial complex and $x \in X_n$.
+	For a set
+	\begin{equation*}
+	U = \{u_1 < \dots < u_r\} \subseteq \{0, \dots, n\}
+	\end{equation*}
+	we write $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(x) = x$.
+\end{notation}
 
 \begin{definition} \label{d:cup-i coproducts}
 	For any simplicial complex $X$ and integer $i$, the \textit{cup-$i$ coproduct}
@@ -17,7 +21,7 @@ we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(
 	\Delta_i : C_\bullet(X; \Ftwo) \to C(X; \Ftwo)^{\otimes 2}_\bullet
 	\end{equation*}
 	is the linear map defined on a simplex $x \in X_n$ to be $0$ if $i \not\in \{0, \dots, n\}$ and is otherwise given by
-	\begin{equation} \label{equation: simplicial cup-i coproducts}
+	\begin{equation} \label{e:new formulas}
 	\Delta_i(x) = \sum d_{U^0}(x) \otimes d_{U^1}(x)
 	\end{equation}
 	where the sum is taken over all subsets $U = \{u_1 < \cdots < u_{n-i}\} \subseteq \{0, \dots, n\}$ and
@@ -32,7 +36,7 @@ we use the notation $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(
 	\begin{equation*}
 	\Delta_0(x) = \sum_{j=0}^n d_{j+1} \cdots d_{n}(x) \otimes d_{0} \cdots d_{j-1}(x),
 	\end{equation*}
-	a map known as \textit{Alexander--Whitney diagonal} and widely used to define the algebra structure on cohomology, the cup product.
+	a map known as \textit{Alexander--Whitney diagonal} and widely used to define the algebra structure on cohomology (\cref{r:cup product}).
 \end{example}
 
 \begin{example} \label{ex:Sq0 is the identity}
@@ -80,17 +84,4 @@ We state these claims as two lemmas.
 	\end{equation*}
 \end{lemma}
 
-We devote \cref{s:proof} to the proof of this lemma, which together with \cref{l:naturality} imply \cref{t:main}.
-
-Given the definition of the partition sets $U^0$ and $U^1$ in \eqref{e:partition subsets} we introduce the following function.
-\begin{definition} \label{d:index function}
-	For $U = \{u_1 < \cdots < u_m\} \subseteq \N$ the \textit{index function} is defined by
-	\[
-	\begin{split}
-	\ind_U \colon U & \to \Ftwo \\
-	u_j & \mapsto (u_j + j) \modulo 2.
-	\end{split}
-	\]
-\end{definition}
-
-Notice that for $\varepsilon \in \Ftwo \cong \{0,1\}$ we have $U^\varepsilon = \ind_U^{-1}(\varepsilon)$.
+We devote \cref{s:proof} to the proof of this lemma, which, together with \cref{l:naturality}, imply \cref{t:main}.
