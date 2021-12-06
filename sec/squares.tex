@@ -49,25 +49,25 @@ Using the linear duality functor and passing to fix points gives a chain map
 \begin{equation*}
 \begin{tikzcd}
 \Hom\left(C_\bullet \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[r] &
-\Hom\left(W(2) \otimes C_\bullet, \Ftwo \right)^{\Sym_2},
+\Hom\left(W \otimes C_\bullet, \Ftwo \right)^{\Sym_2},
 \end{tikzcd}
 \end{equation*}
 which we can complete, using isomorphisms \eqref{e:adjunction isomorphism} and \eqref{e:invariant hom iso hom coinvariants} of \cref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
 \Hom\left(C_\bullet \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[r] &
-\Hom\left(W(2) \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[d] \\
+\Hom\left(W \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[d] \\
 \left(C^\bullet \otimes C^\bullet\right)^{\Sym_2} \arrow[u]&
-\Hom\left(W(2)_{\Sym_2} \otimes C_\bullet, \Ftwo \right) \arrow[d] \\
+\Hom\left(W_{\Sym_2} \otimes C_\bullet, \Ftwo \right) \arrow[d] \\
 C^\bullet \arrow[u, "doubleing"] \arrow[r, dashed]&
-\Hom\left(W(2)_{\Sym_2}, C^\bullet\right),
+\Hom\left(W_{\Sym_2}, C^\bullet\right),
 \end{tikzcd}
 \end{equation*}
 where the choice of coefficients ensures that the \textit{doubleing map} $\alpha \mapsto \alpha \otimes \alpha$ is linear.
 Using the adjunction isomorphism, the dashed arrow defines a linear map
 \begin{equation} \label{e:Steenrod squares parameterized}
-\begin{tikzcd}[row sep=0pt, column sep = tiny]
-C^\bullet \otimes W(2)_{\Sym_2} \arrow[r] &[-10pt] C^\bullet \\
+\begin{tikzcd}[row sep=0pt, column sep = small]
+C^\bullet \otimes W_{\Sym_2} \arrow[r] &[-10pt] C^\bullet \\
 \alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\Delta_i(-)
 \end{tikzcd}
 \end{equation}

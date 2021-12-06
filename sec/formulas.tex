@@ -51,7 +51,25 @@ In this section we introduce our new description of a cup-$i$ construction.
 	The maps introduced in \cref{d:cup-i coproducts} define a cup-$i$ construction.
 \end{theorem}
 
-Since by the previous example $\Delta_0\big([v]\big) = [v] \otimes [v] \neq 0$, we need to check that each $\Delta_i$ is natural and satisfies \eqref{e:boundary of cup-i}.
+\begin{remark}
+	Two \mbox{cup-$i$} constructions on $C_\bullet$, say $\psi$ and $\psi^\prime$, are \textit{isomorphic} if there is an automorphism $\phi$ of $W$ making the following diagram commute:
+	\[
+	\begin{tikzcd} [column sep = 0, row sep=normal]
+	W \otimes C_\bullet \arrow[rr, "\phi \otimes \id"] \arrow[rd, in=180, out=-90, "\psi^{\phantom{\prime}}"', near start] & &
+	W \otimes C_\bullet \arrow[ld, in=0, out=-90, "\psi^\prime", near start] \\
+	& C_\bullet \ot C_\bullet & .
+	\end{tikzcd}
+	\]
+	The cup-$i$ products of Steenrod seem to be combinatorially fundamental.
+	In forthcoming work \cite{medina2018axiomatic} that depends on \cref{t:main} we show, through an axiomatic characterization, that all known cup-$i$ constructions on simplicial chains are isomorphic.
+	These constructions are: Steenrod's original \cite{steenrod1947products}, the one obtained using the $\EZ$-$\AW$ contraction \cite{real1996computability, gonzalez-diaz1999steenrod}, those from combinatorial operads \cite{mcclure2003multivariable, berger2004combinatorial}, the one defined by the $\Med$-bialgebra structure on standard simplices \cite{medina2020prop1, medina2018prop2},
+	and the one introduced here.
+
+	Furthermore, these cup-$i$ constructions define naturally another fundamental construction: the nerve of higher categories \cite{street1987orientals, medina2020globular}.
+\end{remark}
+
+
+In order to prove \cref{t:main} we need to check that each $\Delta_i$ is natural and satisfies \eqref{e:boundary of cup-i} -- \cref{ex:Sq0 is the identity} implies the non-degeneracy condition.
 We state these claims as two lemmas.
 
 \begin{lemma} \label{l:naturality}
@@ -84,4 +102,5 @@ We state these claims as two lemmas.
 	\end{equation*}
 \end{lemma}
 
-We devote \cref{s:proof} to the proof of this lemma, which, together with \cref{l:naturality}, imply \cref{t:main}.
+We devote \cref{s:proof} to the proof of this lemma.
+We now turn to the development of a method for the computation of Steenrod squares using formula \eqref{e:new formulas}.
