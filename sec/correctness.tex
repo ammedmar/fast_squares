@@ -30,12 +30,12 @@ Before proving \cref{t:algorithm}, the correctness of \cref{a:algorithm}, let us
 		\item If $(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$ and $(\alpha_j \otimes \alpha_i)\Delta_{n-k}(x) \neq 0$, then there are distinct subsets $V$ and $W$ in the sum such that $V^0 = W^1$ and $W^0 = V^1$.
 		But then $V = V^0 \cup V^1 = W^1 \cup W^0 = W$, which is a contradiction.
 
-		\item If $(1+T)(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$, then there exists $U \subseteq \{0, \dots, n+k\}$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and, since $U^0 \cap U^1 = \emptyset$, we have $x = d_{U^0}(x) \cup d_{U^1}(x)$.
+		\item If $(1+T)(\alpha_i \otimes \alpha_j)\Delta_{n-k}(x) \neq 0$, then there exists $U \subseteq \{0, \dots, n+k\}$ of cardinality $2k$ such that $\{a_i, a_j\} = \{d_{U^0}(x), d_{U^1}(x)\}$ and, since $U^0 \cap U^1 = \emptyset$, we have $x = d_{U^0}(x) \cup d_{U^1}(x)$.
 		The claim follows.
 	\end{enumerate}
 \end{proof}
 
-The following functions will be use in the proof.
+We will need the following functions.
 
 \begin{definition} \label{d:position function}
 	Given a finite totally ordered set $S$, the \textit{position function} $\pos_S \colon S \to \N$ sends an element $s \in S$ to the cardinality of $\{s^\prime \in S \mid s^\prime \leq s\}$.
@@ -51,8 +51,10 @@ The following functions will be use in the proof.
 	\]
 \end{definition}
 
+The following characterization of \eqref{e:partition subsets} is immediate.
+
 \begin{lemma} \label{l:partition via index function}
-	For any $U \subset \N$ finite
+	For any finite set $U \subset \N$
 	\[
 	U^0 = \ind_U^{-1}(0), \qquad
 	U^1 = \ind_U^{-1}(1).
@@ -60,7 +62,7 @@ The following functions will be use in the proof.
 \end{lemma}
 
 \begin{notation}
-	We recall the following notational conventions:
+	We will use the following notational conventions:
 	\begin{enumerate}
 		\item For any function $f$ and $S \subseteq \domain(f)$
 		\[

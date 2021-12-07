@@ -12,11 +12,11 @@ In this section we introduce our new description of a cup-$i$ construction.
 	\begin{equation*}
 	U = \{u_1 < \dots < u_r\} \subseteq \{0, \dots, n\}
 	\end{equation*}
-	we write $d_U(x) = d_{u_1} \ldots\, d_{u_r}(x)$, with $d_{\emptyset}(x) = x$.
+	we write $d_U(x) = d_{u_1}\! \dotsm \, d_{u_r}(x)$, with $d_{\emptyset}(x) = x$.
 \end{notation}
 
 \begin{definition} \label{d:cup-i coproducts}
-	For any simplicial complex $X$ and integer $i$, the \textit{cup-$i$ coproduct}
+	For any simplicial complex $X$ and integer $i$
 	\begin{equation*}
 	\Delta_i : C_\bullet(X; \Ftwo) \to C(X; \Ftwo)^{\otimes 2}_\bullet
 	\end{equation*}
@@ -44,7 +44,7 @@ In this section we introduce our new description of a cup-$i$ construction.
 	\begin{equation*}
 	\Delta_n(x) = x \otimes x,
 	\end{equation*}
-	implying the well known fact that $Sq^0$ is the identity.
+	implying, after \cref{t:main} below, the well known fact that $Sq^0$ is the identity.
 \end{example}
 
 \begin{theorem} \label{t:main}
@@ -52,18 +52,17 @@ In this section we introduce our new description of a cup-$i$ construction.
 \end{theorem}
 
 \begin{remark}
-	Two \mbox{cup-$i$} constructions on $C_\bullet$, say $\psi$ and $\psi^\prime$, are \textit{isomorphic} if there is an automorphism $\phi$ of $W$ making the following diagram commute:
+	Two \mbox{cup-$i$} constructions on $C_\bullet$, say $\triangle$ and $\triangle^\prime$, are \textit{isomorphic} if there is an automorphism $\phi$ of $W$ making the following diagram commute:
 	\[
 	\begin{tikzcd} [column sep = 0, row sep=normal]
-	W \otimes C_\bullet \arrow[rr, "\phi \otimes \id"] \arrow[rd, in=180, out=-90, "\psi^{\phantom{\prime}}"', near start] & &
-	W \otimes C_\bullet \arrow[ld, in=0, out=-90, "\psi^\prime", near start] \\
+	W \otimes C_\bullet \arrow[rr, "\phi \otimes \id"] \arrow[rd, in=180, out=-90, "\triangle^{\phantom{\prime}}"', near start] & &
+	W \otimes C_\bullet \arrow[ld, in=0, out=-90, "\triangle^\prime", near start] \\
 	& C_\bullet \ot C_\bullet & .
 	\end{tikzcd}
 	\]
 	The cup-$i$ products of Steenrod seem to be combinatorially fundamental.
-	In forthcoming work \cite{medina2018axiomatic} that depends on \cref{t:main} we show, through an axiomatic characterization, that all known cup-$i$ constructions on simplicial chains are isomorphic.
-	These constructions are: Steenrod's original \cite{steenrod1947products}, the one obtained using the $\EZ$-$\AW$ contraction \cite{real1996computability, gonzalez-diaz1999steenrod}, those from combinatorial operads \cite{mcclure2003multivariable, berger2004combinatorial}, the one defined by the $\Med$-bialgebra structure on standard simplices \cite{medina2020prop1, medina2018prop2},
-	and the one introduced here.
+	In forthcoming work \cite{medina2018axiomatic} that depends on \cref{t:main} we show, through an axiomatic characterization, that all known cup-$i$ constructions on simplicial chains are isomorphic -- and not just homotopic -- to the one introduced here.
+	These constructions are: Steenrod's original \cite{steenrod1947products}, the one obtained using the $\EZ$-$\AW$ contraction \cite{real1996computability, gonzalez-diaz1999steenrod}, those from combinatorial operads \cite{mcclure2003multivariable, berger2004combinatorial}, and the one defined by the $\Med$-bialgebra structure on standard simplices \cite{medina2020prop1, medina2018prop2}.
 
 	Furthermore, these cup-$i$ constructions define naturally another fundamental construction: the nerve of higher categories \cite{street1987orientals, medina2020globular}.
 \end{remark}
@@ -73,7 +72,7 @@ In order to prove \cref{t:main} we need to check that each $\Delta_i$ is natural
 We state these claims as two lemmas.
 
 \begin{lemma} \label{l:naturality}
-	For any simplicial map $f$ and integer $i$, the $i^\th$ map of \cref{d:cup-i coproducts} satisfies
+	For any simplicial map $f$ and integer $i$ we have
 	\begin{equation*}
 	\Delta_i \circ f_\bullet = (f_\bullet \otimes f_\bullet) \circ \Delta_i.
 	\end{equation*}
@@ -96,11 +95,11 @@ We state these claims as two lemmas.
 \end{proof}
 
 \begin{lemma} \label{l:main}
-	For any integer $i$, the $i^\th$ map of \cref{d:cup-i coproducts} satisfies
+	For any integer $i$ we have
 	\begin{equation*}
 	\partial \circ \Delta_{i} + \Delta_{i+1} \circ \partial = (1+T) \Delta_{i-1}.
 	\end{equation*}
 \end{lemma}
 
 We devote \cref{s:proof} to the proof of this lemma.
-We now turn to the development of a method for the computation of Steenrod squares using formula \eqref{e:new formulas}.
+We now turn to the development of a method for the computation of Steenrod squares leveraging formula \eqref{e:new formulas}.

@@ -2,8 +2,8 @@
 
 \section{New algorithm for Steenrod squares} \label{s:algorithm}
 
-For a finite simplicial complex $X$, integer $k$ and cocycle $\alpha$ of degree $-n$, the cocycle $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$, where $\Delta_{n-k}(-)$ is as in \cref{d:cup-i coproducts}, is by
-\cref{d:steenrod squares} and \cref{t:main} a cocycle representative of $Sq^k \big( [\alpha] \big)$.
+For a finite simplicial complex $X$, integer $k$ and cocycle $\alpha$ of degree $-n$, the cocycle $\beta = (\alpha \otimes \alpha)\Delta_{n-k}(-)$ is by
+\cref{d:steenrod squares} and \cref{t:main} a representative of $Sq^k \big( [\alpha] \big)$.
 In this section we will present and discuss an algorithmic description of $\supp \beta$, the support of $\beta$.
 
 Let $A = \{a_1, \dots, a_m\} \subseteq X_n$ be the support of $\alpha$, which is defined by
@@ -30,19 +30,21 @@ For the remaining cases we have the following characterization whose proof occup
 	\label{f:algorithm}
 \end{figure}
 
-We now give an intuitive comparison between our proposed method  and a more direct approach using a generic presentation of a cup-$i$ construction
+We now give an intuitive comparison between our proposed method and a more direct approach using a generic presentation of a cup-$i$ construction
 \[
-\Delta^\prime_i(x) =
+\triangle_i(x) =
 \sum_{\Gamma_i} x^{(1)} \otimes x^{(2)}.
 \]
-An algorithm for the computation of the support of $(\alpha \otimes \alpha)\Delta^\prime_{n-k}(-)$, a representative of the $k^\th$ Steenrod square of the class $[\alpha]$, can be defined by looping over $X_{n+k}$ times $\Gamma_{n-k}$ while evaluating $(\alpha \otimes \alpha)$ on the associated tensor pair.
+An algorithm for the computation of the support of $(\alpha \otimes \alpha)\triangle_{n-k}(-)$ can be defined by looping over $X_{n+k}$ times $\Gamma_{n-k}$ while evaluating $(\alpha \otimes \alpha)$ on the associated tensor pair.
 \cref{a:algorithm} improves on this scheme by using the specific form of \eqref{e:new formulas} to filter summands using the support of $\alpha$.
 So, even if $X_{n+k}$ and $\Gamma_{n-k}$ are very large, \cref{a:algorithm} loops over
 \[
 \frac{m(m-1)}{2}
 \]
-unordered pairs of distinct simplices, where $m$ is the cardinality of the support of $\alpha$.
+unordered pairs of distinct simplices, where $m$ is the cardinality of $\supp \alpha$.
 Many of these pairs are discarded quickly, after checking that the union of its simplices does not have exactly $n+k$ vertices.
-One could wonder if the next step in \cref{a:algorithm} -- determining if this set of vertices is a simplex of $X$ -- could slow down the routine considerably.
+\anibal{It would be great to have an upper bound on the following: Consider $\big\{ a_i \subseteq \N : \bars{a_i} = n\big\}_{i=1}^m$. Bound the cardinality of $\big\{ \{a_i, a_j\} : \bars{a_i \cup a_j} = n+k \big\}$}
+
+One could wonder if the next step in \cref{a:algorithm} -- determining if a resulting set of $n+k$ vertices is a simplex of $X$ -- could slow down the routine significantly.
 As illustrated in \cref{s:comparison} through an example, even for a sub-optimal implementation of our algorithm this is not the case.
 For high-performance tasks this look-up time could be further reduced by using data structures specialized on the representation of simplicial complexes, but we do not discuss these optimizations here.

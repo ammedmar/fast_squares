@@ -23,23 +23,23 @@ For any simplicial complex $X$, the chain complex $W \otimes C_\bullet(X; \Ftwo)
 
 We are interested in $\Sym_2$-equivariant chain maps
 \begin{equation} \label{e:steenrod diagonal}
-\Delta_X \colon W \otimes C_\bullet(X; \Ftwo) \to C_\bullet(X; \Ftwo)^{\otimes 2}
+\triangle_X \colon W \otimes C_\bullet(X; \Ftwo) \to C_\bullet(X; \Ftwo)^{\otimes 2}
 \end{equation}
-defined naturally for every simplicial complex $X$, i.e., such that $\Delta_Y \circ (\id_W \otimes f_\bullet) = (f_\bullet \otimes f_\bullet) \circ \Delta_X$ for any simplicial map $f \colon X \to Y$.
+defined naturally for every simplicial complex $X$, i.e., such that $\triangle_Y \circ (\id_W \otimes f_\bullet) = (f_\bullet \otimes f_\bullet) \circ \triangle_X$ for any simplicial map $f \colon X \to Y$.
 
 \begin{definition}
-	A \textit{cup-$i$ construction} is a natural collection of maps as above such that $\Delta_X \neq 0$ if $X$ is a simplicial complex with a single vertex.
+	A \textit{cup-$i$ construction} is a natural collection of maps as above such that $\triangle_X \neq 0$ if $X$ is a simplicial complex with a single vertex.
 \end{definition}
 
-A cup-$i$ construction is determined by a collection $\{\Delta_i\}_{i \in \Z}$ of natural linear maps $C_\bullet \to C_\bullet^{\otimes 2}$ satisfying $\Delta_0 \big([v]\big) \neq 0$ for any vertex $v$ and
+A cup-$i$ construction is determined by a collection $\{\triangle_i\}_{i \in \Z}$ of natural linear maps $C_\bullet \to C_\bullet^{\otimes 2}$ satisfying $\triangle_0 \big([v]\big) \neq 0$ for any vertex $v$ and
 \begin{equation} \label{e:boundary of cup-i}
-(1 + T) \Delta_{i-1} = \partial \circ \Delta_i + \Delta_i \circ \partial
+(1 + T) \triangle_{i-1} = \partial \circ \triangle_i + \triangle_i \circ \partial
 \end{equation}
 for any $i \in \Z$.
-The correspondence is given by $\Delta_i = \Delta(e_i \otimes -)$, and we refer to the map $\Delta_i$ as the \textit{cup-$i$ coproduct} of the cup-$i$ construction, and to the linear dual $\smallsmile_i$ of $\Delta_i$ as its \textit{cup-$i$ product}.
+The correspondence is given by $\triangle_i = \triangle(e_i \otimes -)$, and we refer to the map $\triangle_i$ as the \textit{cup-$i$ coproduct} of the cup-$i$ construction, and to the linear dual $\smallsmile_i$ of $\triangle_i$ as its \textit{cup-$i$ product}.
 Explicitly, given two cochains $\alpha$ and $\beta$ and a chain $c$ we have
 \begin{equation*}
-(\alpha \smallsmile_i \beta)(c) = (\alpha \otimes \beta) \Delta_i(c).
+(\alpha \smallsmile_i \beta)(c) = (\alpha \otimes \beta) \triangle_i(c).
 \end{equation*}
 
 \subsection{Steenrod squares}
@@ -68,7 +68,7 @@ Using the adjunction isomorphism, the dashed arrow defines a linear map
 \begin{equation} \label{e:Steenrod squares parameterized}
 \begin{tikzcd}[row sep=0pt, column sep = small]
 C^\bullet \otimes W_{\Sym_2} \arrow[r] &[-10pt] C^\bullet \\
-\alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\Delta_i(-)
+\alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\triangle_i(-)
 \end{tikzcd}
 \end{equation}
 descending to mod $2$ cohomology.
@@ -79,10 +79,10 @@ Explicitly,
 	\begin{equation} \label{e:steenrod squares}
 	\begin{tikzcd}[row sep=0pt, column sep=tiny]
 	Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
-	\phantom{Sq^k \colon}{[\alpha]} \arrow[r, |->] & {\left[(\alpha \otimes \alpha)\Delta_{n-k}(-) \right]}.
+	\phantom{Sq^k \colon}{[\alpha]} \arrow[r, |->] & {\left[(\alpha \otimes \alpha)\triangle_{n-k}(-) \right]}.
 	\end{tikzcd}
 	\end{equation}
-	for any cup-$i$ construction $\Delta$.
+	for any cup-$i$ construction $\triangle$.
 \end{definition}
 
 \subsection{Additional comments}
@@ -99,5 +99,5 @@ Explicitly,
 \begin{remark}[Odd primes]
 	For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\Sym_2$.
 	Steenrod used this group homology viewpoint to non-constructively define operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology} for any prime $p$.
-	To define these constructively, analogues of the $\Delta_i$ maps for odd primes were introduced in \cite{medina2021maysteenrod} and implemented in \cite{medina2021computer}.
+	To define these constructively, analogues of explicit cup-$i$ coproducts for odd primes were introduced in \cite{medina2021maysteenrod} and implemented in \cite{medina2021computer}.
 \end{remark}
