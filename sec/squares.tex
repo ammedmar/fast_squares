@@ -19,56 +19,56 @@ Consider the chain complex
 \end{tikzcd}
 \end{equation*}
 with its natural $\Sym_2$-action.
-For any simplicial complex $X$, the chain complex $W \otimes C_\bullet(X; \Ftwo)$ has an $\Sym_2$-action concentrated on the left factor, and $C_\bullet(X; \Ftwo)^{\otimes 2}$ has one given by transposition of factors.
+For any simplicial complex $X$, the chain complex $W \ot C_\bullet(X; \Ftwo)$ has an $\Sym_2$-action concentrated on the left factor, and $C_\bullet(X; \Ftwo)^{\ot 2}$ has one given by transposition of factors.
 
 We are interested in $\Sym_2$-equivariant chain maps
 \begin{equation} \label{e:steenrod diagonal}
-\triangle_X \colon W \otimes C_\bullet(X; \Ftwo) \to C_\bullet(X; \Ftwo)^{\otimes 2}
+\triangle_X \colon W \ot C_\bullet(X; \Ftwo) \to C_\bullet(X; \Ftwo)^{\ot 2}
 \end{equation}
-defined naturally for every simplicial complex $X$, i.e., such that $\triangle_Y \circ (\id_W \otimes f_\bullet) = (f_\bullet \otimes f_\bullet) \circ \triangle_X$ for any simplicial map $f \colon X \to Y$.
+defined naturally for every simplicial complex $X$, i.e., such that $\triangle_Y \circ (\id_W \ot f_\bullet) = (f_\bullet \ot f_\bullet) \circ \triangle_X$ for any simplicial map $f \colon X \to Y$.
 
 \begin{definition}
-	A \textit{cup-$i$ construction} is a natural collection of maps as above such that $\triangle_X \neq 0$ if $X$ is a simplicial complex with a single vertex.
+	A (non-degenerate) \textit{cup-$i$ construction} is a natural collection of maps as above such that $\triangle_X \neq 0$ if $X$ is a simplicial complex with a single vertex.
 \end{definition}
 
-A cup-$i$ construction is determined by a collection $\{\triangle_i\}_{i \in \Z}$ of natural linear maps $C_\bullet \to C_\bullet^{\otimes 2}$ satisfying $\triangle_0 \big([v]\big) \neq 0$ for any vertex $v$ and
+A cup-$i$ construction is determined by a collection $\{\triangle_i\}_{i \in \Z}$ of natural linear maps $C_\bullet \to C_\bullet^{\ot 2}$ satisfying $\triangle_0 \big([v]\big) \neq 0$ for any vertex $v$ and
 \begin{equation} \label{e:boundary of cup-i}
 (1 + T) \triangle_{i-1} = \partial \circ \triangle_i + \triangle_i \circ \partial
 \end{equation}
 for any $i \in \Z$.
-The correspondence is given by $\triangle_i = \triangle(e_i \otimes -)$, and we refer to the map $\triangle_i$ as the \textit{cup-$i$ coproduct} of the cup-$i$ construction, and to the linear dual $\smallsmile_i$ of $\triangle_i$ as its \textit{cup-$i$ product}.
+The correspondence is given by $\triangle_i = \triangle(e_i \ot -)$, and we refer to the map $\triangle_i$ as the \textit{cup-$i$ coproduct} of the cup-$i$ construction, and to the linear dual $\smallsmile_i$ of $\triangle_i$ as its \textit{cup-$i$ product}.
 Explicitly, given two cochains $\alpha$ and $\beta$ and a chain $c$ we have
 \begin{equation*}
-(\alpha \smallsmile_i \beta)(c) = (\alpha \otimes \beta) \triangle_i(c).
+(\alpha \smallsmile_i \beta)(c) = (\alpha \ot \beta) \triangle_i(c).
 \end{equation*}
 
 \subsection{Steenrod squares}
 
-Let us consider a cup-$i$ construction $W \otimes C_\bullet \to C_\bullet^{\otimes 2}$.
-Using the linear duality functor and passing to fix points gives a chain map
+Let us consider a cup-$i$ construction $W \ot C_\bullet \to C_\bullet^{\ot 2}$.
+Using the linear duality functor and passing to fix points it gives a chain map
 \begin{equation*}
 \begin{tikzcd}
-\Hom\left(C_\bullet \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[r] &
-\Hom\left(W \otimes C_\bullet, \Ftwo \right)^{\Sym_2},
+\Hom\left(C_\bullet \ot C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[r] &
+\Hom\left(W \ot C_\bullet, \Ftwo \right)^{\Sym_2},
 \end{tikzcd}
 \end{equation*}
 which we can complete, using isomorphisms \eqref{e:adjunction isomorphism} and \eqref{e:invariant hom iso hom coinvariants} of \cref{s:preliminaries}, to a commutative diagram
 \begin{equation*}
 \begin{tikzcd}
-\Hom\left(C_\bullet \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[r] &
-\Hom\left(W \otimes C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[d] \\
-\left(C^\bullet \otimes C^\bullet\right)^{\Sym_2} \arrow[u]&
-\Hom\left(W_{\Sym_2} \otimes C_\bullet, \Ftwo \right) \arrow[d] \\
+\Hom\left(C_\bullet \ot C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[r] &
+\Hom\left(W \ot C_\bullet, \Ftwo \right)^{\Sym_2} \arrow[d] \\
+\left(C^\bullet \ot C^\bullet\right)^{\Sym_2} \arrow[u]&
+\Hom\left(W_{\Sym_2} \ot C_\bullet, \Ftwo \right) \arrow[d] \\
 C^\bullet \arrow[u, "doubleing"] \arrow[r, dashed]&
 \Hom\left(W_{\Sym_2}, C^\bullet\right),
 \end{tikzcd}
 \end{equation*}
-where the choice of coefficients ensures that the \textit{doubleing map} $\alpha \mapsto \alpha \otimes \alpha$ is linear.
+where the choice of coefficients ensures that the \textit{doubleing map} $\alpha \mapsto \alpha \ot \alpha$ is linear.
 Using the adjunction isomorphism, the dashed arrow defines a linear map
 \begin{equation} \label{e:Steenrod squares parameterized}
 \begin{tikzcd}[row sep=0pt, column sep = small]
-C^\bullet \otimes W_{\Sym_2} \arrow[r] &[-10pt] C^\bullet \\
-\alpha \otimes e_i \arrow[r, |->] & (\alpha \otimes \alpha)\triangle_i(-)
+C^\bullet \ot W_{\Sym_2} \arrow[r] &[-10pt] C^\bullet \\
+\alpha \ot e_i \arrow[r, |->] & (\alpha \ot \alpha)\triangle_i(-)
 \end{tikzcd}
 \end{equation}
 descending to mod $2$ cohomology.
@@ -79,7 +79,7 @@ Explicitly,
 	\begin{equation} \label{e:steenrod squares}
 	\begin{tikzcd}[row sep=0pt, column sep=tiny]
 	Sq^k \colon H^{-n} \arrow[r] & H^{-n-k} \\
-	\phantom{Sq^k \colon}{[\alpha]} \arrow[r, |->] & {\left[(\alpha \otimes \alpha)\triangle_{n-k}(-) \right]}.
+	\phantom{Sq^k \colon}{[\alpha]} \arrow[r, |->] & \big[ (\alpha \ot \alpha)\triangle_{n-k}(-) \big].
 	\end{tikzcd}
 	\end{equation}
 	for any cup-$i$ construction $\triangle$.
@@ -92,12 +92,26 @@ Explicitly,
 \end{remark}
 
 \begin{remark}[Cup product] \label{r:cup product}
-	Although in this article we do not use the algebra structure on the mod~2 cohomology of spaces, we remark that the cup-$0$ product of a cup-$i$ construction represents these so-called \textit{cup product}.
+	Although in this article we do not use the algebra structure on the mod~2 cohomology of spaces, we remark that the cup-$0$ product of a cup-$i$ construction represents the \textit{cup product} in cohomology.
 	Explicitly, if $[\alpha], [\beta] \in H^\bullet$ then $[\alpha][\beta] = [\alpha \smallsmile_0 \beta]$, in particular, if $[\alpha]$ is of degree $-k$ then $Sq^k\big([\alpha]\big) = [\alpha] [\alpha]$, which motivates the term squares in the name of the $Sq^k$ operations.
+\end{remark}
+
+\begin{remark}[Transverse intersections]
+	From a geometric viewpoint, the cup product can be interpreted in terms of intersections of cycles in certain cases.
+	For any space, Thom showed that every mod $2$ homology class is represented by the push-forward of the fundamental class of a closed manifold $W$ along some map to the space.
+	Furthermore, if the target $M$ is a closed manifold, and therefore satisfies Poincar\'{e} duality
+	\[
+	PD \colon H^k(M ;\Ftwo) \to H_{\bars{M}-k}(M; \Ftwo),
+	\]
+	the cohomology class dual to the homology class represented by the intersection of two transverse maps $V \to X$ and $W \to M$, or more precisely their pull-back $W \times_M V \to M$, is the cohomology class $[\alpha] [\beta]$ where $[\alpha]$ and $[\beta]$ are respectively dual to the homology classes represented by $V \to M$ and $W \to M$.
+	By taking $[\alpha] = [\beta]$ we have that $Sq^k \big( [\alpha] \big)$ with $\alpha$ of degree $-k$ is represented by the transverse self-intersection of $W \to M$, that is, the intersection of this map and a generic perturbation of itself.
+	In manifold topology, the relationship at the (co)homology level between cup product and intersection is classical.
+	For a comparison between these at the level of (co)chain see \cite{medina2021flowing}.
+	A generalization of this result to cup-$i$ products is the focus of current research \cite{medina2022foundations}
 \end{remark}
 
 \begin{remark}[Odd primes]
 	For the reader familiar with group homology, we remark that Steenrod squares are parameterized by classes on the mod $2$ homology of $\Sym_2$.
-	Steenrod used this group homology viewpoint to non-constructively define operations on the mod $p$ cohomology of spaces \cite{steenrod1962cohomology} for any prime $p$.
-	To define these constructively, analogues of explicit cup-$i$ coproducts for odd primes were introduced in \cite{medina2021maysteenrod} and implemented in \cite{medina2021computer}.
+	Steenrod used this group homology viewpoint to non-constructively define operations on the mod $p$ cohomology of spaces \cite{steenrod1952reduced, steenrod1953cyclic, steenrod1962cohomology} for any prime $p$.
+	To define these constructively, analogues of explicit cup-$i$ coproducts for odd primes were introduced in \cite{medina2021maysteenrod} using May's operadic viewpoint \cite{may1970general} and implemented in the computer algebra system \texttt{ComCH} \cite{medina2021computer}.
 \end{remark}

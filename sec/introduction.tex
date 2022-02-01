@@ -2,12 +2,11 @@
 
 \section{Introduction}
 
-For effective computations involving topological spaces, discrete models are indispensable.
+Discrete models are indispensable for effective computations involving topological spaces.
 The category of simplicial complexes provides models not only for spaces but also, through the simplicial approximation theorem, for continuous maps between them.
-We can obtain algebraic models from these using simplicial chains and their dual cochains.
-Using these algebraic representations, invariants of spaces such as Betti numbers can be readily computed using linear algebra alone.
+We can obtain algebraic models from these via simplicial chains and their dual cochains, from which Betti numbers can be readily computed using linear algebra alone.
 
-In this article we focused on finer invariants of spaces enriching their mod 2 cohomology and going beyond Betti numbers.
+In this article we focus on finer invariants of spaces enriching their mod 2 cohomology and going beyond Betti numbers.
 We are referring to the celebrated Steenrod squares
 \begin{equation*}
 Sq^k \colon H^\bullet(X; \Ftwo) \to H^\bullet(X; \Ftwo).
@@ -21,39 +20,54 @@ x \arrow[r, mapsto] & (x,x)
 \end{equation*}
 occurring during the passage from continuous descriptions to discrete/algebraic models.
 
+We mention the following examples to illustrate the additional discriminatory power these operations provide:
+\begin{enumerate}
+	\item The real projective plane and the wedge of a circle and a sphere have, with $\Ftwo$-coefficients, the same Betti numbers, yet the rank of $Sq^1$ tells them apart.
+	\item Similarly, the complex projective plane and the wedge of a 2-sphere and a 4-sphere have the same Betti numbers with any coefficients, yet the rank of $Sq^2$ distinguishes them.
+	\item The suspensions of the two spaces above have the same Betti numbers and also isomorphic cohomology rings, yet the rank of $Sq^2$ tells them apart.
+\end{enumerate}
+
 For simplicial complexes, effective constructions of Steenrod squares have been known since their introduction in Steenrod's seminal 1947 paper \cite{steenrod1947products}.
 They all rely on a \textit{cup-$i$ construction}, a structure on chains given by a collection of natural linear maps
 \begin{equation*}
-\Delta_i \colon C_\bullet(X; \Ftwo)  \to C_\bullet(X; \Ftwo)^{\otimes 2}\,,
+\Delta_i \colon C_\bullet(X; \Ftwo)  \to C_\bullet(X; \Ftwo)^{\ot 2}\,,
 \end{equation*}
-satisfying for every integer $i$ that
+satisfying for every integer $i$ the following key identity:
 \begin{equation*}
 (1+T) \Delta_{i-1} =
-\partial \circ \Delta_i + \Delta_i \circ \partial
+\partial \circ \Delta_i + \Delta_i \circ \partial,
 \end{equation*}
 where $T$ denoted the transposition of tensor factors,
 and such that $\Delta_0$ is a chain approximation to the diagonal of $X$.
-These \textit{cup-$i$ coproducts} and their linear dual products are important in their own right.
-For example, in condensed matter physics they are used to describe action functionals of topological field theories \cite{gaiotto2016spin, bhardwaj2017state, kapustin2017fermionic}, in higher category theory, they can be used to deduce the nerve of $n$-categories \cite{medina2020globular}, and in convex geometry, they are connected to projections of cyclic polytopes \cite{kapranov1991combinatorial}.
+These \textit{cup-$i$ coproducts} and their linear dual \textit{cup-$i$ products} are important in their own right.
+For example, in condensed matter physics they are used to describe action functionals of topological field theories \cite{gaiotto2016spin, kapustin2017fermionic, barkeshli2021classification}, in higher category theory they define the nerve of $n$-categories \cite{medina2020globular}, and in convex geometry they are connected to fibrations of polytopes \cite{kapranov1991polycategory, medina2022fib_poly}.
 
-In this article we introduce a new cup-$i$ construction. \anibal{misleading}
-We are particularly interested in simplicial complexes, but our formulas apply in the more general context of simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
+In this article we introduce new formulas defining a cup-$i$ construction on simplicial complexes and simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
 
-Several cup-$i$ constructions have been given in the literature starting with Steenrod's original formulas~\cite{steenrod1947products}.
-These include those resulting from the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez-diaz1999steenrod, gonzalez2003computation, gonzalez-diaz2005cocyclic} based on the EZ-AW chain contraction, the operadic methods of McClure-Smith \cite{mcclure2003multivariable} and Berger-Fresse \cite{berger2004combinatorial}, and the prop viewpoint of the author \cite{medina2020prop1, medina2018prop2}.
-The question of comparing these different cup-$i$ constructions will be addressed via an axiomatic characterization in \cite{medina2018axiomatic}, where it is shown that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
+Several formulas defining cup-$i$ constructions have been given in the literature starting with Steenrod's original \cite{steenrod1947products}.
+These include those resulting from the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez-diaz1999steenrod, gonzalez2003computation, gonzalez-diaz2005cocyclic} based on the EZ-AW chain contraction, the operadic methods of McClure-Smith \cite{mcclure2003multivariable} and Berger-Fresse \cite{berger2004combinatorial}, and the prop viewpoint of the author \cite{medina2020prop1, medina2021prop2}.
+The question of comparing the resulting cup-$i$ constructions will be addressed via an axiomatic characterization in \cite{medina2018axiomatic}, where it is shown that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
 
-We highlight three uses of our formulas.
-1) They are key to prove the axiomatic characterization of cup-$i$ products mentioned above.
-2) In \cite{cantero2020khovanov}, Cantero-Mor\'an defined Steenrod squares in mod 2 Khovanov homology \cite{khovanov2000categorification} by reinterpreting them in the context of augmented semi-simplicial objects in the Burnside category.
+We highlight three uses for the formulas introduced in this paper.
+1) They are key to prove the axiomatic characterization of Steenrod's cup-$i$ construction.
+2) In \cite{cantero-moran2020khovanov}, Cantero-Mor\'an defined Steenrod squares in mod 2 Khovanov homology \cite{khovanov2000categorification} by reinterpreting them in the context of augmented semi-simplicial objects in the Burnside category.
 3) They lead to fast computations of Steenrod square as we describe next.
 
+Given a cup-$i$ construction and a finite simplicial complex, a representative of $Sq^k \big( [\alpha] \big)$ for a cocycle $\alpha$ is given by the cocycle $\beta = (\alpha \ot \alpha) \triangle_{i}(-)$ where $i$ is an integer that depends only on the degree of $\alpha$ and $k$.
+A direct algorithmic way to compute the support of $\beta$ is to iterate over all simplices $x$ of the appropriate dimension, compute $\triangle_i(x)$, and record $x$ if the value of $(\alpha \ot \alpha)$ on it is $1 \in \Ftwo$.
+Our algorithm improves on this scheme by considering only simplices $x$ related to the support of $\alpha$.
+More specifically, it constructs the universal support of $\beta$ and then discards simplices in it that are not in $X$.
+In this way our algorithm depends primarily on the size of the support of $\alpha$, and is therefore less sensitive to the number of simplices of $X$.
+
 For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez-diaz1999steenrod} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
-We use our formulas to introduce a new algorithm for this task, and present a performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
-The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, carlsson2013viral, lee2018nanoporous} and for which various softwares exist \cite{bauer2019ripser, gudhi, medina2021giotto}.
+We present a proof-of-concept performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
+The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, chan2013viral, lee2017quantifying} and for which various software projects exist \cite{bauer2021ripser, gudhi, medina2021giotto}.
+A specific implementation for the computation of Steenrod barcodes based on the algorithms introduced here can be found in the project \texttt{steenroder}\footnote{Currently hosted at \url{https://github.com/Steenroder/steenroder}}.
 
 \subsection*{Outline}
 
-In \cref{s:preliminaries} we review the notions from equivariant homological algebra and simplicial topology needed to present, in \cref{s:squares}, the definition of cup-$i$ construction and Steenrod squares.
-We introduce our new formulas in \cref{s:formulas}, and our algorithm in \cref{s:algorithm}; providing a proof-of-concept comparison using \verb|SAGE| in \cref{s:comparison}.
-In \cref{s:proof}, the technical core of this article, we prove that our new formulas define a cup-$i$ construction, and in \cref{s:outlook} we discuss finer invariants associated to Steenrod squares.
+In \cref{s:preliminaries} we review the notions from equivariant homological algebra and simplicial topology needed to present, in \cref{s:squares}, the definitions of cup-$i$ constructions and Steenrod squares.
+We introduce our new formulas in \cref{s:formulas} deferring the proof that they define a cup-$i$ construction to \cref{s:proof}.
+We present our algorithm in \cref{s:algorithm} and a proof of its correctness in \cref{s:correctness}.
+We devote \cref{s:comparison} to a proof-of-concept comparison of our method using \verb|SAGE|.
+In \cref{s:outlook} we discuss finer invariants associated to Steenrod squares, and provide conclusions and an outline for future work in \cref{s:conclusion}.

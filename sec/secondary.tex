@@ -2,20 +2,18 @@
 
 \section{Secondary operations} \label{s:outlook}
 
-Lifting relations from the (co)homology level to the (co)chain level is often a source of further structure.
-For example, cup-$i$ products provide an effective construction of coboundaries coherently enforcing the commutativity relation of the cup product in cohomology.
-
+Lifting relations from the (co)homology level to the (co)chain level is often a source of further (co)homological structure.
+For example, cup-$i$ products provide an effective construction of coboundaries coherently enforcing the commutativity relation of the cup product in cohomology and lead to Steenrod squares.
 It is natural then to wonder about what relations are satisfied by Steenrod squares themselves.
 There are two notable relations to consider.
 The first one, known as the \textit{Cartan relation}, expresses the interaction between these operations and the cup product:
 \begin{equation*}
 Sq^k \big( [\alpha] [\beta] \big) = \sum_{i+j=k} Sq^i \big([\alpha]\big)\, Sq^j \big([\beta]\big),
 \end{equation*}
-whereas the second, the \textit{Adem relation} \cite{adem52relations}, expresses dependencies appearing through iteration:
+whereas the second, the \textit{Adem relation} \cite{adem1952iteration}, expresses dependencies appearing through iteration:
 \begin{equation*}
 Sq^i Sq^j = \sum_{k=0}^{\lfloor i/2 \rfloor} \binom{j-k-1}{i-2k} Sq^{i+j-k} Sq^k,
 \end{equation*}
 where $\lfloor- \rfloor$ denotes the integer part function and the binomial coefficient is reduced mod $2$.
-
-To tap into the secondary structure associated with these relations, one needs to provide effective proofs for them, that is to say, construct explicit cochains enforcing them when passing to cohomology.
-Such effective proofs were recently given respectively in \cite{medina2020cartan} and \cite{medina2021adem}, and we expect the additional structure they unlock will also play an important role in computational topology.
+To tap into the secondary structure associated with these relations, one needs to provide effective cochain level proofs for them, that is to say, construct explicit cochains enforcing them when passing to cohomology.
+Such proofs were recently given respectively in \cite{medina2020cartan} and \cite{medina2021adem}, and we expect that the additional structure they unlock will also play an important role in computational topology.
