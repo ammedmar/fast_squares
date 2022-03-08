@@ -46,7 +46,7 @@ In this article we introduce new formulas defining a cup-$i$ construction on sim
 
 Several formulas defining cup-$i$ constructions have been given in the literature starting with Steenrod's original \cite{steenrod1947products}.
 These include those resulting from the approach of Real \cite{real1996computability} and Gonz\'alez-D\'iaz--Real \cite{gonzalez-diaz1999steenrod, gonzalez2003computation, gonzalez-diaz2005cocyclic} based on the EZ-AW chain contraction, the operadic methods of McClure-Smith \cite{mcclure2003multivariable} and Berger-Fresse \cite{berger2004combinatorial}, and the prop viewpoint of the author \cite{medina2020prop1, medina2021prop2}.
-The question of comparing the resulting cup-$i$ constructions will be addressed via an axiomatic characterization in \cite{medina2018axiomatic}, where it is shown that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
+The question of comparing the resulting cup-$i$ constructions will be addressed via an axiomatic characterization in \cite{medina2022axiomatic}, where it is shown that all of these cup-$i$ constructions, including the one given here, are isomorphic and not just homotopic.
 
 We highlight three uses for the formulas introduced in this paper.
 1) They are key to prove the axiomatic characterization of Steenrod's cup-$i$ construction.
@@ -61,7 +61,7 @@ In this way our algorithm depends primarily on the size of the support of $\alph
 
 For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez-diaz1999steenrod} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 We present a proof-of-concept performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
-The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2018persistence}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, chan2013viral, lee2017quantifying} and for which various software projects exist \cite{bauer2021ripser, gudhi, medina2021giotto}.
+The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2021per_st}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, chan2013viral, lee2017quantifying} and for which various software projects exist \cite{bauer2021ripser, gudhi, medina2021giotto}.
 A specific implementation for the computation of Steenrod barcodes based on the algorithms introduced here can be found in the project \texttt{steenroder}\footnote{Currently hosted at \url{https://github.com/Steenroder/steenroder}}.
 
 \subsection*{Outline}

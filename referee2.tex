@@ -1,0 +1,83 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\input{aux/style}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[backend=biber,
+style=alphabetic,
+backref=true,
+url=false,
+doi=false,
+isbn=false,
+eprint=false
+]{biblatex}
+
+\addbibresource{aux/usualpapers.bib}
+\addbibresource{aux/mypapers.bib}
+
+\begin{document}
+	\thispagestyle{empty}
+	\begin{center}
+		\Huge{Second replay to reviewer 2}
+		\large{}
+	\end{center}
+
+	\vspace*{5pt}
+	\noindent\rule{\textwidth}{1pt}
+
+	\noindent\textbf{Reviewer 2}:
+	I am overall satisfied with the answers and corrections made by the authors.
+
+	I only need one clarification in the answer of my first question.
+	The authors claim that ``We also mention that the isomorphism between Steenrod's and Gonzales-Diaz--Real's constructions was, to the best of our knowledge, missing from the literature prior to our forthcoming axiomatic work."
+
+	What I think is that Medina-Mardones and, for example, Gonzalez-Diaz-Real's formulas are exactly the same (not only isomorphic).
+	For example, if you compute $\Delta_1$ using Medina-Mardones's formula, don't you get:
+	\[
+	d_{i0+1}...d_{i1-1} \otimes d0...d_{i0-1}d_{i1+1}...dm ?
+	\]
+
+	Maybe I am wrong, and this is why I suggest to the author to add the explicit expression for some cases, for example $\Delta_1$ and $\Delta_2$ and see the differences between Medina-Mardones and Gonzalez-Diaz-Real's formulas.
+	Otherwise, the claim that you ''present new formulas defining a cup-i construction" is not totally convincing.
+
+	\noindent\rule{\textwidth}{1pt}
+
+	\newpage
+	\noindent\textbf{Author}:
+	I stand by the claim that this paper ``presents new formulas defining a cup-$i$ construction." I have segmented the explanation in three parts.
+
+	\subsection*{1} Consider Gonzalez-Diaz--Real's formulas:
+	\begin{center}
+		\vspace*{-10pt}
+		\boxed{\includegraphics[width=\textwidth]{real.png}}
+	\end{center}
+	Consider my formulas in the same notation as above:
+	\begin{framed}
+		\noindent$\bullet$ If $i \leq j$, then
+		\[
+		Sq^i(c)(x) = (c \otimes c) \sum \partial_{U^0}(x) \otimes \partial_{U^1}(x)
+		\]
+		where the sum is taken over all $U = \{u_1 < \cdots < u_{j}\} \subseteq \{0, \dots, i+j\}$ and
+		\begin{equation*}
+			U^0 = \{u_k \in U \mid u_k \equiv k \text{ mod } 2\}, \qquad
+			U^1 = \{u_k \in U \mid u_k \not\equiv k \text{ mod } 2\}.
+		\end{equation*}
+		\noindent$\bullet$ If $i > j$, then $Sq^i(c)(x) = 0$.
+	\end{framed}
+	Gonzalez-Diaz--Real's formulas need to treat two distinct cases based on the parity of $i+j$ and are essentially recursive.
+	Mine are presented in closed form and without cases.
+
+	\subsection*{2} Let me expand on the distinction between an object defined by certain formulas and the formulas themselves.
+	Given $n \in \mathbb N$, consider the following definitions of an integer: $a$) the number of triangulations of the $n$-gon, or $b$) the number of different ways $n+1$ factors can be completely parenthesized.
+	These are the same integer but the formulas defining it are not.
+
+	It turns out that, as the referee verified in low dimensions, the formulas above (Gonzalez-Diaz--Real's and mine) define the \textit{same} cup-$i$ products.
+	Proving this is difficult and requires the full power of my axiomatic characterization \cite{medina2022axiomatic}.
+
+	\subsection*{3} Finally, if the reviewer does not consider my formulas to be different from Gonzalez-Diaz--Real's, then he or she cannot consider Gonzalez-Diaz--Real's formulas different from Steenrod's.
+	This is because, as I proved using my axiomatic characterization and can be easily verified in low dimensions, they define the \textit{same} cup-$i$ products.
+
+	\sloppy
+	\printbibliography
+
+\end{document}
