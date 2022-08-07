@@ -40,7 +40,8 @@ satisfying for every integer $i$ the following key identity:
 where $T$ denoted the transposition of tensor factors,
 and such that $\Delta_0$ is a chain approximation to the diagonal of $X$.
 These \textit{cup-$i$ coproducts} and their linear dual \textit{cup-$i$ products} are important in their own right.
-For example, in condensed matter physics they are used to describe action functionals of topological field theories \cite{gaiotto2016spin, kapustin2017fermionic, barkeshli2021classification}, in higher category theory they define the nerve of $n$-categories \cite{medina2020globular}, and in convex geometry they are connected to fibrations of polytopes \cite{kapranov1991polycategory, medina2022fib_poly}.
+For example, they are used to describe action functionals of topological field theories \cite{gaiotto2016spin,kapustin2017fermionic,barkeshli2021classification}, to define the nerve of $n$-categories \cite{medina2020globular}, and their comodules can be used to fully faithfully model chain complex valued presheaves \cite{medina2022assembly} on $X$.
+%For example, in condensed matter physics they are used to describe action functionals of topological field theories \cite{gaiotto2016spin, kapustin2017fermionic, barkeshli2021classification}, in higher category theory they define the nerve of $n$-categories \cite{medina2020globular}, and in convex geometry they are connected to fibrations of polytopes \cite{kapranov1991polycategory, medina2022fib_poly}.
 
 In this article we introduce new formulas defining a cup-$i$ construction on simplicial complexes and simplicial sets, a categorical closure of simplicial complexes used, for example, to define the singular homology of topological spaces.
 
@@ -61,7 +62,7 @@ In this way our algorithm depends primarily on the size of the support of $\alph
 
 For the effective computation of Steenrod squares on simplicial complexes, an algorithm based on \cite{gonzalez-diaz1999steenrod} was implemented in the open-source mathematics system \verb|SAGE| by John Palmieri \cite{sagemath}.
 We present a proof-of-concept performance comparison between a \verb|Python| implementation of our algorithm and the one in \verb|SAGE|.
-The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2021per_st}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, chan2013viral, lee2017quantifying} and for which various software projects exist \cite{bauer2021ripser, gudhi, medina2021giotto}.
+The speed gained with our algorithm is essential for the incorporation of Steenrod squares into persistence homology \cite{medina2022per_st}, a technique typically used in highly intensive data analysis tasks \cite{carlsson2008images, chan2013viral, lee2017quantifying} and for which various software projects exist \cite{bauer2021ripser, gudhi, medina2021giotto}.
 A specific implementation for the computation of Steenrod barcodes based on the algorithms introduced here can be found in the project \texttt{steenroder}\footnote{Currently hosted at \url{https://github.com/Steenroder/steenroder}}.
 
 \subsection*{Outline}
