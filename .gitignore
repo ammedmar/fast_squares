@@ -15,3 +15,5 @@
 *.zip
 *.bcf
 *.xml
+/journal/
+/referees/
